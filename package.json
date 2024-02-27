@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "deploy": "vercel --prod"
   },
   "dependencies": {
     "@juggle/resize-observer": "^3.4.0",
@@ -24,7 +25,8 @@
     "react-loading": "^2.0.3",
     "react-router-dom": "^6.22.1",
     "three": "^0.149.0",
-    "use-sound": "^4.0.1"
+    "use-sound": "^4.0.1",
+    "vercel": "^33.5.2"
   },
   "devDependencies": {
     "@types/react": "^18.2.56",
