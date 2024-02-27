@@ -1,6 +1,7 @@
 import { Html } from "@react-three/drei";
 import { useEffect, useRef, useState } from "react";
 import TWEEN from "@tweenjs/tween.js";
+import useSound from "use-sound";
 
 const BrainstormingWall = ({
     nodes,
@@ -17,6 +18,19 @@ const BrainstormingWall = ({
     const [hovered, setHovered] = useState(false);
     const [resumeHovered, setResumeHovered] = useState(false);
 
+    const [play, { stop, isPlaying }] = useSound("./rising-pops.mp3", {
+        volume: 0.3,
+    });
+
+    const [playSwish, { stopSwish, isPlayingSwish }] = useSound("./swish.wav", {
+        volume: 0.3,
+    });
+
+    const [playSwishReverse, { stopSwishReverse, isPlayingSwishReverse }] =
+        useSound("./swish-rev.wav", {
+            volume: 0.3,
+        });
+
     useEffect(() => {
         if (cameraMode === "default" && hovered) {
             document.body.style.cursor = "pointer";
@@ -32,6 +46,7 @@ const BrainstormingWall = ({
                 )
                 .easing(TWEEN.Easing.Quadratic.Out)
                 .start();
+            play();
         } else {
             document.body.style.cursor = "auto";
             html.current?.children[0].classList.remove("active");
@@ -83,6 +98,7 @@ const BrainstormingWall = ({
                 onPointerMissed={() => {
                     if (cameraMode === "brainstormingWall") {
                         setCameraMode("default");
+                        playSwishReverse();
                     }
                 }}
                 onPointerEnter={() => setHovered(true)}
@@ -90,6 +106,7 @@ const BrainstormingWall = ({
                 onClick={() => {
                     if (cameraMode === "default") {
                         setCameraMode("brainstormingWall");
+                        playSwish();
                     }
                 }}
                 name="Brainstorming Wall"
@@ -181,7 +198,11 @@ const BrainstormingWall = ({
                 </group>
                 <mesh
                     ref={resume}
-                    onPointerEnter={() => setResumeHovered(true)}
+                    onPointerEnter={() => {
+                        if (cameraMode === "brainstormingWall") {
+                            setResumeHovered(true);
+                        }
+                    }}
                     onPointerLeave={() => setResumeHovered(false)}
                     onClick={() => {
                         if (cameraMode === "brainstormingWall") {

@@ -4,7 +4,6 @@ import {
     OrbitControls,
     OrthographicCamera,
 } from "@react-three/drei";
-import * as THREE from "three";
 import { useFrame } from "@react-three/fiber";
 import { useEffect, useRef, useState } from "react";
 import { useSpring, animated, easings } from "@react-spring/three";
@@ -12,6 +11,7 @@ import TWEEN from "@tweenjs/tween.js";
 import Guitar from "./components/Guitar";
 import BrainstormingWall from "./components/BrainstormingWall";
 import Iphone from "./components/Iphone";
+import Leaves from "./components/Leaves";
 import BigPlant from "./components/BigPlant";
 import PhotoWall from "./components/PhotoWall";
 import NikeShoeBox from "./components/NikeShoeBox";
@@ -61,41 +61,6 @@ export default function Scene({ ...props }) {
             precision: 0.0001,
         },
         loop: true,
-    });
-
-    const basketball = useSpring({
-        loop: true,
-        from: {
-            position: [-64.83, -120.02, 60.31],
-            scale: [0.12, 0.12, 0.12],
-        },
-        to: [
-            {
-                position: [-64.83, -158.02, 60.31],
-                scale: [0.13, 0.12, 0.13],
-            },
-            {
-                position: [-64.83, -120.02, 60.31],
-                scale: [0.12, 0.12, 0.12],
-            },
-        ],
-        config: {
-            mass: 5,
-            tension: 170,
-            friction: 10,
-            duration: 500,
-            easing: easings.easeOutSine,
-        },
-    });
-
-    const leaves = useSpring({
-        from: { scale: [0.35, 0.25, 0.25] },
-        to: { scale: [0.32, 0.21, 0.2] },
-        config: {
-            duration: 2000,
-            precision: 0.0001,
-        },
-        loop: { reverse: true },
     });
 
     // Camera Animations
@@ -225,12 +190,20 @@ export default function Scene({ ...props }) {
 
     // Light target
     const lightRef = useRef();
+    useEffect(() => {
+        new TWEEN.Tween(lightRef.current.target.position)
+            .to({
+                x: -90,
+                y: -180,
+                z: 120,
+            })
+            .easing(TWEEN.Easing.Quadratic.InOut)
+            .onUpdate(() => {
+                lightRef.current.target.updateMatrixWorld();
+            })
+            .start();
+    });
     useFrame(() => {
-        lightRef.current.target.position.lerp(
-            new THREE.Vector3(-90, -180, 120),
-            0.05
-        );
-        lightRef.current.target.updateMatrixWorld();
         TWEEN.update();
     });
 
@@ -290,15 +263,7 @@ export default function Scene({ ...props }) {
                         setCameraMode={setCameraMode}
                     />
                     <Iphone nodes={nodes} materials={materials} />
-                    <animated.mesh
-                        name="Leaves"
-                        geometry={nodes.Leaves.geometry}
-                        material={materials.plant}
-                        castShadow
-                        receiveShadow
-                        position={[107.18, -107.1, 338.21]}
-                        scale={leaves.scale}
-                    />
+                    <Leaves nodes={nodes} materials={materials} />
                     <BigPlant nodes={nodes} materials={materials} />
                     <PhotoWall nodes={nodes} materials={materials} />
                     <NikeShoeBox nodes={nodes} materials={materials} />
@@ -351,8 +316,8 @@ export default function Scene({ ...props }) {
                                 rotation={[0.32, 0.07, -0.4]}
                                 scale={0.49}>
                                 <mesh
-                                    name="Cylinder 21"
-                                    geometry={nodes["Cylinder 21"].geometry}
+                                    name="Cylinder 22"
+                                    geometry={nodes["Cylinder 22"].geometry}
                                     material={materials.darkblue}
                                     castShadow
                                     receiveShadow
@@ -389,11 +354,11 @@ export default function Scene({ ...props }) {
                     <HeadphonesStand nodes={nodes} materials={materials} />
                     <Keyboard nodes={nodes} materials={materials} />
 
-                    <animated.group
+                    <group
                         name="basketball"
-                        position={basketball.position}
+                        position={[-64.83, -157.05, 60.31]}
                         rotation={[0, 0, -Math.PI]}
-                        scale={basketball.scale}>
+                        scale={[0.13, 0.12, 0.13]}>
                         <mesh
                             name="ball"
                             geometry={nodes.ball.geometry}
@@ -492,7 +457,7 @@ export default function Scene({ ...props }) {
                                 />
                             </group>
                         </group>
-                    </animated.group>
+                    </group>
                     <Chair nodes={nodes} />
                     <Desk nodes={nodes} materials={materials} />
 

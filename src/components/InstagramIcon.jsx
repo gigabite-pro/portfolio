@@ -1,11 +1,16 @@
 import { Html } from "@react-three/drei";
 import { useEffect, useRef, useState } from "react";
 import TWEEN from "@tweenjs/tween.js";
+import useSound from "use-sound";
 
 const InstagramIcon = ({ nodes, floor, wallBack, wallLeft, cameraMode }) => {
     const instagramRef = useRef();
     const html = useRef();
     const [hovered, setHovered] = useState(false);
+
+    const [play, { stop, isPlaying }] = useSound("./rising-pops.mp3", {
+        volume: 0.3,
+    });
 
     useEffect(() => {
         if (cameraMode === "default" && hovered) {
@@ -22,6 +27,7 @@ const InstagramIcon = ({ nodes, floor, wallBack, wallLeft, cameraMode }) => {
                 )
                 .easing(TWEEN.Easing.Quadratic.Out)
                 .start();
+            play();
         } else {
             document.body.style.cursor = "auto";
             html.current?.children[0].classList.remove("active");

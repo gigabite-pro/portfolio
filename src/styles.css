@@ -96,6 +96,55 @@ span::before, span::after{
   pointer-events: none;
 }
 
+.outer-circ{
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid black;
+  background: transparent;
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  z-index: 5;
+  display: grid;
+  place-items: center;
+  animation: scaleUp 1s;
+}
+
+.outer-circ:hover {
+  cursor: pointer;
+}
+
+@keyframes scaleUp {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+
+}
+
+.svg {
+  width: 23px;
+  height: 35px;
+  z-index: 5;
+}
+
+.wave-path {
+  stroke-width: 15px;
+  stroke: black;
+}
+
+.notPlaying {
+  width: 23px;
+  display: none;
+}
+
+.notPlaying path {
+  stroke-width: 1.5px;
+}
+
 .loader {
   width: 100vw;
   height: 100vh;
@@ -111,8 +160,8 @@ span::before, span::after{
 }
 
 .loader-img{
-  width: 80px;
-  height: 80px;
+  width: 60px;
+  height: 60px;
 }
 
 .label {

@@ -1,6 +1,7 @@
 import { Html } from "@react-three/drei";
 import { useEffect, useRef, useState } from "react";
 import TWEEN from "@tweenjs/tween.js";
+import useSound from "use-sound";
 
 const Computer = ({
     nodes,
@@ -14,6 +15,19 @@ const Computer = ({
     const computerRef = useRef();
     const html = useRef();
     const [hovered, setHovered] = useState(false);
+
+    const [play, { stop, isPlaying }] = useSound("./rising-pops.mp3", {
+        volume: 0.3,
+    });
+
+    const [playSwish, { stopSwish, isPlayingSwish }] = useSound("./swish.wav", {
+        volume: 0.3,
+    });
+
+    const [playSwishReverse, { stopSwishReverse, isPlayingSwishReverse }] =
+        useSound("./swish-rev.wav", {
+            volume: 0.3,
+        });
 
     useEffect(() => {
         if (cameraMode === "default" && hovered) {
@@ -30,6 +44,7 @@ const Computer = ({
                 )
                 .easing(TWEEN.Easing.Quadratic.Out)
                 .start();
+            play();
         } else {
             document.body.style.cursor = "auto";
             html.current?.children[0].classList.remove("active");
@@ -54,6 +69,7 @@ const Computer = ({
                 onPointerMissed={() => {
                     if (cameraMode === "computer") {
                         setCameraMode("default");
+                        playSwishReverse();
                     }
                 }}
                 onPointerEnter={() => setHovered(true)}
@@ -61,6 +77,7 @@ const Computer = ({
                 onClick={() => {
                     if (cameraMode === "default") {
                         setCameraMode("computer");
+                        playSwish();
                     }
                 }}
                 name="tv_simple"
@@ -76,8 +93,8 @@ const Computer = ({
                     <div className="label">Projects 🚀</div>
                 </Html>
                 <mesh
-                    name="Cube 7"
-                    geometry={nodes["Cube 7"].geometry}
+                    name="Cube 71"
+                    geometry={nodes["Cube 71"].geometry}
                     material={materials.hanger}
                     castShadow
                     receiveShadow
@@ -114,8 +131,8 @@ const Computer = ({
                     scale={[4.95, 4.42, 0.15]}
                 />
                 <mesh
-                    name="Cube 8"
-                    geometry={nodes["Cube 8"].geometry}
+                    name="Cube 81"
+                    geometry={nodes["Cube 81"].geometry}
                     material={materials.hanger}
                     castShadow
                     receiveShadow
@@ -125,7 +142,7 @@ const Computer = ({
                 <mesh
                     name="Cube 23"
                     geometry={nodes["Cube 23"].geometry}
-                    material={materials.lines}
+                    material={materials.black}
                     castShadow
                     receiveShadow
                     position={[0.06, 135.05, 2.16]}

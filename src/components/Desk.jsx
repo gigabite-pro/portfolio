@@ -17,8 +17,8 @@ const Desk = ({ nodes, materials }) => {
                     scale={[2.47, 2.55, 2.47]}
                 />
                 <mesh
-                    name="Ellipse7"
-                    geometry={nodes.Ellipse7.geometry}
+                    name="Ellipse6"
+                    geometry={nodes.Ellipse6.geometry}
                     material={materials.light_grey}
                     castShadow
                     receiveShadow
@@ -37,8 +37,8 @@ const Desk = ({ nodes, materials }) => {
                     scale={[2.47, 2.55, 2.47]}
                 />
                 <mesh
-                    name="Ellipse8"
-                    geometry={nodes.Ellipse8.geometry}
+                    name="Ellipse7"
+                    geometry={nodes.Ellipse7.geometry}
                     material={materials.light_grey}
                     castShadow
                     receiveShadow
@@ -57,8 +57,8 @@ const Desk = ({ nodes, materials }) => {
                     scale={[2.47, 2.55, 2.47]}
                 />
                 <mesh
-                    name="Ellipse9"
-                    geometry={nodes.Ellipse9.geometry}
+                    name="Ellipse8"
+                    geometry={nodes.Ellipse8.geometry}
                     material={materials.light_grey}
                     castShadow
                     receiveShadow
@@ -86,8 +86,8 @@ const Desk = ({ nodes, materials }) => {
                     scale={[2.61, 2.69, 0.47]}
                 />
                 <mesh
-                    name="Cube 11"
-                    geometry={nodes["Cube 11"].geometry}
+                    name="Cube 111"
+                    geometry={nodes["Cube 111"].geometry}
                     material={materials.very_light_grey}
                     castShadow
                     receiveShadow

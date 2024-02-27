@@ -12,6 +12,7 @@ import { useFrame, useThree } from "@react-three/fiber";
 import TWEEN from "@tweenjs/tween.js";
 import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import useSound from "use-sound";
 
 export default function HomeCanvas() {
     const computer = useGLTF(
@@ -23,8 +24,11 @@ export default function HomeCanvas() {
     const [pEnabled, setPEnabled] = useState(true);
     const controls = useRef();
 
+    const [play] = useSound("./swish.wav", { volume: 0.3 });
+
     const animateCamera = () => {
         setPEnabled(false);
+        play();
         document.querySelector(".btn").style.opacity = "0";
         new TWEEN.Tween(controls.current.target)
             .to({
@@ -64,7 +68,10 @@ export default function HomeCanvas() {
 
     return (
         <>
-            <Html position={[-1, 1.56, -1.4]} rotation-x={-0.256}>
+            <Html
+                onPointerEnter={() => {}}
+                position={[-1, 1.56, -1.4]}
+                rotation-x={-0.256}>
                 <div className="wrapper"></div>
             </Html>
             <Environment preset="city" />
@@ -109,7 +116,7 @@ export default function HomeCanvas() {
                         rotation-y={-1.25}
                         maxWidth={2}
                         textAlign="center"
-                        color={"#6b522d"}>
+                        color={"rgb(30, 30, 30)"}>
                         Vaibhav Sharma
                     </Text>
                 </Float>

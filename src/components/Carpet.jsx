@@ -16,9 +16,9 @@ const Carpet = ({ nodes, materials }) => {
                     scale={[0.55, 0.55, 0.85]}
                 />
                 <mesh
-                    name="Ellipse6"
-                    geometry={nodes.Ellipse6.geometry}
-                    material={materials.red}
+                    name="Ellipse5"
+                    geometry={nodes.Ellipse5.geometry}
+                    material={materials.pinkCarpet}
                     castShadow
                     receiveShadow
                     position={[0, -2.99, 0]}
