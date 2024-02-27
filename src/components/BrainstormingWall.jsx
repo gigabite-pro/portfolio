@@ -13,7 +13,9 @@ const BrainstormingWall = ({
 }) => {
     const brainstormingWallRef = useRef();
     const html = useRef();
+    const resume = useRef();
     const [hovered, setHovered] = useState(false);
+    const [resumeHovered, setResumeHovered] = useState(false);
 
     useEffect(() => {
         if (cameraMode === "default" && hovered) {
@@ -45,7 +47,34 @@ const BrainstormingWall = ({
                 .easing(TWEEN.Easing.Quadratic.Out)
                 .start();
         }
-    }, [hovered]);
+
+        if (cameraMode === "brainstormingWall" && resumeHovered) {
+            document.body.style.cursor = "pointer";
+            new TWEEN.Tween(resume.current.scale)
+                .to(
+                    {
+                        x: 0.065,
+                        y: 0.065,
+                        z: 0.065,
+                    },
+                    300
+                )
+                .easing(TWEEN.Easing.Quadratic.Out)
+                .start();
+        } else {
+            new TWEEN.Tween(resume.current.scale)
+                .to(
+                    {
+                        x: 0.06,
+                        y: 0.06,
+                        z: 0.06,
+                    },
+                    300
+                )
+                .easing(TWEEN.Easing.Quadratic.Out)
+                .start();
+        }
+    }, [hovered, resumeHovered]);
 
     return (
         <>
@@ -151,9 +180,9 @@ const BrainstormingWall = ({
                     />
                 </group>
                 <mesh
-                    onPointerEnter={() => {
-                        document.body.style.cursor = "pointer";
-                    }}
+                    ref={resume}
+                    onPointerEnter={() => setResumeHovered(true)}
+                    onPointerLeave={() => setResumeHovered(false)}
                     onClick={() => {
                         if (cameraMode === "brainstormingWall") {
                             window.open("./resume.pdf", "_blank");

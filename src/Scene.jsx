@@ -65,17 +65,26 @@ export default function Scene({ ...props }) {
 
     const basketball = useSpring({
         loop: true,
-        from: { position: [-64.83, -120.02, 60.31], scale: [0.12, 0.12, 0.12] },
+        from: {
+            position: [-64.83, -120.02, 60.31],
+            scale: [0.12, 0.12, 0.12],
+        },
         to: [
-            { position: [-64.83, -157.02, 60.31] },
-            { position: [-64.83, -120.02, 60.31] },
+            {
+                position: [-64.83, -158.02, 60.31],
+                scale: [0.13, 0.12, 0.13],
+            },
+            {
+                position: [-64.83, -120.02, 60.31],
+                scale: [0.12, 0.12, 0.12],
+            },
         ],
         config: {
             mass: 5,
             tension: 170,
             friction: 10,
             duration: 500,
-            easing: easings.easeOutQuad,
+            easing: easings.easeOutSine,
         },
     });
 
@@ -384,7 +393,7 @@ export default function Scene({ ...props }) {
                         name="basketball"
                         position={basketball.position}
                         rotation={[0, 0, -Math.PI]}
-                        scale={[-0.12, 0.12, 0.12]}>
+                        scale={basketball.scale}>
                         <mesh
                             name="ball"
                             geometry={nodes.ball.geometry}
