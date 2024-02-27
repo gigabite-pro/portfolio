@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Bangers&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
 body {
   margin: 0;
@@ -17,10 +17,7 @@ body,
 .loader {
   width: 100vw;
   height: 100vh;
-  background-color: black;
-  color: white;
-  font-size: 5vw;
-  font-family: "Bangers", system-ui;
+  background-color: white;
   position: fixed;
   z-index: 2;
   top: 0;
@@ -28,16 +25,30 @@ body,
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: 1s;
+}
+
+.loader-img{
+  width: 80px;
+  height: 80px;
 }
 
 .label {
-  width: 90px;
+  min-width: 95px;
   font-size: 1vw;
+  font-family: "Roboto", sans-serif;
   text-align: center;
   background-color: #00000077;
-  padding: 1vw;
+  padding: 0.5vw;
   color: white;
   border-radius: 50px;
+  user-select: none;
+  transform: scale(0);
+  transition-duration: 500ms;
+}
+
+.label.active {
+  transform: scale(1);
 }
 
 .label:hover {

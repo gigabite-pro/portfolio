@@ -15,6 +15,7 @@
     "@react-three/fiber": "^8.15.8",
     "@splinetool/loader": "^1.0.54",
     "@splinetool/r3f-spline": "^1.0.2",
+    "@tweenjs/tween.js": "^23.1.1",
     "leva": "^0.9.35",
     "r3f-perf": "^7.1.2",
     "react": "^18.2.0",

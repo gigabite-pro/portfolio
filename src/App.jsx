@@ -7,7 +7,12 @@ import CustomLoader from "./CustomLoader";
 export default function App() {
     return (
         <>
-            <Canvas className="r3f" shadows flat linear>
+            <Canvas
+                className="r3f"
+                gl={{ antialias: true }}
+                shadows="soft"
+                flat
+                linear>
                 <Suspense fallback={<CustomLoader />}>
                     <Scene />
                 </Suspense>
