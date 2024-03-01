@@ -1,3 +1,4 @@
+import CustomLoader from "./CustomLoader";
 import HomeCanvas from "./HomeCanvas";
 import { Canvas } from "@react-three/fiber";
 

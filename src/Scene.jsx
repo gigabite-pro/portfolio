@@ -6,7 +6,7 @@ import {
 } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import { useEffect, useRef, useState } from "react";
-import { useSpring, animated, easings } from "@react-spring/three";
+import { useSpring, animated } from "@react-spring/three";
 import TWEEN from "@tweenjs/tween.js";
 import Guitar from "./components/Guitar";
 import BrainstormingWall from "./components/BrainstormingWall";
@@ -79,7 +79,7 @@ export default function Scene({ ...props }) {
                 .start();
             new TWEEN.Tween(camera.current.position)
                 .to({
-                    x: -547.71,
+                    x: -800,
                     y: 200,
                     z: 830.4,
                 })
@@ -209,8 +209,18 @@ export default function Scene({ ...props }) {
 
     return (
         <>
-            <OrbitControls ref={controls} />
+            <OrbitControls
+                ref={controls}
+                minZoom={1.3}
+                // minPolarAngle={Math.PI / 4}
+                // maxPolarAngle={Math.PI / 2}
+                // minAzimuthAngle={-Math.PI / 4}
+                // maxAzimuthAngle={Math.PI / 28}
+                enableDamping
+                dampingFactor={0.1}
+            />
             <color attach="background" args={["#fbdbf9"]} />
+
             <group {...props} position={[-200, 100, 0]}>
                 <scene name="Scene 1">
                     <OrthographicCamera
@@ -220,9 +230,7 @@ export default function Scene({ ...props }) {
                         zoom={0.1}
                         far={2000}
                         near={-100000}
-                        up={[0, 1, 0]}
-                        position={[-547.71, 200, 830.4]}
-                        rotation={[-0.16, -0.78, -0.12]}
+                        up={[0, 1, 0]} // position and rotation being set in tween animation
                     />
                     <BehanceIcon
                         nodes={nodes}

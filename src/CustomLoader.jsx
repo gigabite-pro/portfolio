@@ -3,11 +3,19 @@ import { Html } from "@react-three/drei";
 const CustomLoader = () => {
     return (
         <Html wrapperClass="loader" position={[0, 0]}>
-            <img className="loader-img" src="./code.gif" />
-            <img className="loader-img" src="./cmd.gif" />
-            <img className="loader-img" src="./music.gif" />
-            <img className="loader-img" src="./fingerprint.gif" />
-            <img className="loader-img" src="./git.gif" />
+            <div className="loading-container">
+                <div className="cube">
+                    <div className="sides">
+                        <div className="top"></div>
+                        <div className="right"></div>
+                        <div className="bottom"></div>
+                        <div className="left"></div>
+                        <div className="front"></div>
+                        <div className="back"></div>
+                    </div>
+                </div>
+                <div className="loading-text">Loading...</div>
+            </div>
         </Html>
     );
 };

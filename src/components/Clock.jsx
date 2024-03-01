@@ -1,4 +1,19 @@
+import { Html } from "@react-three/drei";
+import moment from "moment";
+import { useEffect, useState } from "react";
+
 const Clock = ({ nodes, materials }) => {
+    const [currentTime, setCurrentTime] = useState(moment());
+
+    useEffect(() => {
+        const intervalId = setInterval(() => {
+            setCurrentTime(moment());
+        }, 1000); // Update time every second
+
+        // Cleanup function to clear interval when component unmounts
+        return () => clearInterval(intervalId);
+    }, []);
+
     return (
         <>
             <group
@@ -120,8 +135,18 @@ const Clock = ({ nodes, materials }) => {
                     castShadow
                     receiveShadow
                     position={[-4.83, 82.53, 64.93]}
-                    scale={[0.46, 0.43, 0.46]}
-                />
+                    scale={[0.46, 0.43, 0.46]}>
+                    <Html className="time" position={[0, 0, 0]} transform>
+                        <div
+                            style={{
+                                fontFamily: "Clock",
+                                fontSize: "500vw",
+                                background: "transparent",
+                            }}>
+                            {currentTime.format("hh:mm:ss")}
+                        </div>
+                    </Html>
+                </mesh>
                 <mesh
                     name="border"
                     geometry={nodes.border.geometry}

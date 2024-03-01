@@ -6,8 +6,8 @@ const Headphones = ({ nodes, materials }) => {
                 position={[93.2, -72.13, 237.24]}
                 scale={0.25}>
                 <mesh
-                    name="Cylinder 22"
-                    geometry={nodes["Cylinder 22"].geometry}
+                    name="Cylinder 23"
+                    geometry={nodes["Cylinder 23"].geometry}
                     material={materials.lines}
                     castShadow
                     receiveShadow
