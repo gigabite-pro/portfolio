@@ -16,6 +16,9 @@ const CustomLoader = () => {
                 </div>
                 <div className="loading-text">Loading...</div>
             </div>
+            <div className="tip">
+                Tip: Hover over elements to interact with them.
+            </div>
         </Html>
     );
 };

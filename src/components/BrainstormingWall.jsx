@@ -14,22 +14,22 @@ const BrainstormingWall = ({
 }) => {
     const brainstormingWallRef = useRef();
     const html = useRef();
+    const clickableHtml = useRef();
     const resume = useRef();
     const [hovered, setHovered] = useState(false);
     const [resumeHovered, setResumeHovered] = useState(false);
 
-    const [play, { stop, isPlaying }] = useSound("./rising-pops.mp3", {
+    const [play] = useSound("./rising-pops.mp3", {
         volume: 0.3,
     });
 
-    const [playSwish, { stopSwish, isPlayingSwish }] = useSound("./swish.wav", {
+    const [playSwish] = useSound("./swish.wav", {
         volume: 0.3,
     });
 
-    const [playSwishReverse, { stopSwishReverse, isPlayingSwishReverse }] =
-        useSound("./swish-rev.wav", {
-            volume: 0.3,
-        });
+    const [playSwishReverse] = useSound("./swish-rev.wav", {
+        volume: 0.3,
+    });
 
     useEffect(() => {
         if (cameraMode === "default" && hovered) {
@@ -63,8 +63,13 @@ const BrainstormingWall = ({
                 .start();
         }
 
-        if (cameraMode === "brainstormingWall" && resumeHovered) {
+        if (cameraMode === "brainstormingWall" && hovered) {
+            document.body.style.cursor = "auto";
+        } else if (cameraMode === "brainstormingWall" && !hovered) {
             document.body.style.cursor = "pointer";
+        }
+
+        if (cameraMode === "brainstormingWall" && resumeHovered) {
             new TWEEN.Tween(resume.current.scale)
                 .to(
                     {
@@ -76,6 +81,8 @@ const BrainstormingWall = ({
                 )
                 .easing(TWEEN.Easing.Quadratic.Out)
                 .start();
+            clickableHtml.current?.children[0].classList.add("active");
+            document.body.style.cursor = "pointer";
         } else {
             new TWEEN.Tween(resume.current.scale)
                 .to(
@@ -88,6 +95,7 @@ const BrainstormingWall = ({
                 )
                 .easing(TWEEN.Easing.Quadratic.Out)
                 .start();
+            clickableHtml.current?.children[0].classList.remove("active");
         }
     }, [hovered, resumeHovered]);
 
@@ -107,6 +115,8 @@ const BrainstormingWall = ({
                     if (cameraMode === "default") {
                         setCameraMode("brainstormingWall");
                         playSwish();
+                        setHovered(false);
+                        setResumeHovered(true);
                     }
                 }}
                 name="Brainstorming Wall"
@@ -119,13 +129,7 @@ const BrainstormingWall = ({
                     distanceFactor={0.8}
                     occlude={[floor, wallBack, wallLeft]}
                     center>
-                    <div
-                        className="label"
-                        onClick={() => {
-                            setCameraMode("resume");
-                        }}>
-                        Resume 📌
-                    </div>
+                    <div className="label">Resume 📌</div>
                 </Html>
                 <group
                     name="Notes"
@@ -216,8 +220,23 @@ const BrainstormingWall = ({
                     receiveShadow
                     position={[56.39, 80.99, 11.62]}
                     rotation={[0, 0, -1.45]}
-                    scale={0.06}
-                />
+                    scale={0.06}>
+                    <Html
+                        ref={clickableHtml}
+                        onPointerEnter={() => setHovered(true)}
+                        position={[0, 0, 0]}
+                        distanceFactor={0.1}
+                        occlude={[floor, wallBack, wallLeft]}
+                        center>
+                        <div
+                            className="label resumeLabel"
+                            onClick={() => {
+                                setCameraMode("resume");
+                            }}>
+                            Click to open 👆
+                        </div>
+                    </Html>
+                </mesh>
                 <group name="papers" position={[0, 81.18, 10.23]} scale={2.02}>
                     <mesh
                         name="Cube 21"

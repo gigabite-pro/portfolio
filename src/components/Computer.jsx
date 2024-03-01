@@ -14,20 +14,20 @@ const Computer = ({
 }) => {
     const computerRef = useRef();
     const html = useRef();
+    const esc = useRef();
     const [hovered, setHovered] = useState(false);
 
-    const [play, { stop, isPlaying }] = useSound("./rising-pops.mp3", {
+    const [play] = useSound("./rising-pops.mp3", {
         volume: 0.3,
     });
 
-    const [playSwish, { stopSwish, isPlayingSwish }] = useSound("./swish.wav", {
+    const [playSwish] = useSound("./swish.wav", {
         volume: 0.3,
     });
 
-    const [playSwishReverse, { stopSwishReverse, isPlayingSwishReverse }] =
-        useSound("./swish-rev.wav", {
-            volume: 0.3,
-        });
+    const [playSwishReverse] = useSound("./swish-rev.wav", {
+        volume: 0.3,
+    });
 
     useEffect(() => {
         if (cameraMode === "default" && hovered) {
@@ -60,7 +60,13 @@ const Computer = ({
                 .easing(TWEEN.Easing.Quadratic.Out)
                 .start();
         }
-    }, [hovered]);
+
+        if (cameraMode === "computer" && hovered) {
+            document.body.style.cursor = "auto";
+        } else if (cameraMode === "computer" && !hovered) {
+            document.body.style.cursor = "pointer";
+        }
+    }, [hovered, cameraMode]);
 
     return (
         <>
@@ -78,6 +84,7 @@ const Computer = ({
                     if (cameraMode === "default") {
                         setCameraMode("computer");
                         playSwish();
+                        setHovered(false);
                     }
                 }}
                 name="tv_simple"

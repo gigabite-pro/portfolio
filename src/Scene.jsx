@@ -67,6 +67,10 @@ export default function Scene({ ...props }) {
     const [cameraMode, setCameraMode] = useState("default");
 
     useEffect(() => {
+        document.body.style.cursor = "auto";
+    });
+
+    useEffect(() => {
         controls.current.enabled = false;
         if (cameraMode === "default") {
             new TWEEN.Tween(controls.current.target)
@@ -147,6 +151,10 @@ export default function Scene({ ...props }) {
                     camera.current.updateProjectionMatrix();
                 })
                 .start();
+            document.querySelector(".tip-overlay").style.display = "flex";
+            setTimeout(() => {
+                document.querySelector(".tip-overlay").style.opacity = "1";
+            }, 1000);
         } else if (cameraMode === "brainstormingWall") {
             new TWEEN.Tween(controls.current.target)
                 .to({
@@ -185,6 +193,10 @@ export default function Scene({ ...props }) {
                     camera.current.updateProjectionMatrix();
                 })
                 .start();
+            document.querySelector(".tip-overlay").style.display = "flex";
+            setTimeout(() => {
+                document.querySelector(".tip-overlay").style.opacity = "1";
+            }, 1000);
         }
     }, [cameraMode]);
 
@@ -212,16 +224,17 @@ export default function Scene({ ...props }) {
             <OrbitControls
                 ref={controls}
                 minZoom={1.3}
-                // minPolarAngle={Math.PI / 4}
-                // maxPolarAngle={Math.PI / 2}
-                // minAzimuthAngle={-Math.PI / 4}
-                // maxAzimuthAngle={Math.PI / 28}
+                minPolarAngle={Math.PI / 4}
+                maxPolarAngle={Math.PI / 2}
+                minAzimuthAngle={-Math.PI / 4}
+                maxAzimuthAngle={Math.PI / 28}
                 enableDamping
                 dampingFactor={0.1}
+                rotateSpeed={0.1}
             />
             <color attach="background" args={["#fbdbf9"]} />
 
-            <group {...props} position={[-200, 100, 0]}>
+            <group {...props} position={[-230, 100, 0]}>
                 <scene name="Scene 1">
                     <OrthographicCamera
                         ref={camera}
@@ -230,7 +243,8 @@ export default function Scene({ ...props }) {
                         zoom={0.1}
                         far={2000}
                         near={-100000}
-                        up={[0, 1, 0]} // position and rotation being set in tween animation
+                        up={[0, 1, 0]}
+                        // position and rotation being set in tween animation
                     />
                     <BehanceIcon
                         nodes={nodes}
