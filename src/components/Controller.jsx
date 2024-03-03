@@ -123,7 +123,7 @@ const Controller = ({ nodes, materials }) => {
                     <mesh
                         name="Triangle 2"
                         geometry={nodes["Triangle 2"].geometry}
-                        material={materials.lines}
+                        material={materials.black}
                         castShadow
                         receiveShadow
                         position={[1.4, -77.29, 0]}
@@ -133,7 +133,7 @@ const Controller = ({ nodes, materials }) => {
                     <mesh
                         name="Triangle 4"
                         geometry={nodes["Triangle 4"].geometry}
-                        material={materials.lines}
+                        material={materials.black}
                         castShadow
                         receiveShadow
                         position={[-76.32, -2.76, -1.59]}
@@ -143,7 +143,7 @@ const Controller = ({ nodes, materials }) => {
                     <mesh
                         name="Triangle 3"
                         geometry={nodes["Triangle 3"].geometry}
-                        material={materials.lines}
+                        material={materials.black}
                         castShadow
                         receiveShadow
                         position={[76.32, -2.76, -1.59]}
@@ -151,9 +151,9 @@ const Controller = ({ nodes, materials }) => {
                         scale={[0.16, 0.11, 0.16]}
                     />
                     <mesh
-                        name="Triangle"
-                        geometry={nodes.Triangle.geometry}
-                        material={materials.lines}
+                        name="Triangle1"
+                        geometry={nodes.Triangle1.geometry}
+                        material={materials.black}
                         castShadow
                         receiveShadow
                         position={[1.79, 76.14, -0.84]}
@@ -175,9 +175,9 @@ const Controller = ({ nodes, materials }) => {
                             scale={[1.05, 1.04, 1]}
                         />
                         <mesh
-                            name="Cube5"
-                            geometry={nodes.Cube5.geometry}
-                            material={materials["Cube5 Material"]}
+                            name="Cube6"
+                            geometry={nodes.Cube6.geometry}
+                            material={materials["Cube6 Material"]}
                             castShadow
                             receiveShadow
                             rotation={[0, -0.02, -0.7]}
@@ -190,9 +190,9 @@ const Controller = ({ nodes, materials }) => {
                         rotation={[-0.05, 0, 0]}
                         scale={0.9}>
                         <mesh
-                            name="Cylinder3"
-                            geometry={nodes.Cylinder3.geometry}
-                            material={materials["Cylinder3 Material"]}
+                            name="Cylinder7"
+                            geometry={nodes.Cylinder7.geometry}
+                            material={materials["Cylinder7 Material"]}
                             castShadow
                             receiveShadow
                             position={[6.04, 3.48, 0.18]}
@@ -206,9 +206,9 @@ const Controller = ({ nodes, materials }) => {
                         rotation={[-0.05, 0, 0]}
                         scale={1}>
                         <mesh
-                            name="Cylinder4"
-                            geometry={nodes.Cylinder4.geometry}
-                            material={materials["Cylinder4 Material"]}
+                            name="Cylinder8"
+                            geometry={nodes.Cylinder8.geometry}
+                            material={materials["Cylinder8 Material"]}
                             castShadow
                             receiveShadow
                             position={[6.04, 3.48, 0.18]}
@@ -222,9 +222,9 @@ const Controller = ({ nodes, materials }) => {
                         rotation={[-0.07, 0, 0]}
                         scale={1}>
                         <mesh
-                            name="Cylinder5"
-                            geometry={nodes.Cylinder5.geometry}
-                            material={materials["Cylinder5 Material"]}
+                            name="Cylinder9"
+                            geometry={nodes.Cylinder9.geometry}
+                            material={materials["Cylinder9 Material"]}
                             castShadow
                             receiveShadow
                             position={[6.04, 3.48, 0.18]}

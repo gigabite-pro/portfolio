@@ -6,7 +6,7 @@ const Tips = ({ text }) => {
                 style={{
                     display: "none",
                 }}
-                onClick={() => {
+                onClick={(e) => {
                     document.querySelector(".tip-overlay").style.opacity = "0";
                     setTimeout(() => {
                         document.querySelector(".tip-overlay").style.display =

@@ -8,7 +8,7 @@ const LinkedInIcon = ({ nodes, floor, wallBack, wallLeft, cameraMode }) => {
     const html = useRef();
     const [hovered, setHovered] = useState(false);
 
-    const [play, { stop, isPlaying }] = useSound("./rising-pops.mp3", {
+    const [play] = useSound("./rising-pops.mp3", {
         volume: 0.3,
     });
 
@@ -59,7 +59,7 @@ const LinkedInIcon = ({ nodes, floor, wallBack, wallLeft, cameraMode }) => {
                     }
                 }}
                 name="GLTF_SceneRootNode 2"
-                position={[281.35, 2.54, 162.64]}
+                position={[281.35, 28.83, 84.49]}
                 rotation={[0, -Math.PI / 2, 0]}
                 scale={19.06}>
                 <Html

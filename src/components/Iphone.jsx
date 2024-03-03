@@ -13,16 +13,16 @@ const Iphone = ({ nodes, materials }) => {
                         rotation={[0, 0, 0]}
                         scale={1}>
                         <mesh
-                            name="Ellipse 21"
-                            geometry={nodes["Ellipse 21"].geometry}
+                            name="Ellipse 22"
+                            geometry={nodes["Ellipse 22"].geometry}
                             material={materials["Untitled Material"]}
                             castShadow
                             receiveShadow
                             position={[27.83, 0, -0.35]}
                         />
                         <mesh
-                            name="Ellipse"
-                            geometry={nodes.Ellipse.geometry}
+                            name="Ellipse1"
+                            geometry={nodes.Ellipse1.geometry}
                             material={materials["Untitled Material"]}
                             castShadow
                             receiveShadow
@@ -38,8 +38,8 @@ const Iphone = ({ nodes, materials }) => {
                         />
                     </group>
                     <mesh
-                        name="Rectangle 5"
-                        geometry={nodes["Rectangle 5"].geometry}
+                        name="Rectangle 53"
+                        geometry={nodes["Rectangle 53"].geometry}
                         material={materials["Untitled Material"]}
                         castShadow
                         receiveShadow
@@ -58,8 +58,8 @@ const Iphone = ({ nodes, materials }) => {
                         scale={1}
                     />
                     <mesh
-                        name="Rectangle 3"
-                        geometry={nodes["Rectangle 3"].geometry}
+                        name="Rectangle 32"
+                        geometry={nodes["Rectangle 32"].geometry}
                         material={materials["Pink Items"]}
                         castShadow
                         receiveShadow
@@ -68,8 +68,8 @@ const Iphone = ({ nodes, materials }) => {
                         scale={1}
                     />
                     <mesh
-                        name="Rectangle 2"
-                        geometry={nodes["Rectangle 2"].geometry}
+                        name="Rectangle 23"
+                        geometry={nodes["Rectangle 23"].geometry}
                         material={materials["Pink Items"]}
                         castShadow
                         receiveShadow
@@ -144,8 +144,8 @@ const Iphone = ({ nodes, materials }) => {
                         rotation={[Math.PI / 2, 0, 0]}
                     />
                     <mesh
-                        name="Ellipse 22"
-                        geometry={nodes["Ellipse 22"].geometry}
+                        name="Ellipse 23"
+                        geometry={nodes["Ellipse 23"].geometry}
                         material={materials["Pink Items"]}
                         castShadow
                         receiveShadow
@@ -153,8 +153,8 @@ const Iphone = ({ nodes, materials }) => {
                         rotation={[Math.PI / 2, 0, 0]}
                     />
                     <mesh
-                        name="Ellipse1"
-                        geometry={nodes.Ellipse1.geometry}
+                        name="Ellipse2"
+                        geometry={nodes.Ellipse2.geometry}
                         material={materials["Pink Items"]}
                         castShadow
                         receiveShadow
@@ -162,8 +162,8 @@ const Iphone = ({ nodes, materials }) => {
                         rotation={[Math.PI / 2, 0, 0]}
                     />
                     <mesh
-                        name="Rectangle 21"
-                        geometry={nodes["Rectangle 21"].geometry}
+                        name="Rectangle 24"
+                        geometry={nodes["Rectangle 24"].geometry}
                         material={materials["Pink Items"]}
                         castShadow
                         receiveShadow
@@ -203,7 +203,7 @@ const Iphone = ({ nodes, materials }) => {
                     />
                 </group>
                 <group
-                    name="Camera1"
+                    name="Camera"
                     position={[53.08, 198.93, -18.9]}
                     rotation={[0, 0, 0]}
                     scale={1.16}>
@@ -218,8 +218,8 @@ const Iphone = ({ nodes, materials }) => {
                         scale={0.86}
                     />
                     <mesh
-                        name="Cube2"
-                        geometry={nodes.Cube2.geometry}
+                        name="Cube3"
+                        geometry={nodes.Cube3.geometry}
                         material={materials.Metal}
                         castShadow
                         receiveShadow
@@ -233,8 +233,8 @@ const Iphone = ({ nodes, materials }) => {
                         rotation={[0, 0, 0]}
                         scale={[0.94, 0.94, 0.85]}>
                         <mesh
-                            name="Ellipse2"
-                            geometry={nodes.Ellipse2.geometry}
+                            name="Ellipse3"
+                            geometry={nodes.Ellipse3.geometry}
                             material={materials["Camera Lens 2 Inner"]}
                             castShadow
                             receiveShadow
@@ -243,8 +243,8 @@ const Iphone = ({ nodes, materials }) => {
                             scale={[1, 1, 1.11]}
                         />
                         <mesh
-                            name="Ellipse 23"
-                            geometry={nodes["Ellipse 23"].geometry}
+                            name="Ellipse 24"
+                            geometry={nodes["Ellipse 24"].geometry}
                             material={materials["Camera Lens 2"]}
                             castShadow
                             receiveShadow
@@ -253,8 +253,8 @@ const Iphone = ({ nodes, materials }) => {
                             scale={[0.91, 0.91, 1]}
                         />
                         <mesh
-                            name="Ellipse3"
-                            geometry={nodes.Ellipse3.geometry}
+                            name="Ellipse4"
+                            geometry={nodes.Ellipse4.geometry}
                             material={materials["Camera Lens 2"]}
                             castShadow
                             receiveShadow
@@ -550,8 +550,8 @@ const Iphone = ({ nodes, materials }) => {
                         position={[-139.66, 74.64, 0.26]}
                         scale={[0.98, 0.98, 0.96]}>
                         <mesh
-                            name="Ellipse4"
-                            geometry={nodes.Ellipse4.geometry}
+                            name="Ellipse5"
+                            geometry={nodes.Ellipse5.geometry}
                             material={materials["Pink Items"]}
                             castShadow
                             receiveShadow
@@ -580,8 +580,8 @@ const Iphone = ({ nodes, materials }) => {
                             scale={[1.04, 1.02, 1.02]}
                         />
                         <mesh
-                            name="Rectangle 7"
-                            geometry={nodes["Rectangle 7"].geometry}
+                            name="Rectangle 71"
+                            geometry={nodes["Rectangle 71"].geometry}
                             material={materials["Pink Items"]}
                             castShadow
                             receiveShadow
@@ -610,8 +610,8 @@ const Iphone = ({ nodes, materials }) => {
                             scale={[1.04, 1.02, 1.02]}
                         />
                         <mesh
-                            name="Rectangle 51"
-                            geometry={nodes["Rectangle 51"].geometry}
+                            name="Rectangle 54"
+                            geometry={nodes["Rectangle 54"].geometry}
                             material={materials["Pink Items"]}
                             castShadow
                             receiveShadow
@@ -656,6 +656,59 @@ const Iphone = ({ nodes, materials }) => {
                         scale={[1.08, 1.08, 1.06]}
                     />
                 </group>
+            </group>
+            <group
+                name="Photos Wall"
+                position={[178.23, 75.19, 178.03]}
+                rotation={[0, -Math.PI / 2, 0]}>
+                <mesh
+                    name="Cube 96"
+                    geometry={nodes["Cube 96"].geometry}
+                    material={materials.plant}
+                    castShadow
+                    receiveShadow
+                    position={[-92.46, 11.47, 5.15]}
+                    rotation={[0, 0, Math.PI / 2]}
+                    scale={1}
+                />
+                <mesh
+                    name="Cube 95"
+                    geometry={nodes["Cube 95"].geometry}
+                    material={materials.white_broken}
+                    castShadow
+                    receiveShadow
+                    position={[-14.91, 25.59, 5.15]}
+                    rotation={[0, 0, Math.PI / 2]}
+                    scale={1}
+                />
+                <mesh
+                    name="Cube 94"
+                    geometry={nodes["Cube 94"].geometry}
+                    material={materials.purple}
+                    castShadow
+                    receiveShadow
+                    position={[77.26, 14.01, 5.15]}
+                    rotation={[0, 0, Math.PI / 2]}
+                    scale={1}
+                />
+                <mesh
+                    name="Cube 93"
+                    geometry={nodes["Cube 93"].geometry}
+                    material={materials.lightred}
+                    castShadow
+                    receiveShadow
+                    position={[-15.16, -25.17, 5.15]}
+                    rotation={[0, 0, Math.PI / 2]}
+                    scale={1}
+                />
+                <mesh
+                    name="Merged Geometry"
+                    geometry={nodes["Merged Geometry"].geometry}
+                    material={materials.white}
+                    castShadow
+                    receiveShadow
+                    position={[0, 0, 4.66]}
+                />
             </group>
         </>
     );

@@ -7,32 +7,12 @@ const Desk = ({ nodes, materials }) => {
                 rotation={[0, -Math.PI / 2, 0]}
                 scale={[0.37, 0.32, 0.33]}>
                 <mesh
-                    name="Ellipse 25"
-                    geometry={nodes["Ellipse 25"].geometry}
-                    material={materials.hanger}
-                    castShadow
-                    receiveShadow
-                    position={[184.95, 133.69, 174.46]}
-                    rotation={[0, 0, -Math.PI / 2]}
-                    scale={[2.47, 2.55, 2.47]}
-                />
-                <mesh
-                    name="Ellipse6"
-                    geometry={nodes.Ellipse6.geometry}
-                    material={materials.light_grey}
-                    castShadow
-                    receiveShadow
-                    position={[184.95, 133.69, 173.89]}
-                    rotation={[0, 0, -Math.PI / 2]}
-                    scale={[0.87, 0.89, 0.87]}
-                />
-                <mesh
                     name="Ellipse 26"
                     geometry={nodes["Ellipse 26"].geometry}
                     material={materials.hanger}
                     castShadow
                     receiveShadow
-                    position={[-185.65, 133.69, 174.46]}
+                    position={[184.95, 133.69, 174.46]}
                     rotation={[0, 0, -Math.PI / 2]}
                     scale={[2.47, 2.55, 2.47]}
                 />
@@ -42,7 +22,7 @@ const Desk = ({ nodes, materials }) => {
                     material={materials.light_grey}
                     castShadow
                     receiveShadow
-                    position={[-185.65, 133.69, 173.89]}
+                    position={[184.95, 133.69, 173.89]}
                     rotation={[0, 0, -Math.PI / 2]}
                     scale={[0.87, 0.89, 0.87]}
                 />
@@ -52,13 +32,33 @@ const Desk = ({ nodes, materials }) => {
                     material={materials.hanger}
                     castShadow
                     receiveShadow
-                    position={[-0.41, 230.59, 174.46]}
+                    position={[-185.65, 133.69, 174.46]}
                     rotation={[0, 0, -Math.PI / 2]}
                     scale={[2.47, 2.55, 2.47]}
                 />
                 <mesh
                     name="Ellipse8"
                     geometry={nodes.Ellipse8.geometry}
+                    material={materials.light_grey}
+                    castShadow
+                    receiveShadow
+                    position={[-185.65, 133.69, 173.89]}
+                    rotation={[0, 0, -Math.PI / 2]}
+                    scale={[0.87, 0.89, 0.87]}
+                />
+                <mesh
+                    name="Ellipse 28"
+                    geometry={nodes["Ellipse 28"].geometry}
+                    material={materials.hanger}
+                    castShadow
+                    receiveShadow
+                    position={[-0.41, 230.59, 174.46]}
+                    rotation={[0, 0, -Math.PI / 2]}
+                    scale={[2.47, 2.55, 2.47]}
+                />
+                <mesh
+                    name="Ellipse9"
+                    geometry={nodes.Ellipse9.geometry}
                     material={materials.light_grey}
                     castShadow
                     receiveShadow
@@ -114,8 +114,8 @@ const Desk = ({ nodes, materials }) => {
                     scale={[2.33, 1.94, 1.56]}
                 />
                 <mesh
-                    name="Cube 191"
-                    geometry={nodes["Cube 191"].geometry}
+                    name="Cube 19"
+                    geometry={nodes["Cube 19"].geometry}
                     material={materials.very_light_grey}
                     castShadow
                     receiveShadow
@@ -141,8 +141,8 @@ const Desk = ({ nodes, materials }) => {
                     scale={[2.33, 1.94, 1.56]}
                 />
                 <mesh
-                    name="Cube8"
-                    geometry={nodes.Cube8.geometry}
+                    name="Cube9"
+                    geometry={nodes.Cube9.geometry}
                     material={materials.table}
                     castShadow
                     receiveShadow

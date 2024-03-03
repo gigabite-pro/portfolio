@@ -1,8 +1,18 @@
 import { Html } from "@react-three/drei";
 import moment from "moment";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import useSound from "use-sound";
+import TWEEN from "@tweenjs/tween.js";
 
-const Clock = ({ nodes, materials }) => {
+const Clock = ({
+    nodes,
+    materials,
+    floor,
+    wallBack,
+    wallLeft,
+    cameraMode,
+    setCameraMode,
+}) => {
     const [currentTime, setCurrentTime] = useState(moment());
 
     useEffect(() => {
@@ -13,7 +23,6 @@ const Clock = ({ nodes, materials }) => {
         // Cleanup function to clear interval when component unmounts
         return () => clearInterval(intervalId);
     }, []);
-
     return (
         <>
             <group
@@ -129,6 +138,8 @@ const Clock = ({ nodes, materials }) => {
                     />
                 </group>
                 <mesh
+                    onPointerEnter={() => setHovered(true)}
+                    onPointerLeave={() => setHovered(false)}
                     name="screen"
                     geometry={nodes.screen.geometry}
                     material={materials["screen Material"]}

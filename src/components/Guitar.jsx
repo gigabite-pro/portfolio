@@ -7,8 +7,8 @@ const Guitar = ({ nodes, materials }) => {
                 rotation={[-0.23, 0, 0]}
                 scale={0.59}>
                 <mesh
-                    name="Ellipse 2"
-                    geometry={nodes["Ellipse 2"].geometry}
+                    name="Ellipse 21"
+                    geometry={nodes["Ellipse 21"].geometry}
                     material={materials.dark}
                     castShadow
                     receiveShadow

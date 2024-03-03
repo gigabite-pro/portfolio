@@ -3,7 +3,7 @@ const PhotoWall = ({ nodes, materials }) => {
         <>
             <group
                 name="Photos Wall"
-                position={[178.23, 48.91, 256.18]}
+                position={[178.23, 75.19, 178.03]}
                 rotation={[0, -Math.PI / 2, 0]}>
                 <mesh
                     name="Cube 96"

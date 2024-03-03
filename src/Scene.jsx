@@ -19,7 +19,6 @@ import AirJordans from "./components/AirJordans";
 import Computer from "./components/Computer";
 import Clock from "./components/Clock";
 import Carpet from "./components/Carpet";
-import Window from "./components/Window";
 import SmallPlant from "./components/SmallPlant";
 import Books from "./components/Books";
 import Lamp from "./components/Lamp";
@@ -37,6 +36,8 @@ import BehanceIcon from "./components/BehanceIcon";
 import GithubIcon from "./components/GithubIcon";
 import LinkedInIcon from "./components/LinkedInIcon";
 import InstagramIcon from "./components/InstagramIcon";
+import LeftWallUI from "./components/LeftWallUI";
+import MusicPlayer from "./components/MusicPlayer";
 
 export default function Scene({ ...props }) {
     const { nodes, materials } = useSpline(
@@ -47,6 +48,7 @@ export default function Scene({ ...props }) {
     const floor = useRef();
     const wallBack = useRef();
     const wallLeft = useRef();
+    const clockRef = useRef();
     const camera = useRef();
     const controls = useRef();
 
@@ -65,10 +67,8 @@ export default function Scene({ ...props }) {
 
     // Camera Animations
     const [cameraMode, setCameraMode] = useState("default");
-
-    useEffect(() => {
-        document.body.style.cursor = "auto";
-    });
+    const [initialLoadingAnimation, setInitialLoadingAnimation] =
+        useState(false);
 
     useEffect(() => {
         controls.current.enabled = false;
@@ -197,25 +197,116 @@ export default function Scene({ ...props }) {
             setTimeout(() => {
                 document.querySelector(".tip-overlay").style.opacity = "1";
             }, 1000);
+        } else if (cameraMode === "spotify") {
+            new TWEEN.Tween(controls.current.target)
+                .to({
+                    x: -162.47,
+                    y: 169.786,
+                    z: -17.2,
+                })
+                .easing(TWEEN.Easing.Quadratic.InOut)
+                .start();
+            new TWEEN.Tween(camera.current.position)
+                .to({
+                    x: 58.415,
+                    y: 143.174,
+                    z: 1131.74,
+                })
+                .easing(TWEEN.Easing.Quadratic.InOut)
+                .start();
+            new TWEEN.Tween(camera.current.rotation)
+                .to({
+                    x: -0.067,
+                    y: -0.007,
+                    z: 0,
+                })
+                .easing(TWEEN.Easing.Quadratic.InOut)
+                .start();
+            // change camera zoom
+            new TWEEN.Tween({
+                zoom: camera.current.zoom,
+            })
+                .to({
+                    zoom: 9.60998,
+                })
+                .easing(TWEEN.Easing.Quadratic.InOut)
+                .onUpdate((obj) => {
+                    camera.current.zoom = obj.zoom;
+                    camera.current.updateProjectionMatrix();
+                })
+                .start();
+            // render spotify player
+            document.querySelector(".spotify").style.display = "block";
+            setTimeout(() => {
+                document.querySelector(".spotify").style.opacity = "1";
+            }, 1000);
+
+            // render tip overlay
+            document.querySelector(".tip-overlay").style.display = "flex";
+            setTimeout(() => {
+                document.querySelector(".tip-overlay").style.opacity = "1";
+            }, 1000);
+        }
+
+        if (!initialLoadingAnimation) {
+            // set initial (before initial animation) camera position and rotation
+            new TWEEN.Tween({
+                zoom: camera.current.zoom,
+            })
+                .to({
+                    zoom: 0.175,
+                })
+                .easing(TWEEN.Easing.Quadratic.InOut)
+                .onUpdate((obj) => {
+                    camera.current.zoom = obj.zoom;
+                    camera.current.updateProjectionMatrix();
+                })
+                .start();
         }
     }, [cameraMode]);
 
     // Light target
     const lightRef = useRef();
     useEffect(() => {
-        new TWEEN.Tween(lightRef.current.target.position)
-            .to({
-                x: -90,
-                y: -180,
-                z: 120,
-            })
-            .easing(TWEEN.Easing.Quadratic.InOut)
-            .onUpdate(() => {
-                lightRef.current.target.updateMatrixWorld();
-            })
-            .start();
+        document.body.style.cursor = "auto";
+        if (!initialLoadingAnimation) {
+            setTimeout(() => {
+                new TWEEN.Tween({
+                    zoom: camera.current.zoom,
+                })
+                    .to({
+                        zoom: 1.3,
+                    })
+                    .easing(TWEEN.Easing.Quadratic.InOut)
+                    .onUpdate((obj) => {
+                        camera.current.zoom = obj.zoom;
+                        camera.current.updateProjectionMatrix();
+                    })
+                    .start()
+                    .onComplete(() => {
+                        controls.current.enabled = true;
+                        controls.current.minZoom = 1.3;
+                    });
+                new TWEEN.Tween(lightRef.current.target.position)
+                    .to({
+                        x: -90,
+                        y: -180,
+                        z: 120,
+                    })
+                    .easing(TWEEN.Easing.Quadratic.InOut)
+                    .onUpdate(() => {
+                        lightRef.current.target.updateMatrixWorld();
+                    })
+                    .start();
+                setInitialLoadingAnimation(true);
+            }, 6500);
+        }
     });
     useFrame(() => {
+        // console.log(camera.current.position);
+        // console.log(camera.current.rotation);
+        // console.log(camera.current.zoom);
+        // console.log(controls.current.target);
         TWEEN.update();
     });
 
@@ -223,16 +314,15 @@ export default function Scene({ ...props }) {
         <>
             <OrbitControls
                 ref={controls}
-                minZoom={1.3}
-                minPolarAngle={Math.PI / 4}
-                maxPolarAngle={Math.PI / 2}
-                minAzimuthAngle={-Math.PI / 4}
-                maxAzimuthAngle={Math.PI / 28}
+                // minPolarAngle={Math.PI / 4}
+                // maxPolarAngle={Math.PI / 2}
+                // minAzimuthAngle={-Math.PI / 4}
+                // maxAzimuthAngle={Math.PI / 28}
                 enableDamping
                 dampingFactor={0.1}
                 rotateSpeed={0.1}
             />
-            <color attach="background" args={["#fbdbf9"]} />
+            <color attach="background" args={["#f6f79e"]} />
 
             <group {...props} position={[-230, 100, 0]}>
                 <scene name="Scene 1">
@@ -246,6 +336,17 @@ export default function Scene({ ...props }) {
                         up={[0, 1, 0]}
                         // position and rotation being set in tween animation
                     />
+                    <MusicPlayer
+                        nodes={nodes}
+                        materials={materials}
+                        floor={floor}
+                        wallBack={wallBack}
+                        wallLeft={wallLeft}
+                        cameraMode={cameraMode}
+                        setCameraMode={setCameraMode}
+                    />
+                    <LeftWallUI nodes={nodes} materials={materials} />
+
                     <BehanceIcon
                         nodes={nodes}
                         floor={floor}
@@ -299,9 +400,17 @@ export default function Scene({ ...props }) {
                         cameraMode={cameraMode}
                         setCameraMode={setCameraMode}
                     />
-                    <Clock nodes={nodes} materials={materials} />
+                    <Clock
+                        nodes={nodes}
+                        materials={materials}
+                        floor={floor}
+                        wallBack={wallBack}
+                        wallLeft={wallLeft}
+                        clockRef={clockRef}
+                        cameraMode={cameraMode}
+                        setCameraMode={setCameraMode}
+                    />
                     <Carpet nodes={nodes} materials={materials} />
-                    <Window nodes={nodes} materials={materials} />
                     <SmallPlant nodes={nodes} materials={materials} />
                     <SpotLight
                         ref={lightRef}
@@ -338,8 +447,8 @@ export default function Scene({ ...props }) {
                                 rotation={[0.32, 0.07, -0.4]}
                                 scale={0.49}>
                                 <mesh
-                                    name="Cylinder 22"
-                                    geometry={nodes["Cylinder 22"].geometry}
+                                    name="Cylinder 24"
+                                    geometry={nodes["Cylinder 24"].geometry}
                                     material={materials.darkblue}
                                     castShadow
                                     receiveShadow
@@ -348,8 +457,8 @@ export default function Scene({ ...props }) {
                                     scale={[0.38, 0.17, 0.38]}
                                 />
                                 <mesh
-                                    name="Cylinder2"
-                                    geometry={nodes.Cylinder2.geometry}
+                                    name="Cylinder6"
+                                    geometry={nodes.Cylinder6.geometry}
                                     material={materials[""]}
                                     castShadow
                                     receiveShadow

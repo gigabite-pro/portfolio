@@ -8,7 +8,7 @@ const BehanceIcon = ({ nodes, floor, wallBack, wallLeft, cameraMode }) => {
     const html = useRef();
     const [hovered, setHovered] = useState(false);
 
-    const [play, { stop, isPlaying }] = useSound("./rising-pops.mp3", {
+    const [play] = useSound("./rising-pops.mp3", {
         volume: 0.3,
     });
 
@@ -59,7 +59,7 @@ const BehanceIcon = ({ nodes, floor, wallBack, wallLeft, cameraMode }) => {
                     }
                 }}
                 name="GLTF_SceneRootNode 4"
-                position={[470.25, -134.49, 251.32]}
+                position={[470.25, -108.21, 173.17]}
                 rotation={[0, -Math.PI / 2, 0]}
                 scale={47.82}>
                 <Html

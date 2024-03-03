@@ -8,7 +8,7 @@ const InstagramIcon = ({ nodes, floor, wallBack, wallLeft, cameraMode }) => {
     const html = useRef();
     const [hovered, setHovered] = useState(false);
 
-    const [play, { stop, isPlaying }] = useSound("./rising-pops.mp3", {
+    const [play] = useSound("./rising-pops.mp3", {
         volume: 0.3,
     });
 
@@ -59,7 +59,7 @@ const InstagramIcon = ({ nodes, floor, wallBack, wallLeft, cameraMode }) => {
                     }
                 }}
                 name="GLTF_SceneRootNode"
-                position={[231.91, 42.09, 242.51]}
+                position={[231.91, 68.37, 164.37]}
                 rotation={[0, -Math.PI / 2, 0]}
                 scale={10.81}>
                 <Html

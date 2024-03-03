@@ -6,8 +6,8 @@ const Headphones = ({ nodes, materials }) => {
                 position={[93.2, -72.13, 237.24]}
                 scale={0.25}>
                 <mesh
-                    name="Cylinder 23"
-                    geometry={nodes["Cylinder 23"].geometry}
+                    name="Cylinder 25"
+                    geometry={nodes["Cylinder 25"].geometry}
                     material={materials.lines}
                     castShadow
                     receiveShadow
@@ -16,8 +16,8 @@ const Headphones = ({ nodes, materials }) => {
                     scale={1}
                 />
                 <mesh
-                    name="Cylinder6"
-                    geometry={nodes.Cylinder6.geometry}
+                    name="Cylinder10"
+                    geometry={nodes.Cylinder10.geometry}
                     material={materials.lines}
                     castShadow
                     receiveShadow
@@ -26,8 +26,8 @@ const Headphones = ({ nodes, materials }) => {
                     scale={1}
                 />
                 <mesh
-                    name="Torus"
-                    geometry={nodes.Torus.geometry}
+                    name="Torus1"
+                    geometry={nodes.Torus1.geometry}
                     material={materials.Walls}
                     castShadow
                     receiveShadow
@@ -41,24 +41,24 @@ const Headphones = ({ nodes, materials }) => {
                     rotation={[Math.PI / 2, -1.54, -Math.PI / 2]}
                     scale={0.82}>
                     <mesh
-                        name="Rectangle 32"
-                        geometry={nodes["Rectangle 32"].geometry}
+                        name="Rectangle 34"
+                        geometry={nodes["Rectangle 34"].geometry}
                         material={materials.lines}
                         castShadow
                         receiveShadow
                         position={[-1.2, -0.12, 15.36]}
                     />
                     <mesh
-                        name="Rectangle 22"
-                        geometry={nodes["Rectangle 22"].geometry}
+                        name="Rectangle 25"
+                        geometry={nodes["Rectangle 25"].geometry}
                         material={materials.lines}
                         castShadow
                         receiveShadow
                         position={[-1.2, -0.12, 8.51]}
                     />
                     <mesh
-                        name="Cube6"
-                        geometry={nodes.Cube6.geometry}
+                        name="Cube7"
+                        geometry={nodes.Cube7.geometry}
                         material={materials.Walls}
                         castShadow
                         receiveShadow
@@ -71,24 +71,24 @@ const Headphones = ({ nodes, materials }) => {
                     rotation={[0, Math.PI / 2, 0]}
                     scale={0.82}>
                     <mesh
-                        name="Rectangle 33"
-                        geometry={nodes["Rectangle 33"].geometry}
+                        name="Rectangle 35"
+                        geometry={nodes["Rectangle 35"].geometry}
                         material={materials.lines}
                         castShadow
                         receiveShadow
                         position={[-1.2, -0.12, 15.36]}
                     />
                     <mesh
-                        name="Rectangle 23"
-                        geometry={nodes["Rectangle 23"].geometry}
+                        name="Rectangle 26"
+                        geometry={nodes["Rectangle 26"].geometry}
                         material={materials.lines}
                         castShadow
                         receiveShadow
                         position={[-1.2, -0.12, 8.51]}
                     />
                     <mesh
-                        name="Cube7"
-                        geometry={nodes.Cube7.geometry}
+                        name="Cube8"
+                        geometry={nodes.Cube8.geometry}
                         material={materials.Walls}
                         castShadow
                         receiveShadow

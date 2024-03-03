@@ -146,8 +146,8 @@ const BrainstormingWall = ({
                         scale={1.08}
                     />
                     <mesh
-                        name="Cylinder"
-                        geometry={nodes.Cylinder.geometry}
+                        name="Cylinder4"
+                        geometry={nodes.Cylinder4.geometry}
                         material={materials.yellow}
                         castShadow
                         receiveShadow
@@ -166,8 +166,8 @@ const BrainstormingWall = ({
                         scale={1.35}
                     />
                     <mesh
-                        name="Cube"
-                        geometry={nodes.Cube.geometry}
+                        name="Cube1"
+                        geometry={nodes.Cube1.geometry}
                         material={materials.pink}
                         castShadow
                         receiveShadow
@@ -249,8 +249,8 @@ const BrainstormingWall = ({
                         scale={[0.88, 0.88, 0.02]}
                     />
                     <mesh
-                        name="Cube1"
-                        geometry={nodes.Cube1.geometry}
+                        name="Cube2"
+                        geometry={nodes.Cube2.geometry}
                         material={materials.brown_v2}
                         castShadow
                         receiveShadow

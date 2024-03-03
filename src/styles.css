@@ -277,6 +277,9 @@ body,
   align-items: center;
   background-color: rgba(0, 0, 0, 0.766);
   transition-duration: 0.5s;
+}
+
+.tip-overlay:hover {
   cursor: grab;
 }
 
@@ -449,4 +452,20 @@ span::before, span::after{
 .time {
   background: rgb(189, 203, 200);
   padding: 0;
+}
+
+.spotify {
+  width: 40vw;
+  height: 352px;
+  background-color: black;
+  border: none;
+  border-radius: 20px;
+  position: fixed;
+  z-index: 4;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition-duration: 0.3s;
+  opacity: 0;
+  display: none;
 }

@@ -13,7 +13,7 @@ const Home = () => {
     });
     return (
         <>
-            <Tips text={"Click and hold to rotate"} />
+            <Tips text={"Hold and Drag to rotate"} />
             <Canvas
                 className="r3f"
                 camera={{

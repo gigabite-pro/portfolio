@@ -8,7 +8,7 @@ const GithubIcon = ({ nodes, floor, wallBack, wallLeft, cameraMode }) => {
     const html = useRef();
     const [hovered, setHovered] = useState(false);
 
-    const [play, { stop, isPlaying }] = useSound("./rising-pops.mp3", {
+    const [play] = useSound("./rising-pops.mp3", {
         volume: 0.3,
     });
 
@@ -59,7 +59,7 @@ const GithubIcon = ({ nodes, floor, wallBack, wallLeft, cameraMode }) => {
                     }
                 }}
                 name="GLTF_SceneRootNode 3"
-                position={[255.01, 31.26, 335.14]}
+                position={[255.01, 57.54, 257]}
                 rotation={[0, -Math.PI / 2, 0]}
                 scale={13.92}>
                 <Html

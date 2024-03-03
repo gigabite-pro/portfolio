@@ -14,7 +14,6 @@ const Computer = ({
 }) => {
     const computerRef = useRef();
     const html = useRef();
-    const esc = useRef();
     const [hovered, setHovered] = useState(false);
 
     const [play] = useSound("./rising-pops.mp3", {
@@ -165,8 +164,8 @@ const Computer = ({
                     scale={[1.06, 4.67, 0.08]}
                 />
                 <mesh
-                    name="Cube3"
-                    geometry={nodes.Cube3.geometry}
+                    name="Cube4"
+                    geometry={nodes.Cube4.geometry}
                     material={materials.hanger}
                     castShadow
                     receiveShadow

@@ -6,8 +6,8 @@ const Carpet = ({ nodes, materials }) => {
                 position={[-49.54, -173.59, 238.85]}
                 scale={0.43}>
                 <mesh
-                    name="Ellipse 24"
-                    geometry={nodes["Ellipse 24"].geometry}
+                    name="Ellipse 25"
+                    geometry={nodes["Ellipse 25"].geometry}
                     material={materials["pink dark"]}
                     castShadow
                     receiveShadow
@@ -16,8 +16,8 @@ const Carpet = ({ nodes, materials }) => {
                     scale={[0.55, 0.55, 0.85]}
                 />
                 <mesh
-                    name="Ellipse5"
-                    geometry={nodes.Ellipse5.geometry}
+                    name="Ellipse6"
+                    geometry={nodes.Ellipse6.geometry}
                     material={materials.pinkCarpet}
                     castShadow
                     receiveShadow
