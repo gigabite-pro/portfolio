@@ -477,7 +477,7 @@ span::before, span::after{
   position: fixed;
   z-index: 4;
   top: 50%;
-  left: 50%;
+  left: 48.5%;
   transform: translate(-50%, -50%);
   transition-duration: 0.3s;
   opacity: 0;

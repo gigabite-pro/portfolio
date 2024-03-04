@@ -5,7 +5,6 @@ import {
     OrthographicCamera,
     useHelper,
 } from "@react-three/drei";
-import { SpotLightHelper } from "three";
 import { useFrame } from "@react-three/fiber";
 import { useEffect, useRef, useState } from "react";
 import { useSpring, animated } from "@react-spring/three";
@@ -40,14 +39,11 @@ import LinkedInIcon from "./components/LinkedInIcon";
 import InstagramIcon from "./components/InstagramIcon";
 import LeftWallUI from "./components/LeftWallUI";
 import MusicPlayer from "./components/MusicPlayer";
-import { useControls } from "leva";
 
 export default function Scene({ colorMode, ...props }) {
     const { nodes, materials } = useSpline(
         "https://prod.spline.design/ig-kI-qluHLlJuE7/scene.splinecode"
     );
-
-    // const bgColor = new three.Color(0xf6f79e);
 
     // Refs
     const floor = useRef();
@@ -60,7 +56,7 @@ export default function Scene({ colorMode, ...props }) {
     const windowLight = useRef();
     const ambientLight = useRef();
     const screenLight = useRef();
-    // useHelper(screenLight, SpotLightHelper, "red");
+    // useHelper(leftWallLight, RectAreaLightHelper, "red");
 
     const cameraRotation = useSpring({
         from: { rotation: [0, -0.45, 0] },
@@ -281,11 +277,13 @@ export default function Scene({ colorMode, ...props }) {
             windowLight.current.intensity = 1.5;
             ambientLight.current.intensity = 0.75;
             screenLight.current.intensity = 0;
+            lightRef.current.intensity = 0;
         } else if (colorMode === "dark") {
             mainLight.current.intensity = 0.5;
             windowLight.current.intensity = 0;
             ambientLight.current.intensity = 0;
             screenLight.current.intensity = 6;
+            lightRef.current.intensity = 6;
         }
     }, [colorMode]);
 
@@ -329,11 +327,26 @@ export default function Scene({ colorMode, ...props }) {
         }
     });
 
+    // const { lightPosition, lightWidth, lightHeight } = useControls({
+    //     lightPosition: {
+    //         value: [-24, -166, 96],
+    //         step: 1,
+    //     },
+    //     lightWidth: {
+    //         value: 100,
+    //         step: 1,
+    //     },
+    //     lightHeight: {
+    //         value: 100,
+    //         step: 1,
+    //     },
+    // });
+
     useFrame(() => {
-        // console.log(camera.current.position);
-        // console.log(camera.current.rotation);
-        // console.log(camera.current.zoom);
-        // console.log(controls.current.target);
+        console.log(camera.current.position);
+        console.log(camera.current.rotation);
+        console.log(camera.current.zoom);
+        console.log(controls.current.target);
         TWEEN.update();
     });
 
@@ -341,10 +354,10 @@ export default function Scene({ colorMode, ...props }) {
         <>
             <OrbitControls
                 ref={controls}
-                // minPolarAngle={Math.PI / 4}
-                // maxPolarAngle={Math.PI / 2}
-                // minAzimuthAngle={-Math.PI / 4}
-                // maxAzimuthAngle={Math.PI / 28}
+                minPolarAngle={Math.PI / 4}
+                maxPolarAngle={Math.PI / 2}
+                minAzimuthAngle={-Math.PI / 4}
+                maxAzimuthAngle={Math.PI / 28}
                 enableDamping
                 dampingFactor={0.1}
                 rotateSpeed={0.1}
@@ -442,7 +455,7 @@ export default function Scene({ colorMode, ...props }) {
                         ref={lightRef}
                         name="Spot Light"
                         castShadow
-                        intensity={2}
+                        intensity={6}
                         angle={0.5}
                         penumbra={0.9}
                         decay={0}
@@ -452,7 +465,7 @@ export default function Scene({ colorMode, ...props }) {
                         shadow-camera-fov={119.99999999999999}
                         shadow-camera-near={100}
                         shadow-camera-far={100000}
-                        color="#fefe75"
+                        color="yellow"
                         position={[95.75, -2.04, 70.34]}
                         scale={1}
                     />
