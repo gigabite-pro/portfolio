@@ -86,12 +86,12 @@ export default function HomeCanvas() {
                 azimuth={[-1, 0.75]}
                 config={{ mass: 2, tension: 400 }}
                 snap={{ mass: 4, tension: 400 }}>
-                <Float rotationIntensity={0.4}>
+                <Float>
                     <rectAreaLight
                         width={2.5}
                         height={1.65}
-                        intensity={100}
-                        color={"#2D2C2C"}
+                        intensity={65}
+                        color="white"
                         rotation={[0.1, Math.PI, 0]}
                         position={[0, 0.55, -1.15]}
                     />

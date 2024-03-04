@@ -1,10 +1,10 @@
 import { useEffect, useRef, useState } from "react";
 import useSound from "use-sound";
 
-const MusicButton = () => {
+const MusicButton = ({ colorMode }) => {
     const music = "./music.mp3";
     const [play, { pause }] = useSound(music, {
-        volume: 0.2,
+        volume: 1,
     });
     const [playing, setPlaying] = useState(false);
 
@@ -26,7 +26,11 @@ const MusicButton = () => {
     return (
         <>
             <div
+                title="Play music"
                 className="outer-circ"
+                style={{
+                    borderColor: colorMode === "dark" ? "#FFF" : "#000",
+                }}
                 onClick={() => {
                     setPlaying(!playing);
                 }}>
@@ -38,8 +42,10 @@ const MusicButton = () => {
                     viewBox="0 0 200 100">
                     <defs>
                         <path
+                            style={{
+                                stroke: colorMode === "dark" ? "#FFF" : "#000",
+                            }}
                             className="wave-path"
-                            stroke="#000"
                             fill="none"
                             id="sign-wave"
                             d="M0 50
@@ -62,7 +68,10 @@ const MusicButton = () => {
                     className="notPlaying"
                     width="40"
                     height="40">
-                    <path d="M0 20 H190" stroke="black" />
+                    <path
+                        d="M0 20 H190"
+                        stroke={colorMode === "dark" ? "#FFF" : "#000"}
+                    />
                 </svg>
             </div>
         </>

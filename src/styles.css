@@ -24,6 +24,7 @@ body,
 .r3f
 {
   touch-action: none;
+  transition-duration: 0.5s;
 }
 
 .loader {
@@ -373,18 +374,19 @@ span::before, span::after{
 }
 
 .outer-circ{
-  width: 40px;
-  height: 40px;
+  width: 38px;
+  height: 38px;
   border-radius: 50%;
   border: 2px solid black;
   background: transparent;
   position: fixed;
   bottom: 25px;
-  right: 25px;
+  left: 25px;
   z-index: 5;
   display: grid;
   place-items: center;
   animation: scaleUp 1s;
+  transition-duration: 0.3s;
 }
 
 .outer-circ:hover {
@@ -405,6 +407,7 @@ span::before, span::after{
   width: 23px;
   height: 35px;
   z-index: 5;
+  transition-duration: 0.3s;
 }
 
 .wave-path {
@@ -452,6 +455,17 @@ span::before, span::after{
 .time {
   background: rgb(189, 203, 200);
   padding: 0;
+}
+
+.current-fav {
+  background-color: white;
+  padding: 1vw;
+  position: absolute;
+  z-index: 6;
+  top: -5%;
+  right: -4%;
+  border-radius: 8px;
+  box-shadow: 0 0 8px 0px black;
 }
 
 .spotify {

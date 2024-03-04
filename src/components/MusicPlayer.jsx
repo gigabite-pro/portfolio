@@ -72,6 +72,14 @@ const MusicPlayer = ({
                     ) {
                         setCameraMode("default");
                         playSwishReverse();
+                        const spotifyEmbedWindow = document.querySelector(
+                            'iframe[src*="spotify.com/embed"]'
+                        ).contentWindow;
+                        spotifyEmbedWindow.postMessage(
+                            // pause
+                            { command: "pause" },
+                            "*"
+                        );
                         // remove spotify render
                         document.querySelector(".spotify").style.opacity = "0";
                         setTimeout(() => {

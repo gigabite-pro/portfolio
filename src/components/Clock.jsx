@@ -138,8 +138,6 @@ const Clock = ({
                     />
                 </group>
                 <mesh
-                    onPointerEnter={() => setHovered(true)}
-                    onPointerLeave={() => setHovered(false)}
                     name="screen"
                     geometry={nodes.screen.geometry}
                     material={materials["screen Material"]}

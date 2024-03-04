@@ -3,7 +3,9 @@ import {
     SpotLight,
     OrbitControls,
     OrthographicCamera,
+    useHelper,
 } from "@react-three/drei";
+import { SpotLightHelper } from "three";
 import { useFrame } from "@react-three/fiber";
 import { useEffect, useRef, useState } from "react";
 import { useSpring, animated } from "@react-spring/three";
@@ -38,11 +40,14 @@ import LinkedInIcon from "./components/LinkedInIcon";
 import InstagramIcon from "./components/InstagramIcon";
 import LeftWallUI from "./components/LeftWallUI";
 import MusicPlayer from "./components/MusicPlayer";
+import { useControls } from "leva";
 
-export default function Scene({ ...props }) {
+export default function Scene({ colorMode, ...props }) {
     const { nodes, materials } = useSpline(
         "https://prod.spline.design/ig-kI-qluHLlJuE7/scene.splinecode"
     );
+
+    // const bgColor = new three.Color(0xf6f79e);
 
     // Refs
     const floor = useRef();
@@ -51,6 +56,11 @@ export default function Scene({ ...props }) {
     const clockRef = useRef();
     const camera = useRef();
     const controls = useRef();
+    const mainLight = useRef();
+    const windowLight = useRef();
+    const ambientLight = useRef();
+    const screenLight = useRef();
+    // useHelper(screenLight, SpotLightHelper, "red");
 
     const cameraRotation = useSpring({
         from: { rotation: [0, -0.45, 0] },
@@ -265,6 +275,20 @@ export default function Scene({ ...props }) {
         }
     }, [cameraMode]);
 
+    useEffect(() => {
+        if (colorMode === "light") {
+            mainLight.current.intensity = 0.7;
+            windowLight.current.intensity = 1.5;
+            ambientLight.current.intensity = 0.75;
+            screenLight.current.intensity = 0;
+        } else if (colorMode === "dark") {
+            mainLight.current.intensity = 0.5;
+            windowLight.current.intensity = 0;
+            ambientLight.current.intensity = 0;
+            screenLight.current.intensity = 6;
+        }
+    }, [colorMode]);
+
     // Light target
     const lightRef = useRef();
     useEffect(() => {
@@ -285,7 +309,7 @@ export default function Scene({ ...props }) {
                     .start()
                     .onComplete(() => {
                         controls.current.enabled = true;
-                        controls.current.minZoom = 1.3;
+                        // controls.current.minZoom = 1.3;
                     });
                 new TWEEN.Tween(lightRef.current.target.position)
                     .to({
@@ -300,8 +324,11 @@ export default function Scene({ ...props }) {
                     .start();
                 setInitialLoadingAnimation(true);
             }, 6500);
+            screenLight.current.target.position.set(159, 69, 133);
+            screenLight.current.target.updateMatrixWorld();
         }
     });
+
     useFrame(() => {
         // console.log(camera.current.position);
         // console.log(camera.current.rotation);
@@ -322,7 +349,6 @@ export default function Scene({ ...props }) {
                 dampingFactor={0.1}
                 rotateSpeed={0.1}
             />
-            <color attach="background" args={["#f6f79e"]} />
 
             <group {...props} position={[-230, 100, 0]}>
                 <scene name="Scene 1">
@@ -416,10 +442,10 @@ export default function Scene({ ...props }) {
                         ref={lightRef}
                         name="Spot Light"
                         castShadow
-                        intensity={1.66}
+                        intensity={2}
                         angle={0.5}
-                        penumbra={0.3}
-                        decay={1.5}
+                        penumbra={0.9}
+                        decay={0}
                         distance={204}
                         shadow-mapSize-width={1024}
                         shadow-mapSize-height={1024}
@@ -592,7 +618,44 @@ export default function Scene({ ...props }) {
                     <Chair nodes={nodes} />
                     <Desk nodes={nodes} materials={materials} />
 
+                    <SpotLight
+                        ref={screenLight}
+                        name="Spot Light"
+                        castShadow
+                        intensity={0}
+                        angle={8.2}
+                        penumbra={0.9}
+                        decay={0}
+                        distance={10}
+                        shadow-mapSize-width={1024}
+                        shadow-mapSize-height={1024}
+                        shadow-camera-fov={119.99999999999999}
+                        shadow-camera-near={100}
+                        shadow-camera-far={100000}
+                        color="red"
+                        position={[166, -30, 140]}
+                        scale={1}
+                    />
+
                     <directionalLight
+                        ref={windowLight}
+                        name="Directional Light 2"
+                        castShadow
+                        intensity={1}
+                        shadow-mapSize-width={1024}
+                        shadow-mapSize-height={1024}
+                        shadow-camera-near={-10000}
+                        shadow-camera-far={100000}
+                        shadow-camera-left={-1000}
+                        shadow-camera-right={1000}
+                        shadow-camera-top={1000}
+                        shadow-camera-bottom={-1000}
+                        color="#f7f966"
+                        position={[600.41, -90, 507.03]}
+                    />
+
+                    <directionalLight
+                        ref={mainLight}
                         name="Directional Light"
                         castShadow
                         intensity={0.7}
@@ -621,6 +684,7 @@ export default function Scene({ ...props }) {
                         controls={controls}
                     />
                     <hemisphereLight
+                        ref={ambientLight}
                         name="Default Ambient Light"
                         intensity={0.75}
                         color="#eaeaea"
