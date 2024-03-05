@@ -278,10 +278,9 @@ body,
 
 .tip-overlay {
   position: fixed;
-  z-index: 100;
+  z-index: 5;
   width: 100vw;
   height: 100vh;
-  display: flex;
   opacity: 0;
   flex-direction: column;
   justify-content: center;
@@ -504,7 +503,7 @@ span::before, span::after{
 
 .all-projects {
   padding-top: 1vw;
-  width: 40vw;
+  width: 45vw;
   height: 97vh;
   display: flex;
   flex-direction: column;

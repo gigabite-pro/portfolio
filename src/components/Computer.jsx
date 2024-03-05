@@ -123,10 +123,11 @@ const Computer = ({
                 <Html
                     wrapperClass="projectScreen"
                     transform
-                    zIndexRange={[10, 0]}
+                    zIndexRange={[16777271, 16777271]}
                     scale={20}
                     position={[-1, 130, 0]}>
                     <iframe
+                        onClick={(e) => e.stopPropagation()}
                         ref={projectsFrame}
                         src="http://localhost:5173/projects"
                     />
