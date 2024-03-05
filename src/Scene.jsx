@@ -349,10 +349,10 @@ export default function Scene({ colorMode, ...props }) {
         <>
             <OrbitControls
                 ref={controls}
-                // minPolarAngle={Math.PI / 4}
-                // maxPolarAngle={Math.PI / 2}
-                // minAzimuthAngle={-Math.PI / 4}
-                // maxAzimuthAngle={Math.PI / 28}
+                minPolarAngle={Math.PI / 4}
+                maxPolarAngle={Math.PI / 2}
+                minAzimuthAngle={-Math.PI / 4}
+                maxAzimuthAngle={Math.PI / 28}
                 enableDamping
                 dampingFactor={0.1}
                 rotateSpeed={0.1}

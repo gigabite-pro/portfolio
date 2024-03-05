@@ -27,12 +27,6 @@ const Home = () => {
                     <HomeCanvas />
                 </Suspense>
             </Canvas>
-            <Link
-                style={{ position: "fixed", zIndex: 9999, top: 0, left: 0 }}
-                to="/projects"
-                className="projects-link">
-                Click
-            </Link>
         </>
     );
 };
