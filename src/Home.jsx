@@ -14,7 +14,7 @@ const Home = () => {
     });
     return (
         <>
-            <Tips text={"Hold and Drag to rotate"} />
+            <Tips typeOf={"home"} text={"Hold and Drag to rotate"} />
             <Canvas
                 className="r3f"
                 camera={{

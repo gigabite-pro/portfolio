@@ -12,7 +12,10 @@ export default function App() {
     const [colorMode, setColorMode] = useState("light");
     return (
         <>
-            <Tips text={"Click outside the object to escape the camera mode"} />
+            <Tips
+                typeOf={"app"}
+                text={"Click outside the object to escape the camera mode"}
+            />
             <Spotify />
             <Canvas
                 className="r3f"

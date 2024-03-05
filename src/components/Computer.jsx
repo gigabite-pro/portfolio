@@ -17,6 +17,11 @@ const Computer = ({
     const projectsFrame = useRef();
     const [hovered, setHovered] = useState(false);
 
+    const ENV = "prod";
+
+    const HOST =
+        ENV === "dev" ? "http://localhost:5173" : "https://vaibhavsharma.me";
+
     const [play] = useSound("./rising-pops.mp3", {
         volume: 0.3,
     });
@@ -123,13 +128,13 @@ const Computer = ({
                 <Html
                     wrapperClass="projectScreen"
                     transform
-                    zIndexRange={[16777271, 16777271]}
+                    zIndexRange={[16777270, 16777270]}
                     scale={20}
                     position={[-1, 130, 0]}>
                     <iframe
                         onClick={(e) => e.stopPropagation()}
                         ref={projectsFrame}
-                        src="http://localhost:5173/projects"
+                        src={`${HOST}/projects`}
                     />
                 </Html>
                 <mesh

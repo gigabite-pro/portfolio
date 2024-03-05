@@ -8,12 +8,12 @@
 
 @font-face {
   font-family: 'Tahoma';
-  src: url('./assets/tahoma.ttf') format('truetype');
+  src: url('./tahoma.ttf') format('truetype');
 }
 
 @font-face {
   font-family: 'Pixel MS Sans';
-  src: url('./assets/pixel.ttf') format('truetype');
+  src: url('./pixel.ttf') format('truetype');
 }
 
 body {
@@ -42,7 +42,7 @@ body,
   height: 100vh;
   background-color: black;
   position: fixed;
-  z-index: 6;
+  z-index: 101;
   top: 0;
   left: 0;
   display: flex;
@@ -278,7 +278,6 @@ body,
 
 .tip-overlay {
   position: fixed;
-  z-index: 5;
   width: 100vw;
   height: 100vh;
   opacity: 0;
@@ -496,7 +495,7 @@ span::before, span::after{
 .projects-container{
   width: 100vw;
   height: 100vh;
-  background: url('./assets/xp_wallpaper.webp') no-repeat;
+  background: url('./xp_wallpaper.webp') no-repeat;
   background-size: cover;
   background-position: center;
 }
@@ -521,7 +520,7 @@ span::before, span::after{
 .project-folder .folder {
   width: 5vw;
   height: 5vw;
-  background: url('./assets/folder.png') no-repeat;
+  background: url('./folder.png') no-repeat;
   background-position: center;
   background-size: contain;
   margin-left: 1vw;
@@ -1020,7 +1019,7 @@ span::before, span::after{
 .windows-loading .logo {
   width: 30vw;
   height: 30vw;
-  background: url('./assets/windows-logo.png') no-repeat;
+  background: url('./windows-logo.png') no-repeat;
   background-position: center;
   background-size: contain;
   margin-bottom: -22vw;

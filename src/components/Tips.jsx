@@ -1,10 +1,11 @@
-const Tips = ({ text }) => {
+const Tips = ({ text, typeOf }) => {
     return (
         <>
             <div
                 className="tip-overlay"
                 style={{
                     display: "none",
+                    zIndex: typeOf === "home" ? 5 : 16777271,
                 }}
                 onClick={(e) => {
                     document.querySelector(".tip-overlay").style.opacity = "0";
