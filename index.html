@@ -31,10 +31,22 @@
     </head>
     <body>
         <div id="root"></div>
-        <a class="logo" href="https://spline.design"></a>
         <script>
             if (window.innerWidth < 768) {
-                window.location.href = "https://vaibhav-sharma.me";
+                document.body.innerHTML = "";
+                document.body.style.backgroundColor = "black";
+                document.body.style.width = "100vw";
+                document.body.style.height = "100vh";
+                document.body.style.color = "white";
+                document.body.style.display = "grid";
+                document.body.style.placeItems = "center";
+                document.body.style.fontSize = "4vw";
+                document.body.style.fontWeight = "bold";
+                document.body.innerHTML =
+                    "<p>Sorry! This website is not available on mobile devices. <br> Please visit on a desktop or laptop. Redirecting to old website...</p>";
+                setTimeout(() => {
+                    window.location.href = "https://vaibhav-sharma.me";
+                }, 7000);
             }
         </script>
         <script type="module" src="/src/main.jsx"></script>
