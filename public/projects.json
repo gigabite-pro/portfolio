@@ -1,0 +1,94 @@
+{
+  "projects": [
+    {
+      "name": "Local Party",
+      "description": "A website where you can create rooms and chat while watching local video files synchronized with your friends.",
+      "image": "https://socialify.git.ci/sheldor1510/local-party/image?description=1&font=Source%20Code%20Pro&forks=1&issues=1&language=1&owner=1&pattern=Circuit%20Board&pulls=1&stargazers=1&theme=Dark",
+      "link": "https://localparty.netlify.app/"
+    },
+    {
+      "name": "Encryptid '21",
+      "description": "The platform for Encryptid 2021, built with Express. Encryptid 2021 featured a revolutionary new format that was similar to stock trading.",
+      "image": "https://socialify.git.ci/techsyndicate/encryptid-21/image?description=1&font=Source%20Code%20Pro&forks=1&issues=1&language=1&owner=1&pattern=Circuit%20Board&pulls=1&stargazers=1&theme=Dark",
+      "link": "https://encryptid.us/"
+    },
+    {
+      "name": "Rollertoaster",
+      "description": "rollertoaster is a gamified discord bot that helps effectively and efficiently assign tasks based on discord roles and keeps a track of all the work done.",
+      "image": "https://socialify.git.ci/mihiraggarwal/rollertoaster/image?font=Source%20Code%20Pro&language=1&owner=1&pattern=Circuit%20Board&stargazers=1&theme=Dark",
+      "link": "https://discord.com/oauth2/authorize?client_id=1007360250590019664&permissions=8&scope=bot%20applications.commands"
+    },
+    {
+      "name": "Cybercongress Platform",
+      "description": "The official paltform of Cybercongress at Amity-46. It has some interesting sections where you can see the latest instagram posts(coming from the Official Instagram API), read our newsletter or submit a report. We are always here to help you.",
+      "image": "https://socialify.git.ci/gigabite-pro/cybercongress-platform/image?description=1&font=Source%20Code%20Pro&forks=1&issues=1&language=1&owner=1&pattern=Circuit%20Board&pulls=1&stargazers=1&theme=Dark",
+      "link": "https://cybercongressais46.herokuapp.com/"
+    },
+    {
+      "name": "Impro",
+      "description": "Impro creates custom profiles for artists/creators to showcase their work. They can add their project's images and write their bio. There is also and option to add a profile pic. The platform also supports updation of data.",
+      "image": "https://socialify.git.ci/gigabite-pro/impro/image?description=1&font=Source%20Code%20Pro&forks=1&issues=1&language=1&owner=1&pattern=Circuit%20Board&pulls=1&stargazers=1&theme=Dark",
+      "link": "https://impro.gq/"
+    },
+    {
+      "name": "Codr",
+      "description": "Codr will allow users to create new projects of varying technologies, view older projects, and search for projects using a specific command for each technology. It uses CSV files instead of a SQL database to reduce external dependencies.",
+      "image": "https://socialify.git.ci/gigabite-pro/codr/image?description=1&font=Source%20Code%20Pro&forks=1&language=1&name=1&owner=1&pattern=Circuit%20Board&pulls=1&stargazers=1&theme=Dark",
+      "link": ""
+    },
+    {
+      "name": "Muvi API",
+      "description": "A chrome extension to download movies directly from a Google search.",
+      "image": "https://socialify.git.ci/cotnw/muvi/image?description=1&font=Source%20Code%20Pro&forks=1&issues=1&language=1&owner=1&pattern=Circuit%20Board&pulls=1&stargazers=1&theme=Dark",
+      "link": "https://github.com/cotnw/muvi"
+    },
+    {
+      "name": "Covizab",
+      "description": "A single-page website redesigning and redefining the vaccine for Covid-19.",
+      "image": "https://socialify.git.ci/gigabite-pro/covizab/image?description=1&font=Source%20Code%20Pro&forks=1&issues=1&language=1&owner=1&pattern=Circuit%20Board&pulls=1&stargazers=1&theme=Dark",
+      "link": "https://covizab.netlify.app"
+    },
+    {
+      "name": "Baatcheet",
+      "description": "Baatcheet creates appointments for people with bad mental health(Users) with people who want to listen to them (Therapists) along with a google meet link and the addition of an event to the user's and the therapist's google calendar. It also has a chillzone controlled by voice commands which suggests movies, shows quotes and memes.",
+      "image": "https://socialify.git.ci/gigabite-pro/baatcheet/image?description=1&font=Source%20Code%20Pro&forks=1&issues=1&language=1&owner=1&pattern=Circuit%20Board&pulls=1&stargazers=1&theme=Dark",
+      "link": "https://baattcheet.herokuapp.com/"
+    },
+    {
+      "name": "Bharat Mystery App",
+      "description": "Bharat Mystery, which is a VR (Virtual Reality) based mobile application, accompanied by a physical board game that enables the user to explore the various cultural and historical tourist destinations of India. It also encompasses various economic aspects through the promotion of local souvenir shops.",
+      "image": "https://socialify.git.ci/gigabite-pro/Bharat-Mystery-Mobile/image?description=1&font=Source%20Code%20Pro&forks=1&issues=1&language=1&owner=1&pattern=Circuit%20Board&pulls=1&stargazers=1&theme=Dark",
+      "link": "https://drive.google.com/drive/folders/1lQZ4eqWbVpkcA5KavzW4JXMY4xeA93hi?usp=sharing"
+    },
+    {
+      "name": "Eduport",
+      "description": "A platform made for Amihacks, a hackathon organised by Amity University, Noida. It is a LMS platform for small tuitions and coaching centres to maintain records of students such as attendance, marks or to upload assignments, tests.",
+      "image": "https://socialify.git.ci/gigabite-pro/eduport/image?description=1&font=Source%20Code%20Pro&forks=1&issues=1&language=1&owner=1&pattern=Circuit%20Board&pulls=1&stargazers=1&theme=Dark",
+      "link": "https://eduport-web.herokuapp.com/"
+    },
+    {
+      "name": "OompaGG",
+      "description": "Our solution to this is OompaGG, a mobile web app that will automate the verification of certain tasks performed. Along with that, we are gamifying the whole process to incentivise them to complete the maximum number of tasks by providing rewards on their completion.",
+      "image": "https://socialify.git.ci/techsyndicate/exun-21/image?description=1&font=Source%20Code%20Pro&forks=1&language=1&name=1&owner=1&pattern=Circuit%20Board&pulls=1&stargazers=1&theme=Dark",
+      "link": "https://devpost.com/software/oompagg"
+    },
+    {
+      "name": "Movie Logger",
+      "description": "Project made in Summer Horizon tech bootcamp organized at AISG-46 where I taught web development to the students of junior school.",
+      "image": "https://socialify.git.ci/gigabite-pro/movie-logger/image?description=1&font=Source%20Code%20Pro&forks=1&issues=1&language=1&owner=1&pattern=Circuit%20Board&pulls=1&stargazers=1&theme=Dark",
+      "link": "https://movie-logger.netlify.app/"
+    },
+    {
+      "name": "Tedx@AISG46 2020",
+      "description": "The official website for TedxYouth@AISG46 2020.",
+      "image": "https://socialify.git.ci/gigabite-pro/tedx-2020/image?description=1&font=Source%20Code%20Pro&forks=1&issues=1&language=1&owner=1&pattern=Circuit%20Board&pulls=1&stargazers=1&theme=Dark",
+      "link": "https://tedx20aisg.netlify.app/"
+    },
+    {
+      "name": "Symbot",
+      "description": "A Discord bot that can transcribe audio files to text in seconds.",
+      "image": "https://socialify.git.ci/gigabite-pro/symbot/image?font=Source%20Code%20Pro&language=1&name=1&owner=1&pattern=Circuit%20Board&stargazers=1&theme=Dark",
+      "link": "https://devpost.com/software/symbot"
+    }
+  ]
+}

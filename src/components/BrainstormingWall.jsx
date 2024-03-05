@@ -224,7 +224,7 @@ const BrainstormingWall = ({
                     <Html
                         ref={clickableHtml}
                         onPointerEnter={() => setHovered(true)}
-                        position={[0, 0, 0]}
+                        position={[1100, 800, 0]}
                         distanceFactor={0.1}
                         occlude={[floor, wallBack, wallLeft]}
                         center>

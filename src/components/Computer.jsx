@@ -14,6 +14,7 @@ const Computer = ({
 }) => {
     const computerRef = useRef();
     const html = useRef();
+    const projectsFrame = useRef();
     const [hovered, setHovered] = useState(false);
 
     const [play] = useSound("./rising-pops.mp3", {
@@ -26,6 +27,14 @@ const Computer = ({
 
     const [playSwishReverse] = useSound("./swish-rev.wav", {
         volume: 0.3,
+    });
+
+    const [playStartup] = useSound("./windows-xp-startup.mp3", {
+        volume: 0.5,
+    });
+
+    const [playShutDown] = useSound("./windows-xp-shutdown.mp3", {
+        volume: 0.5,
     });
 
     useEffect(() => {
@@ -73,8 +82,13 @@ const Computer = ({
                 ref={computerRef}
                 onPointerMissed={() => {
                     if (cameraMode === "computer") {
-                        setCameraMode("default");
-                        playSwishReverse();
+                        playShutDown();
+                        projectsFrame.current.style.opacity = 0;
+                        setTimeout(() => {
+                            projectsFrame.current.style.display = "none";
+                            setCameraMode("default");
+                            playSwishReverse();
+                        }, 1000);
                     }
                 }}
                 onPointerEnter={() => setHovered(true)}
@@ -84,6 +98,14 @@ const Computer = ({
                         setCameraMode("computer");
                         playSwish();
                         setHovered(false);
+                        projectsFrame.current.style.display = "block";
+                        setTimeout(() => {
+                            projectsFrame.current.contentWindow.location.reload();
+                            projectsFrame.current.style.opacity = 1;
+                            setTimeout(() => {
+                                playStartup();
+                            }, 2000);
+                        }, 1000);
                     }
                 }}
                 name="tv_simple"
@@ -97,6 +119,17 @@ const Computer = ({
                     occlude={[floor, wallBack, wallLeft]}
                     center>
                     <div className="label">Projects 🚀</div>
+                </Html>
+                <Html
+                    wrapperClass="projectScreen"
+                    transform
+                    zIndexRange={[10, 0]}
+                    scale={20}
+                    position={[-1, 130, 0]}>
+                    <iframe
+                        ref={projectsFrame}
+                        src="http://localhost:5173/projects"
+                    />
                 </Html>
                 <mesh
                     name="Cube 71"

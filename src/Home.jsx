@@ -1,8 +1,9 @@
 import { Suspense, useEffect } from "react";
-import CustomLoader from "./CustomLoader";
-import HomeCanvas from "./HomeCanvas";
+import CustomLoader from "./components/CustomLoader";
+import HomeCanvas from "./components/HomeCanvas";
 import { Canvas } from "@react-three/fiber";
-import Tips from "./Tips";
+import Tips from "./components/Tips";
+import { Link } from "react-router-dom";
 
 const Home = () => {
     useEffect(() => {
@@ -26,6 +27,12 @@ const Home = () => {
                     <HomeCanvas />
                 </Suspense>
             </Canvas>
+            <Link
+                style={{ position: "fixed", zIndex: 9999, top: 0, left: 0 }}
+                to="/projects"
+                className="projects-link">
+                Click
+            </Link>
         </>
     );
 };

@@ -8,6 +8,7 @@ import {
 import "./styles.css";
 import App from "./App";
 import Home from "./Home";
+import Projects from "./Projects";
 
 const router = createBrowserRouter([
     {
@@ -19,6 +20,11 @@ const router = createBrowserRouter([
         exact: true,
         path: "/app",
         element: <App />,
+    },
+    {
+        exact: true,
+        path: "/projects",
+        element: <Projects />,
     },
     {
         exact: true,

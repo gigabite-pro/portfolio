@@ -3,7 +3,6 @@ import {
     SpotLight,
     OrbitControls,
     OrthographicCamera,
-    useHelper,
 } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import { useEffect, useRef, useState } from "react";
@@ -44,6 +43,8 @@ export default function Scene({ colorMode, ...props }) {
     const { nodes, materials } = useSpline(
         "https://prod.spline.design/ig-kI-qluHLlJuE7/scene.splinecode"
     );
+
+    const [tipOverlay, setTipOverlay] = useState(false);
 
     // Refs
     const floor = useRef();
@@ -157,10 +158,6 @@ export default function Scene({ colorMode, ...props }) {
                     camera.current.updateProjectionMatrix();
                 })
                 .start();
-            document.querySelector(".tip-overlay").style.display = "flex";
-            setTimeout(() => {
-                document.querySelector(".tip-overlay").style.opacity = "1";
-            }, 1000);
         } else if (cameraMode === "brainstormingWall") {
             new TWEEN.Tween(controls.current.target)
                 .to({
@@ -199,10 +196,6 @@ export default function Scene({ colorMode, ...props }) {
                     camera.current.updateProjectionMatrix();
                 })
                 .start();
-            document.querySelector(".tip-overlay").style.display = "flex";
-            setTimeout(() => {
-                document.querySelector(".tip-overlay").style.opacity = "1";
-            }, 1000);
         } else if (cameraMode === "spotify") {
             new TWEEN.Tween(controls.current.target)
                 .to({
@@ -246,12 +239,14 @@ export default function Scene({ colorMode, ...props }) {
             setTimeout(() => {
                 document.querySelector(".spotify").style.opacity = "1";
             }, 1000);
+        }
 
-            // render tip overlay
+        if (!tipOverlay && cameraMode != "default") {
             document.querySelector(".tip-overlay").style.display = "flex";
             setTimeout(() => {
                 document.querySelector(".tip-overlay").style.opacity = "1";
             }, 1000);
+            setTipOverlay(true);
         }
 
         if (!initialLoadingAnimation) {
@@ -307,7 +302,7 @@ export default function Scene({ colorMode, ...props }) {
                     .start()
                     .onComplete(() => {
                         controls.current.enabled = true;
-                        // controls.current.minZoom = 1.3;
+                        controls.current.minZoom = 1.3;
                     });
                 new TWEEN.Tween(lightRef.current.target.position)
                     .to({
@@ -325,7 +320,7 @@ export default function Scene({ colorMode, ...props }) {
             screenLight.current.target.position.set(159, 69, 133);
             screenLight.current.target.updateMatrixWorld();
         }
-    });
+    }, []);
 
     // const { lightPosition, lightWidth, lightHeight } = useControls({
     //     lightPosition: {
@@ -343,10 +338,10 @@ export default function Scene({ colorMode, ...props }) {
     // });
 
     useFrame(() => {
-        console.log(camera.current.position);
-        console.log(camera.current.rotation);
-        console.log(camera.current.zoom);
-        console.log(controls.current.target);
+        // console.log(camera.current.position);
+        // console.log(camera.current.rotation);
+        // console.log(camera.current.zoom);
+        // console.log(controls.current.target);
         TWEEN.update();
     });
 
@@ -354,10 +349,10 @@ export default function Scene({ colorMode, ...props }) {
         <>
             <OrbitControls
                 ref={controls}
-                minPolarAngle={Math.PI / 4}
-                maxPolarAngle={Math.PI / 2}
-                minAzimuthAngle={-Math.PI / 4}
-                maxAzimuthAngle={Math.PI / 28}
+                // minPolarAngle={Math.PI / 4}
+                // maxPolarAngle={Math.PI / 2}
+                // minAzimuthAngle={-Math.PI / 4}
+                // maxAzimuthAngle={Math.PI / 28}
                 enableDamping
                 dampingFactor={0.1}
                 rotateSpeed={0.1}

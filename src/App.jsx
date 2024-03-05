@@ -2,11 +2,11 @@ import { Suspense, createContext, useState } from "react";
 import { Canvas } from "@react-three/fiber";
 import Scene from "./Scene";
 import { Loader } from "@react-three/drei";
-import CustomLoader from "./CustomLoader";
-import MusicButton from "./MusicButton";
-import Tips from "./Tips";
-import Spotify from "./Spotify";
-import DarkModeToggleContainer from "./DarkModeToggleContainer";
+import CustomLoader from "./components/CustomLoader";
+import MusicButton from "./components/MusicButton";
+import Tips from "./components/Tips";
+import Spotify from "./components/Spotify";
+import DarkModeToggleContainer from "./components/DarkModeToggleContainer";
 
 export default function App() {
     const [colorMode, setColorMode] = useState("light");
