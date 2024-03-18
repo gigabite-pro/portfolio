@@ -1,4 +1,4 @@
-import { Suspense, createContext, useState } from "react";
+import { Suspense, useState } from "react";
 import { Canvas } from "@react-three/fiber";
 import Scene from "./Scene";
 import { Loader } from "@react-three/drei";
@@ -10,6 +10,7 @@ import DarkModeToggleContainer from "./components/DarkModeToggleContainer";
 
 export default function App() {
     const [colorMode, setColorMode] = useState("light");
+    const [loadState, setLoadState] = useState(false);
     return (
         <>
             <Tips
@@ -26,8 +27,9 @@ export default function App() {
                 shadows="soft"
                 flat
                 linear>
-                <Suspense fallback={<CustomLoader />}>
-                    <Scene colorMode={colorMode} />
+                <Suspense
+                    fallback={<CustomLoader setLoadState={setLoadState} />}>
+                    <Scene colorMode={colorMode} loadState={loadState} />
                 </Suspense>
             </Canvas>
             <DarkModeToggleContainer

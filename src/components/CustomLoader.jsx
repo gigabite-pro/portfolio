@@ -1,6 +1,13 @@
 import { Html } from "@react-three/drei";
+import { useEffect } from "react";
 
-const CustomLoader = () => {
+const CustomLoader = ({ setLoadState = () => {} }) => {
+    useEffect(() => {
+        return () => {
+            setLoadState(true);
+        };
+    });
+
     return (
         <Html wrapperClass="loader" position={[0, 0]}>
             <div className="loading-container">

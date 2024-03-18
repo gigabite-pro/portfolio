@@ -149,7 +149,7 @@ const Clock = ({
                         <div
                             style={{
                                 fontFamily: "Clock",
-                                fontSize: "500vw",
+                                fontSize: "7000px",
                                 background: "transparent",
                             }}>
                             {currentTime.format("hh:mm:ss")}

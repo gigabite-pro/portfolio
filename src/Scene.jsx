@@ -39,7 +39,7 @@ import InstagramIcon from "./components/InstagramIcon";
 import LeftWallUI from "./components/LeftWallUI";
 import MusicPlayer from "./components/MusicPlayer";
 
-export default function Scene({ colorMode, ...props }) {
+export default function Scene({ colorMode, loadState, ...props }) {
     const { nodes, materials } = useSpline(
         "https://prod.spline.design/ig-kI-qluHLlJuE7/scene.splinecode"
     );
@@ -286,41 +286,39 @@ export default function Scene({ colorMode, ...props }) {
     const lightRef = useRef();
     useEffect(() => {
         document.body.style.cursor = "auto";
-        if (!initialLoadingAnimation) {
-            setTimeout(() => {
-                new TWEEN.Tween({
-                    zoom: camera.current.zoom,
+        if (!initialLoadingAnimation && loadState) {
+            new TWEEN.Tween({
+                zoom: camera.current.zoom,
+            })
+                .to({
+                    zoom: 1.3,
                 })
-                    .to({
-                        zoom: 1.3,
-                    })
-                    .easing(TWEEN.Easing.Quadratic.InOut)
-                    .onUpdate((obj) => {
-                        camera.current.zoom = obj.zoom;
-                        camera.current.updateProjectionMatrix();
-                    })
-                    .start()
-                    .onComplete(() => {
-                        controls.current.enabled = true;
-                        controls.current.minZoom = 1.3;
-                    });
-                new TWEEN.Tween(lightRef.current.target.position)
-                    .to({
-                        x: -90,
-                        y: -180,
-                        z: 120,
-                    })
-                    .easing(TWEEN.Easing.Quadratic.InOut)
-                    .onUpdate(() => {
-                        lightRef.current.target.updateMatrixWorld();
-                    })
-                    .start();
-                setInitialLoadingAnimation(true);
-            }, 6500);
+                .easing(TWEEN.Easing.Quadratic.InOut)
+                .onUpdate((obj) => {
+                    camera.current.zoom = obj.zoom;
+                    camera.current.updateProjectionMatrix();
+                })
+                .start()
+                .onComplete(() => {
+                    controls.current.enabled = true;
+                    controls.current.minZoom = 1.3;
+                });
+            new TWEEN.Tween(lightRef.current.target.position)
+                .to({
+                    x: -90,
+                    y: -180,
+                    z: 120,
+                })
+                .easing(TWEEN.Easing.Quadratic.InOut)
+                .onUpdate(() => {
+                    lightRef.current.target.updateMatrixWorld();
+                })
+                .start();
+            setInitialLoadingAnimation(true);
             screenLight.current.target.position.set(159, 69, 133);
             screenLight.current.target.updateMatrixWorld();
         }
-    }, []);
+    }, [loadState]);
 
     // const { lightPosition, lightWidth, lightHeight } = useControls({
     //     lightPosition: {
