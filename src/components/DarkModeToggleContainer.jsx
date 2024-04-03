@@ -115,7 +115,7 @@ const DarkModeToggle = ({ size = 50, colorMode, setColorMode }) => {
                                 fill="#000"
                                 style={{
                                     ...props,
-                                    transform: transform.interpolate(
+                                    transform: transform.to(
                                         (t) => `scale(${t})`
                                     ),
                                 }}

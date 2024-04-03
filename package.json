@@ -13,10 +13,10 @@
   "dependencies": {
     "@juggle/resize-observer": "^3.4.0",
     "@react-spring/three": "^9.7.3",
-    "@react-three/drei": "^9.88.7",
-    "@react-three/fiber": "^8.15.8",
-    "@splinetool/loader": "^1.0.54",
-    "@splinetool/r3f-spline": "^1.0.2",
+    "@react-three/drei": "^9.103.1",
+    "@react-three/fiber": "^8.16.1",
+    "@splinetool/loader": "^1.0.68",
+    "@splinetool/r3f-spline": "^1.0.1",
     "@tweenjs/tween.js": "^23.1.1",
     "base-64": "^1.0.0",
     "leva": "^0.9.35",
@@ -29,7 +29,7 @@
     "react-spring": "^9.7.3",
     "three": "^0.149.0",
     "use-sound": "^4.0.1",
-    "vercel": "^33.5.2"
+    "vercel": "^32.3.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.56",
