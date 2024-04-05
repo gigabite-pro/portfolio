@@ -125,7 +125,7 @@ export default function HomeCanvas() {
             <ContactShadows
                 position-y={-1.4}
                 opacity={0.4}
-                scale={5}
+                scale={6}
                 blur={2.4}
             />
         </>
