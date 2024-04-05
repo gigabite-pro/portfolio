@@ -191,6 +191,12 @@
       "description": "My new portfolio website made using React, React-3-fiber, and ThreeJS. It has a 3D model of a laptop in which the main websites lives. The website has an interactive 3D room depicting my interests and hobbies. It also has a dark mode.",
       "image": "https://socialify.git.ci/gigabite-pro/portfolio/image?description=1&font=Source%20Code%20Pro&forks=1&issues=1&language=1&owner=1&pattern=Circuit%20Board&pulls=1&stargazers=1&theme=Dark",
       "link": "https://github.com/gigabite-pro/portfolio"
+    },
+    {
+      "name": "LeetBoard",
+      "description": "LeetBoard is an innovative online platform designed specifically for conducting technical interviews for hardware engineers. It offers an interactive 3D editor with multiple difficulty levels, a timer, and an inventory of parts for assembly. LeetBoard calculates the score based on difficulty, parts assembled, and time taken, while also providing a playback feature for post-interview review and improvement.",
+      "image": "https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/002/825/375/datas/original.png",
+      "link": "https://github.com/angelafeliciaa/LeetBoard"
     }
   ]
 }
