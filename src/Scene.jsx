@@ -40,9 +40,7 @@ import LeftWallUI from "./components/LeftWallUI";
 import MusicPlayer from "./components/MusicPlayer";
 
 export default function Scene({ colorMode, loadState, ...props }) {
-    const { nodes, materials } = useSpline(
-        "https://prod.spline.design/ig-kI-qluHLlJuE7/scene.splinecode"
-    );
+    const { nodes, materials } = useSpline(import.meta.env.VITE_SPLINE_URL);
 
     const [tipOverlay, setTipOverlay] = useState(false);
 
