@@ -197,6 +197,24 @@
       "description": "LeetBoard is an innovative online platform designed specifically for conducting technical interviews for hardware engineers. It offers an interactive 3D editor with multiple difficulty levels, a timer, and an inventory of parts for assembly. LeetBoard calculates the score based on difficulty, parts assembled, and time taken, while also providing a playback feature for post-interview review and improvement.",
       "image": "https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/002/825/375/datas/original.png",
       "link": "https://github.com/angelafeliciaa/LeetBoard"
+    },
+    {
+      "name": "LLM Pro Max",
+      "description": "LLM Pro Max intelligently breaks a codebase into manageable chunks and feeds only the relevant information to the LLM, ensuring token efficiency and improved response accuracy. It also provides an interactive dependency graph that visualizes the relationships between different parts of the codebase, making it easier to understand complex dependencies.",
+      "image": "https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/003/024/326/datas/original.png",
+      "link": "https://github.com/gigabite-pro/LLM-pro-max"
+    },
+    {
+      "name": "Spai",
+      "description": "We built spai on a simple box with four wheels, fitted with DC motors and an arduino board that help it navigate around obstacles. Using OpenAI’s Text-to-Speech, spai chats naturally with event-goers. Spai captures photos, stores them in a Supabase database, and associates each picture with the person’s name. Leveraging Llama 3, spai can carry on conversations and even summarize key points.",
+      "image": "https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/003/225/914/datas/original.jpg",
+      "link": "https://github.com/yuriyasui/spai"
+    },
+    {
+      "name": "Booksy",
+      "description": "booksy - an AI-powered storytelling platform that allows families to co-create interactive storybooks together, blending AI-generated narratives, illustrations, and personal video recordings. We leverage Groq-hosted Llama-70B for lightning-fast, real-time story generation, adapting to user choices instantly. Each story’s visuals are uniquely crafted using LumaLabs’ Photon image generation model, making every book a one-of-a-kind creation. Our mascot, booksy the mouse, is voiced using ElevenLabs’ custom voice model, bringing a playful and engaging narration to life.",
+      "image": "https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/003/273/463/datas/original.png",
+      "link": "https://github.com/gigabite-pro/treehacks-25"
     }
   ]
 }
