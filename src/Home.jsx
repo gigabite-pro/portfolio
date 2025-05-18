@@ -9,24 +9,6 @@ const Home = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        let resizeTimeout;
-
-        const handleResize = () => {
-            clearTimeout(resizeTimeout);
-            resizeTimeout = setTimeout(() => {
-                window.location.reload();
-            }, 500); // Adjust the timeout as needed
-        };
-
-        window.addEventListener("resize", handleResize);
-
-        return () => {
-            clearTimeout(resizeTimeout);
-            window.removeEventListener("resize", handleResize);
-        };
-    }, []);
-
-    useEffect(() => {
         if (window.innerWidth < 768) {
             navigate("/app");
         }
