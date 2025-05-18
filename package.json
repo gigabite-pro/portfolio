@@ -11,14 +11,17 @@
     "deploy": "vercel --prod"
   },
   "dependencies": {
+    "@gsap/react": "^2.1.2",
     "@juggle/resize-observer": "^3.4.0",
     "@react-spring/three": "^9.7.3",
+    "@react-spring/web": "^10.0.0",
     "@react-three/drei": "9.103.1",
     "@react-three/fiber": "8.16.1",
     "@splinetool/loader": "1.0.68",
     "@splinetool/r3f-spline": "1.0.1",
     "@tweenjs/tween.js": "^23.1.1",
     "base-64": "^1.0.0",
+    "gsap": "^3.13.0",
     "leva": "^0.9.35",
     "moment": "^2.30.1",
     "r3f-perf": "^7.1.2",
@@ -26,7 +29,8 @@
     "react-dom": "^18.2.0",
     "react-loading": "^2.0.3",
     "react-router-dom": "^6.22.1",
-    "react-spring": "^9.7.3",
+    "react-spring": "^10.0.0",
+    "react-tooltip": "^5.28.1",
     "three": "^0.149.0",
     "use-sound": "^4.0.1",
     "vercel": "^32.3.0"

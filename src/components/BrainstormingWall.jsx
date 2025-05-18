@@ -3,15 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import TWEEN from "@tweenjs/tween.js";
 import useSound from "use-sound";
 
-const BrainstormingWall = ({
-    nodes,
-    materials,
-    floor,
-    wallBack,
-    wallLeft,
-    cameraMode,
-    setCameraMode,
-}) => {
+const BrainstormingWall = ({ nodes, materials, floor, wallBack, wallLeft, cameraMode, setCameraMode }) => {
     const brainstormingWallRef = useRef();
     const html = useRef();
     const clickableHtml = useRef();
@@ -95,7 +87,9 @@ const BrainstormingWall = ({
                 )
                 .easing(TWEEN.Easing.Quadratic.Out)
                 .start();
-            clickableHtml.current?.children[0].classList.remove("active");
+            if (window.innerWidth > 768) {
+                clickableHtml.current?.children[0].classList.remove("active");
+            }
         }
     }, [hovered, resumeHovered]);
 
@@ -112,6 +106,9 @@ const BrainstormingWall = ({
                 onPointerEnter={() => setHovered(true)}
                 onPointerLeave={() => setHovered(false)}
                 onClick={() => {
+                    if (window.innerWidth < 768) {
+                        return;
+                    }
                     if (cameraMode === "default") {
                         setCameraMode("brainstormingWall");
                         playSwish();
@@ -122,29 +119,13 @@ const BrainstormingWall = ({
                 name="Brainstorming Wall"
                 position={[-60.29, -3.45, 19.24]}
                 rotation={[0, 0, Math.PI / 2]}
-                scale={0.48}>
-                <Html
-                    ref={html}
-                    position={[0, 200, 10]}
-                    distanceFactor={0.8}
-                    occlude={[floor, wallBack, wallLeft]}
-                    center>
+                scale={0.48}
+            >
+                <Html ref={html} position={[0, 200, 10]} distanceFactor={0.8} occlude={[floor, wallBack, wallLeft]} center>
                     <div className="label">Resume 📌</div>
                 </Html>
-                <group
-                    name="Notes"
-                    position={[-66.22, 80.96, 8.31]}
-                    rotation={[0, 0, -Math.PI / 2]}
-                    scale={0.67}>
-                    <mesh
-                        name="Cube 3"
-                        geometry={nodes["Cube 3"].geometry}
-                        material={materials.white}
-                        castShadow
-                        receiveShadow
-                        position={[-0.7, 0.52, 10.65]}
-                        scale={1.08}
-                    />
+                <group name="Notes" position={[-66.22, 80.96, 8.31]} rotation={[0, 0, -Math.PI / 2]} scale={0.67}>
+                    <mesh name="Cube 3" geometry={nodes["Cube 3"].geometry} material={materials.white} castShadow receiveShadow position={[-0.7, 0.52, 10.65]} scale={1.08} />
                     <mesh
                         name="Cylinder4"
                         geometry={nodes.Cylinder4.geometry}
@@ -165,40 +146,11 @@ const BrainstormingWall = ({
                         rotation={[0, 0, -0.09]}
                         scale={1.35}
                     />
-                    <mesh
-                        name="Cube1"
-                        geometry={nodes.Cube1.geometry}
-                        material={materials.pink}
-                        castShadow
-                        receiveShadow
-                        position={[6.07, -31.13, 13.07]}
-                        rotation={[0, 0, 0.09]}
-                        scale={1.35}
-                    />
+                    <mesh name="Cube1" geometry={nodes.Cube1.geometry} material={materials.pink} castShadow receiveShadow position={[6.07, -31.13, 13.07]} rotation={[0, 0, 0.09]} scale={1.35} />
                 </group>
-                <group
-                    name="Thumbtack"
-                    position={[120.74, 90.17, 9.08]}
-                    rotation={[0.85, -1.34, -0.69]}
-                    scale={0.06}>
-                    <mesh
-                        name="tip"
-                        geometry={nodes.tip.geometry}
-                        material={materials.greydarker}
-                        castShadow
-                        receiveShadow
-                        position={[-1.09, 40.1, 1.18]}
-                        scale={[1.5, 0.7, 1.5]}
-                    />
-                    <mesh
-                        name="body"
-                        geometry={nodes.body.geometry}
-                        material={materials.red}
-                        castShadow
-                        receiveShadow
-                        position={[-1.51, 111.72, -0.24]}
-                        scale={0.65}
-                    />
+                <group name="Thumbtack" position={[120.74, 90.17, 9.08]} rotation={[0.85, -1.34, -0.69]} scale={0.06}>
+                    <mesh name="tip" geometry={nodes.tip.geometry} material={materials.greydarker} castShadow receiveShadow position={[-1.09, 40.1, 1.18]} scale={[1.5, 0.7, 1.5]} />
+                    <mesh name="body" geometry={nodes.body.geometry} material={materials.red} castShadow receiveShadow position={[-1.51, 111.72, -0.24]} scale={0.65} />
                 </group>
                 <mesh
                     ref={resume}
@@ -209,7 +161,7 @@ const BrainstormingWall = ({
                     }}
                     onPointerLeave={() => setResumeHovered(false)}
                     onClick={() => {
-                        if (cameraMode === "brainstormingWall") {
+                        if (cameraMode === "brainstormingWall" || window.innerWidth < 768) {
                             window.open("./resume.pdf", "_blank");
                         }
                     }}
@@ -220,19 +172,16 @@ const BrainstormingWall = ({
                     receiveShadow
                     position={[56.39, 80.99, 11.62]}
                     rotation={[0, 0, -1.45]}
-                    scale={0.06}>
-                    <Html
-                        ref={clickableHtml}
-                        onPointerEnter={() => setHovered(true)}
-                        position={[1100, 800, 0]}
-                        distanceFactor={0.1}
-                        occlude={[floor, wallBack, wallLeft]}
-                        center>
+                    scale={0.06}
+                >
+                    <Html ref={clickableHtml} onPointerEnter={() => setHovered(true)} position={[1100, 800, 0]} distanceFactor={0.1} occlude={[floor, wallBack, wallLeft]} center>
                         <div
+                            id="resumeLabel"
                             className="label resumeLabel"
                             onClick={() => {
                                 setCameraMode("resume");
-                            }}>
+                            }}
+                        >
                             Click to open 👆
                         </div>
                     </Html>

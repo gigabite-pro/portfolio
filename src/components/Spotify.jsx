@@ -22,22 +22,18 @@ const Spotify = () => {
         fetch("https://accounts.spotify.com/api/token", {
             method: "POST",
             headers: {
-                "Content-Type":
-                    "application/x-www-form-urlencoded;charset=UTF-8",
+                "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
             },
             body: formBody,
         })
             .then((response) => response.json())
             .then((data) => {
-                fetch(
-                    "https://api.spotify.com/v1/me/top/tracks?time_range=short_term&limit=1",
-                    {
-                        method: "GET",
-                        headers: {
-                            Authorization: "Bearer " + data.access_token,
-                        },
-                    }
-                )
+                fetch("https://api.spotify.com/v1/me/top/tracks?time_range=short_term&limit=1", {
+                    method: "GET",
+                    headers: {
+                        Authorization: "Bearer " + data.access_token,
+                    },
+                })
                     .then((response) => response.json())
                     .then((data) => setSongId(data.items[0].id));
             });
@@ -54,7 +50,8 @@ const Spotify = () => {
                     height="352"
                     frameBorder="0"
                     allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                    loading="lazy"></iframe>
+                    loading="lazy"
+                ></iframe>
             </div>
         </>
     );

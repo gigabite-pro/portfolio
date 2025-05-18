@@ -1,13 +1,4 @@
-import {
-    Text,
-    Html,
-    ContactShadows,
-    PresentationControls,
-    Float,
-    Environment,
-    useGLTF,
-    OrbitControls,
-} from "@react-three/drei";
+import { Text, Html, ContactShadows, PresentationControls, Float, Environment, useGLTF, OrbitControls } from "@react-three/drei";
 import { useFrame, useThree } from "@react-three/fiber";
 import TWEEN from "@tweenjs/tween.js";
 import { useRef, useState } from "react";
@@ -15,9 +6,7 @@ import { useNavigate } from "react-router-dom";
 import useSound from "use-sound";
 
 export default function HomeCanvas() {
-    const computer = useGLTF(
-        "https://vazxmixjsiawhamofees.supabase.co/storage/v1/object/public/models/macbook/model.gltf"
-    );
+    const computer = useGLTF("https://vazxmixjsiawhamofees.supabase.co/storage/v1/object/public/models/macbook/model.gltf");
 
     const navigate = useNavigate();
     const { gl, scene, camera } = useThree();
@@ -68,66 +57,30 @@ export default function HomeCanvas() {
 
     return (
         <>
-            <Html
-                onPointerEnter={() => {}}
-                position={[-1, 1.56, -1.4]}
-                rotation-x={-0.256}>
+            <Html onPointerEnter={() => {}} position={[-1, 1.56, -1.4]} rotation-x={-0.256}>
                 <div className="wrapper"></div>
             </Html>
             <Environment preset="city" />
             <color args={["#87ceeb"]} attach="background" />
             <OrbitControls ref={controls} enabled={!pEnabled} />
 
-            <PresentationControls
-                enabled={pEnabled}
-                global
-                rotation={[0.13, 0.1, 0]}
-                polar={[-0.4, 0.2]}
-                azimuth={[-1, 0.75]}
-                config={{ mass: 2, tension: 400 }}
-                snap={{ mass: 4, tension: 400 }}>
+            <PresentationControls enabled={pEnabled} global rotation={[0.13, 0.1, 0]} polar={[-0.4, 0.2]} azimuth={[-1, 0.75]} config={{ mass: 2, tension: 400 }} snap={{ mass: 4, tension: 400 }}>
                 <Float>
-                    <rectAreaLight
-                        width={2.5}
-                        height={1.65}
-                        intensity={65}
-                        color="white"
-                        rotation={[0.1, Math.PI, 0]}
-                        position={[0, 0.55, -1.15]}
-                    />
+                    <rectAreaLight width={2.5} height={1.65} intensity={65} color="white" rotation={[0.1, Math.PI, 0]} position={[0, 0.55, -1.15]} />
                     <primitive object={computer.scene} position-y={-1.2}>
-                        <Html
-                            transform
-                            wrapperClass="htmlScreen"
-                            distanceFactor={1.17}
-                            position={[0, 1.56, -1.4]}
-                            rotation-x={-0.256}>
-                            <button
-                                className="btn"
-                                onClick={() => animateCamera()}>
+                        <Html transform wrapperClass="htmlScreen" distanceFactor={1.17} position={[0, 1.56, -1.4]} rotation-x={-0.256}>
+                            <button className="btn" onClick={() => animateCamera()}>
                                 <span>START</span>
                             </button>
                         </Html>
                     </primitive>
-                    <Text
-                        font="./bangers-v20-latin-regular.woff"
-                        fontSize={1}
-                        position={[2, 0.75, 0.75]}
-                        rotation-y={-1.25}
-                        maxWidth={2}
-                        textAlign="center"
-                        color={"rgb(30, 30, 30)"}>
+                    <Text font="./bangers-v20-latin-regular.woff" fontSize={1} position={[2, 0.75, 0.75]} rotation-y={-1.25} maxWidth={2} textAlign="center" color={"rgb(30, 30, 30)"}>
                         Vaibhav Sharma
                     </Text>
                 </Float>
             </PresentationControls>
 
-            <ContactShadows
-                position-y={-1.4}
-                opacity={0.4}
-                scale={6}
-                blur={2.4}
-            />
+            <ContactShadows position-y={-1.4} opacity={0.4} scale={6} blur={2.4} />
         </>
     );
 }

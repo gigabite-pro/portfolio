@@ -7,16 +7,15 @@ import MusicButton from "./components/MusicButton";
 import Tips from "./components/Tips";
 import Spotify from "./components/Spotify";
 import DarkModeToggleContainer from "./components/DarkModeToggleContainer";
+import MobileMenuBar from "./components/MobileMenuBar";
 
 export default function App() {
     const [colorMode, setColorMode] = useState("light");
     const [loadState, setLoadState] = useState(false);
+    const [activeMenuItem, setActiveMenuItem] = useState("default");
     return (
         <>
-            <Tips
-                typeOf={"app"}
-                text={"Click outside the object to escape the camera mode"}
-            />
+            <Tips typeOf={"app"} text={"Click outside the object to escape the camera mode"} />
             <Spotify />
             <Canvas
                 className="r3f"
@@ -26,17 +25,15 @@ export default function App() {
                 gl={{ antialias: true }}
                 shadows="soft"
                 flat
-                linear>
-                <Suspense
-                    fallback={<CustomLoader setLoadState={setLoadState} />}>
-                    <Scene colorMode={colorMode} loadState={loadState} />
+                linear
+            >
+                <Suspense fallback={<CustomLoader setLoadState={setLoadState} />}>
+                    <Scene colorMode={colorMode} loadState={loadState} activeMenuItem={activeMenuItem} setActiveMenuItem={setActiveMenuItem} />
                 </Suspense>
             </Canvas>
-            <DarkModeToggleContainer
-                colorMode={colorMode}
-                setColorMode={setColorMode}
-            />
+            <DarkModeToggleContainer colorMode={colorMode} setColorMode={setColorMode} />
             <MusicButton colorMode={colorMode} />
+            {window.innerWidth < 768 && <MobileMenuBar colorMode={colorMode} activeMenuItem={activeMenuItem} setActiveMenuItem={setActiveMenuItem} />}
             <Loader />
         </>
     );

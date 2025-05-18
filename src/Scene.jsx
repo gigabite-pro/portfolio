@@ -1,9 +1,5 @@
 import useSpline from "@splinetool/r3f-spline";
-import {
-    SpotLight,
-    OrbitControls,
-    OrthographicCamera,
-} from "@react-three/drei";
+import { SpotLight, OrbitControls, OrthographicCamera } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import { useEffect, useRef, useState } from "react";
 import { useSpring, animated } from "@react-spring/three";
@@ -38,8 +34,10 @@ import LinkedInIcon from "./components/LinkedInIcon";
 import InstagramIcon from "./components/InstagramIcon";
 import LeftWallUI from "./components/LeftWallUI";
 import MusicPlayer from "./components/MusicPlayer";
+// import { useControls } from "leva";
 
-export default function Scene({ colorMode, loadState, ...props }) {
+export default function Scene({ colorMode, loadState, activeMenuItem, setActiveMenuItem, ...props }) {
+    const mobileWidth = window.innerWidth <= 768;
     const { nodes, materials } = useSpline(import.meta.env.VITE_SPLINE_URL);
 
     const [tipOverlay, setTipOverlay] = useState(false);
@@ -72,12 +70,11 @@ export default function Scene({ colorMode, loadState, ...props }) {
 
     // Camera Animations
     const [cameraMode, setCameraMode] = useState("default");
-    const [initialLoadingAnimation, setInitialLoadingAnimation] =
-        useState(false);
+    const [initialLoadingAnimation, setInitialLoadingAnimation] = useState(false);
 
     useEffect(() => {
         controls.current.enabled = false;
-        if (cameraMode === "default") {
+        if ((activeMenuItem === "default" && mobileWidth) || (cameraMode === "default" && !mobileWidth)) {
             new TWEEN.Tween(controls.current.target)
                 .to({
                     x: 0,
@@ -107,7 +104,7 @@ export default function Scene({ colorMode, loadState, ...props }) {
                 zoom: camera.current.zoom,
             })
                 .to({
-                    zoom: 1.3,
+                    zoom: mobileWidth ? 0.65 : 1.3,
                 })
                 .easing(TWEEN.Easing.Quadratic.InOut)
                 .onUpdate((obj) => {
@@ -118,7 +115,8 @@ export default function Scene({ colorMode, loadState, ...props }) {
                 .onComplete(() => {
                     controls.current.enabled = true;
                 });
-        } else if (cameraMode === "computer") {
+        } else if ((activeMenuItem === "projects" && mobileWidth) || (cameraMode === "computer" && !mobileWidth)) {
+            console.log(activeMenuItem);
             new TWEEN.Tween(controls.current.target)
                 .to({
                     x: 4.055963892076257,
@@ -137,8 +135,8 @@ export default function Scene({ colorMode, loadState, ...props }) {
                 .start();
             new TWEEN.Tween(camera.current.rotation)
                 .to({
-                    x: -1.4975418577107324,
-                    y: -1.4780327978820598,
+                    x: -1.4975418577107324, // -1.4975418577107324
+                    y: mobileWidth ? -1.45 : -1.47, // -1.4780327978820598
                     z: -1.497226681373114,
                 })
                 .easing(TWEEN.Easing.Quadratic.InOut)
@@ -148,7 +146,7 @@ export default function Scene({ colorMode, loadState, ...props }) {
                 zoom: camera.current.zoom,
             })
                 .to({
-                    zoom: 6.7,
+                    zoom: mobileWidth ? 2.1 : 6.7, // 6.7
                 })
                 .easing(TWEEN.Easing.Quadratic.InOut)
                 .onUpdate((obj) => {
@@ -156,7 +154,7 @@ export default function Scene({ colorMode, loadState, ...props }) {
                     camera.current.updateProjectionMatrix();
                 })
                 .start();
-        } else if (cameraMode === "brainstormingWall") {
+        } else if ((activeMenuItem === "resume" && mobileWidth) || (cameraMode === "brainstormingWall" && !mobileWidth)) {
             new TWEEN.Tween(controls.current.target)
                 .to({
                     x: -290.694,
@@ -168,7 +166,7 @@ export default function Scene({ colorMode, loadState, ...props }) {
             new TWEEN.Tween(camera.current.position)
                 .to({
                     x: -107.159,
-                    y: 148.54,
+                    y: mobileWidth ? 130 : 148.54, // 148.54
                     z: 977.153,
                 })
                 .easing(TWEEN.Easing.Quadratic.InOut)
@@ -176,7 +174,7 @@ export default function Scene({ colorMode, loadState, ...props }) {
             new TWEEN.Tween(camera.current.rotation)
                 .to({
                     x: -0.133,
-                    y: -0.016,
+                    y: mobileWidth ? -0.013 : -0.016, // -0.016
                     z: -0.002,
                 })
                 .easing(TWEEN.Easing.Quadratic.InOut)
@@ -186,7 +184,7 @@ export default function Scene({ colorMode, loadState, ...props }) {
                 zoom: camera.current.zoom,
             })
                 .to({
-                    zoom: 11.2086,
+                    zoom: mobileWidth ? 5 : 11.2086, // 11.2086
                 })
                 .easing(TWEEN.Easing.Quadratic.InOut)
                 .onUpdate((obj) => {
@@ -194,7 +192,7 @@ export default function Scene({ colorMode, loadState, ...props }) {
                     camera.current.updateProjectionMatrix();
                 })
                 .start();
-        } else if (cameraMode === "spotify") {
+        } else if ((activeMenuItem === "spotify" && mobileWidth) || (cameraMode === "spotify" && !mobileWidth)) {
             new TWEEN.Tween(controls.current.target)
                 .to({
                     x: -162.47,
@@ -213,8 +211,8 @@ export default function Scene({ colorMode, loadState, ...props }) {
                 .start();
             new TWEEN.Tween(camera.current.rotation)
                 .to({
-                    x: -0.067,
-                    y: -0.007,
+                    x: -0.067, // -0.067
+                    y: mobileWidth ? -0.005 : -0.007, // -0.067
                     z: 0,
                 })
                 .easing(TWEEN.Easing.Quadratic.InOut)
@@ -224,7 +222,7 @@ export default function Scene({ colorMode, loadState, ...props }) {
                 zoom: camera.current.zoom,
             })
                 .to({
-                    zoom: 9.60998,
+                    zoom: mobileWidth ? 6 : 9.60998, // 9.60998
                 })
                 .easing(TWEEN.Easing.Quadratic.InOut)
                 .onUpdate((obj) => {
@@ -262,7 +260,7 @@ export default function Scene({ colorMode, loadState, ...props }) {
                 })
                 .start();
         }
-    }, [cameraMode]);
+    }, [cameraMode, activeMenuItem]);
 
     useEffect(() => {
         if (colorMode === "light") {
@@ -289,7 +287,7 @@ export default function Scene({ colorMode, loadState, ...props }) {
                 zoom: camera.current.zoom,
             })
                 .to({
-                    zoom: 1.3,
+                    zoom: mobileWidth ? 0.65 : 1.3,
                 })
                 .easing(TWEEN.Easing.Quadratic.InOut)
                 .onUpdate((obj) => {
@@ -299,7 +297,7 @@ export default function Scene({ colorMode, loadState, ...props }) {
                 .start()
                 .onComplete(() => {
                     controls.current.enabled = true;
-                    controls.current.minZoom = 1.3;
+                    controls.current.minZoom = mobileWidth ? 0.65 : 1.3;
                 });
             new TWEEN.Tween(lightRef.current.target.position)
                 .to({
@@ -318,19 +316,11 @@ export default function Scene({ colorMode, loadState, ...props }) {
         }
     }, [loadState]);
 
-    // const { lightPosition, lightWidth, lightHeight } = useControls({
-    //     lightPosition: {
-    //         value: [-24, -166, 96],
-    //         step: 1,
-    //     },
-    //     lightWidth: {
-    //         value: 100,
-    //         step: 1,
-    //     },
-    //     lightHeight: {
-    //         value: 100,
-    //         step: 1,
-    //     },
+    // const { cameraPosition, cameraRotation1, cameraZoom, cameraTarget } = useControls({
+    //     cameraPosition: { value: [0, 0, 0], step: 0.1 },
+    //     cameraRotation1: { value: [0, 0, 0], step: 0.1 },
+    //     cameraZoom: { value: 1, min: 0.1, max: 10, step: 0.01 },
+    //     cameraTarget: { value: [0, 0, 0], step: 0.1 },
     // });
 
     useFrame(() => {
@@ -360,86 +350,29 @@ export default function Scene({ colorMode, loadState, ...props }) {
                         ref={camera}
                         name="Camera"
                         makeDefault
-                        zoom={0.1}
+                        zoom={mobileWidth ? 0.065 : 0.1}
                         far={2000}
-                        near={-100000}
+                        near={0}
                         up={[0, 1, 0]}
                         // position and rotation being set in tween animation
                     />
-                    <MusicPlayer
-                        nodes={nodes}
-                        materials={materials}
-                        floor={floor}
-                        wallBack={wallBack}
-                        wallLeft={wallLeft}
-                        cameraMode={cameraMode}
-                        setCameraMode={setCameraMode}
-                    />
+                    <MusicPlayer nodes={nodes} materials={materials} floor={floor} wallBack={wallBack} wallLeft={wallLeft} cameraMode={cameraMode} setCameraMode={setCameraMode} />
                     <LeftWallUI nodes={nodes} materials={materials} />
 
-                    <BehanceIcon
-                        nodes={nodes}
-                        floor={floor}
-                        wallBack={wallBack}
-                        wallLeft={wallLeft}
-                        cameraMode={cameraMode}
-                    />
-                    <GithubIcon
-                        nodes={nodes}
-                        floor={floor}
-                        wallBack={wallBack}
-                        wallLeft={wallLeft}
-                        cameraMode={cameraMode}
-                    />
-                    <LinkedInIcon
-                        nodes={nodes}
-                        floor={floor}
-                        wallBack={wallBack}
-                        wallLeft={wallLeft}
-                        cameraMode={cameraMode}
-                    />
-                    <InstagramIcon
-                        nodes={nodes}
-                        floor={floor}
-                        wallBack={wallBack}
-                        wallLeft={wallLeft}
-                        cameraMode={cameraMode}
-                    />
+                    <BehanceIcon nodes={nodes} floor={floor} wallBack={wallBack} wallLeft={wallLeft} cameraMode={cameraMode} />
+                    <GithubIcon nodes={nodes} floor={floor} wallBack={wallBack} wallLeft={wallLeft} cameraMode={cameraMode} />
+                    <LinkedInIcon nodes={nodes} floor={floor} wallBack={wallBack} wallLeft={wallLeft} cameraMode={cameraMode} />
+                    <InstagramIcon nodes={nodes} floor={floor} wallBack={wallBack} wallLeft={wallLeft} cameraMode={cameraMode} />
                     <Guitar nodes={nodes} materials={materials} />
-                    <BrainstormingWall
-                        nodes={nodes}
-                        materials={materials}
-                        floor={floor}
-                        wallBack={wallBack}
-                        wallLeft={wallLeft}
-                        cameraMode={cameraMode}
-                        setCameraMode={setCameraMode}
-                    />
+                    <BrainstormingWall nodes={nodes} materials={materials} floor={floor} wallBack={wallBack} wallLeft={wallLeft} cameraMode={cameraMode} setCameraMode={setCameraMode} />
                     <Iphone nodes={nodes} materials={materials} />
                     <Leaves nodes={nodes} materials={materials} />
                     <BigPlant nodes={nodes} materials={materials} />
                     <PhotoWall nodes={nodes} materials={materials} />
                     <NikeShoeBox nodes={nodes} materials={materials} />
                     <AirJordans nodes={nodes} />
-                    <Computer
-                        nodes={nodes}
-                        materials={materials}
-                        floor={floor}
-                        wallBack={wallBack}
-                        wallLeft={wallLeft}
-                        cameraMode={cameraMode}
-                        setCameraMode={setCameraMode}
-                    />
-                    <Clock
-                        nodes={nodes}
-                        materials={materials}
-                        floor={floor}
-                        wallBack={wallBack}
-                        wallLeft={wallLeft}
-                        clockRef={clockRef}
-                        cameraMode={cameraMode}
-                        setCameraMode={setCameraMode}
-                    />
+                    <Computer nodes={nodes} materials={materials} floor={floor} wallBack={wallBack} wallLeft={wallLeft} cameraMode={cameraMode} setCameraMode={setCameraMode} />
+                    <Clock nodes={nodes} materials={materials} floor={floor} wallBack={wallBack} wallLeft={wallLeft} clockRef={clockRef} cameraMode={cameraMode} setCameraMode={setCameraMode} />
                     <Carpet nodes={nodes} materials={materials} />
                     <SmallPlant nodes={nodes} materials={materials} />
                     <SpotLight
@@ -463,19 +396,9 @@ export default function Scene({ colorMode, loadState, ...props }) {
                     <Books nodes={nodes} materials={materials} />
                     <Lamp nodes={nodes} materials={materials} />
 
-                    <animated.group
-                        name="Group1"
-                        position={[-147.99, 120.98, 30.41]}
-                        rotation={cameraRotation.rotation}>
-                        <group
-                            name="camera_body"
-                            position={[1.52, -7.31, 15.83]}
-                            rotation={[0, -0.02, 0]}>
-                            <group
-                                name="lens"
-                                position={[0.15, -8.29, 15.48]}
-                                rotation={[0.32, 0.07, -0.4]}
-                                scale={0.49}>
+                    <animated.group name="Group1" position={[-147.99, 120.98, 30.41]} rotation={cameraRotation.rotation}>
+                        <group name="camera_body" position={[1.52, -7.31, 15.83]} rotation={[0, -0.02, 0]}>
+                            <group name="lens" position={[0.15, -8.29, 15.48]} rotation={[0.32, 0.07, -0.4]} scale={0.49}>
                                 <mesh
                                     name="Cylinder 24"
                                     geometry={nodes["Cylinder 24"].geometry}
@@ -515,20 +438,8 @@ export default function Scene({ colorMode, loadState, ...props }) {
                     <HeadphonesStand nodes={nodes} materials={materials} />
                     <Keyboard nodes={nodes} materials={materials} />
 
-                    <group
-                        name="basketball"
-                        position={[-64.83, -157.05, 60.31]}
-                        rotation={[0, 0, -Math.PI]}
-                        scale={[0.13, 0.12, 0.13]}>
-                        <mesh
-                            name="ball"
-                            geometry={nodes.ball.geometry}
-                            material={materials.orange}
-                            castShadow
-                            receiveShadow
-                            position={[0.71, 0.57, 2.89]}
-                            scale={1.02}
-                        />
+                    <group name="basketball" position={[-64.83, -157.05, 60.31]} rotation={[0, 0, -Math.PI]} scale={[0.13, 0.12, 0.13]}>
+                        <mesh name="ball" geometry={nodes.ball.geometry} material={materials.orange} castShadow receiveShadow position={[0.71, 0.57, 2.89]} scale={1.02} />
                         <group name="lines" position={[-1.87, 0.95, 0]}>
                             <mesh
                                 name="line_horizontal"
@@ -550,17 +461,11 @@ export default function Scene({ colorMode, loadState, ...props }) {
                                 rotation={[0, 0.01, -1.56]}
                                 scale={[3.82, 0.05, 3.82]}
                             />
-                            <group
-                                name="line_down_right"
-                                position={[-58.54, -50.3, 0.29]}
-                                rotation={[0, 0, -Math.PI]}
-                                scale={[1.05, 1.04, 1]}>
+                            <group name="line_down_right" position={[-58.54, -50.3, 0.29]} rotation={[0, 0, -Math.PI]} scale={[1.05, 1.04, 1]}>
                                 <mesh
                                     name="line_down_right1"
                                     geometry={nodes.line_down_right1.geometry}
-                                    material={
-                                        materials["line_down_right1 Material"]
-                                    }
+                                    material={materials["line_down_right1 Material"]}
                                     castShadow
                                     receiveShadow
                                     position={[-41.75, -47.36, 156.91]}
@@ -568,16 +473,11 @@ export default function Scene({ colorMode, loadState, ...props }) {
                                     scale={[0.07, 0.12, 0.06]}
                                 />
                             </group>
-                            <group
-                                name="line_up_right"
-                                position={[-58.54, 49.13, 0.29]}
-                                scale={[-1.05, 1, 1]}>
+                            <group name="line_up_right" position={[-58.54, 49.13, 0.29]} scale={[-1.05, 1, 1]}>
                                 <mesh
                                     name="line_up_right1"
                                     geometry={nodes.line_up_right1.geometry}
-                                    material={
-                                        materials["line_up_right1 Material"]
-                                    }
+                                    material={materials["line_up_right1 Material"]}
                                     castShadow
                                     receiveShadow
                                     position={[-41.75, -47.36, 156.91]}
@@ -585,17 +485,11 @@ export default function Scene({ colorMode, loadState, ...props }) {
                                     scale={[0.07, 0.12, 0.06]}
                                 />
                             </group>
-                            <group
-                                name="line_down_left"
-                                position={[60.94, -48.69, -0.44]}
-                                rotation={[0, 0, -Math.PI]}
-                                scale={[-1, 1, 1.01]}>
+                            <group name="line_down_left" position={[60.94, -48.69, -0.44]} rotation={[0, 0, -Math.PI]} scale={[-1, 1, 1.01]}>
                                 <mesh
                                     name="line_down_left1"
                                     geometry={nodes.line_down_left1.geometry}
-                                    material={
-                                        materials["line_down_left1 Material"]
-                                    }
+                                    material={materials["line_down_left1 Material"]}
                                     castShadow
                                     receiveShadow
                                     position={[-41.75, -47.36, 156.91]}
@@ -603,9 +497,7 @@ export default function Scene({ colorMode, loadState, ...props }) {
                                     scale={[0.07, 0.12, 0.06]}
                                 />
                             </group>
-                            <group
-                                name="line_up_left"
-                                position={[59.32, 49.13, -0.44]}>
+                            <group name="line_up_left" position={[59.32, 49.13, -0.44]}>
                                 <mesh
                                     name="line_up_left1"
                                     geometry={nodes.line_up_left1.geometry}
@@ -675,24 +567,9 @@ export default function Scene({ colorMode, loadState, ...props }) {
                         scale={[1, 1, 1.8]}
                     />
                     <Floor nodes={nodes} materials={materials} floor={floor} />
-                    <BackWall
-                        nodes={nodes}
-                        materials={materials}
-                        wallBack={wallBack}
-                    />
-                    <LeftWall
-                        nodes={nodes}
-                        materials={materials}
-                        wallLeft={wallLeft}
-                        camera={camera}
-                        controls={controls}
-                    />
-                    <hemisphereLight
-                        ref={ambientLight}
-                        name="Default Ambient Light"
-                        intensity={0.75}
-                        color="#eaeaea"
-                    />
+                    <BackWall nodes={nodes} materials={materials} wallBack={wallBack} />
+                    <LeftWall nodes={nodes} materials={materials} wallLeft={wallLeft} camera={camera} controls={controls} />
+                    <hemisphereLight ref={ambientLight} name="Default Ambient Light" intensity={0.75} color="#eaeaea" />
                 </scene>
             </group>
         </>

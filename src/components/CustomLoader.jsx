@@ -23,9 +23,7 @@ const CustomLoader = ({ setLoadState = () => {} }) => {
                 </div>
                 <div className="loading-text">Loading...</div>
             </div>
-            <div className="tip">
-                Tip: Hover over elements to interact with them.
-            </div>
+            <div className="tip">{window.innerWidth < 768 ? "Tip: Use the menu to access different features." : "Tip: Hover over elements to interact with them."}</div>
         </Html>
     );
 };

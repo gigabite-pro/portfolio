@@ -1,23 +1,23 @@
-@import url('https://fonts.googleapis.com/css2?family=Bangers&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Bangers&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap");
 
 @font-face {
-  font-family: 'Clock';
-  src: url('./clock.ttf') format('truetype');
+    font-family: "Clock";
+    src: url("./clock.ttf") format("truetype");
 }
 
 @font-face {
-  font-family: 'Tahoma';
-  src: url('./tahoma.ttf') format('truetype');
+    font-family: "Tahoma";
+    src: url("./tahoma.ttf") format("truetype");
 }
 
 @font-face {
-  font-family: 'Pixel MS Sans';
-  src: url('./pixel.ttf') format('truetype');
+    font-family: "Pixel MS Sans";
+    src: url("./pixel.ttf") format("truetype");
 }
 
 body {
-  margin: 0;
+    margin: 0;
 }
 html,
 body,
@@ -28,956 +28,1026 @@ body,
     width: 100%;
     height: 100%;
     background: ivory;
-    font-family: "Urbanist", sans-serif; 
+    font-family: "Urbanist", sans-serif;
 }
 
-.r3f
-{
-  touch-action: none;
-  transition-duration: 0.5s;
+.r3f {
+    touch-action: none;
+    transition-duration: 0.5s;
 }
 
 .loader {
-  width: 100vw;
-  height: 100vh;
-  background-color: black;
-  position: fixed;
-  z-index: 101;
-  top: 0;
-  left: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: 1s;
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+    position: fixed;
+    z-index: 101;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 1s;
 }
 
 .loading-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: row;
-  margin: 0 auto;
-  width: 50%;
-  z-index: 6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    margin: 0 auto;
+    width: 50%;
+    z-index: 6;
 }
 @keyframes rotate {
-  0% {
-    transform: rotateX(-37.5deg) rotateY(45deg);
- }
-  50% {
-    transform: rotateX(-37.5deg) rotateY(405deg);
- }
-  100% {
-    transform: rotateX(-37.5deg) rotateY(405deg);
- }
+    0% {
+        transform: rotateX(-37.5deg) rotateY(45deg);
+    }
+    50% {
+        transform: rotateX(-37.5deg) rotateY(405deg);
+    }
+    100% {
+        transform: rotateX(-37.5deg) rotateY(405deg);
+    }
 }
-.cube, .cube * {
-  position: absolute;
-  width: 151px;
-  height: 151px;
+.cube,
+.cube * {
+    position: absolute;
+    width: 151px;
+    height: 151px;
 }
 .sides {
-  animation: rotate 3s ease infinite;
-  animation-delay: 0.8s;
-  transform-style: preserve-3d;
-  transform: rotateX(-37.5deg) rotateY(45deg);
+    animation: rotate 3s ease infinite;
+    animation-delay: 0.8s;
+    transform-style: preserve-3d;
+    transform: rotateX(-37.5deg) rotateY(45deg);
 }
 .cube .sides * {
-  box-sizing: border-box;
-  background-color: rgba(242, 119, 119, 0.5);
-  border: 3px solid white;
-  border-radius: 6px;
+    box-sizing: border-box;
+    background-color: rgba(242, 119, 119, 0.5);
+    border: 3px solid white;
+    border-radius: 6px;
 }
 .cube .sides .top {
-  animation: top-animation 3s ease infinite;
-  animation-delay: 0ms;
-  transform: rotateX(90deg) translateZ(120px);
-  animation-fill-mode: forwards;
-  transform-origin: 50% 50%;
+    animation: top-animation 3s ease infinite;
+    animation-delay: 0ms;
+    transform: rotateX(90deg) translateZ(120px);
+    animation-fill-mode: forwards;
+    transform-origin: 50% 50%;
 }
 @keyframes top-animation {
-  0% {
-    opacity: 1;
-    transform: rotateX(90deg) translateZ(120px);
- }
-  20% {
-    opacity: 1;
-    transform: rotateX(90deg) translateZ(75px);
- }
-  70% {
-    opacity: 1;
-    transform: rotateX(90deg) translateZ(75px);
- }
-  90% {
-    opacity: 1;
-    transform: rotateX(90deg) translateZ(120px);
- }
-  100% {
-    opacity: 1;
-    transform: rotateX(90deg) translateZ(120px);
- }
+    0% {
+        opacity: 1;
+        transform: rotateX(90deg) translateZ(120px);
+    }
+    20% {
+        opacity: 1;
+        transform: rotateX(90deg) translateZ(75px);
+    }
+    70% {
+        opacity: 1;
+        transform: rotateX(90deg) translateZ(75px);
+    }
+    90% {
+        opacity: 1;
+        transform: rotateX(90deg) translateZ(120px);
+    }
+    100% {
+        opacity: 1;
+        transform: rotateX(90deg) translateZ(120px);
+    }
 }
 .cube .sides .bottom {
-  animation: bottom-animation 3s ease infinite;
-  animation-delay: 0ms;
-  transform: rotateX(-90deg) translateZ(120px);
-  animation-fill-mode: forwards;
-  transform-origin: 50% 50%;
+    animation: bottom-animation 3s ease infinite;
+    animation-delay: 0ms;
+    transform: rotateX(-90deg) translateZ(120px);
+    animation-fill-mode: forwards;
+    transform-origin: 50% 50%;
 }
 @keyframes bottom-animation {
-  0% {
-    opacity: 1;
-    transform: rotateX(-90deg) translateZ(120px);
- }
-  20% {
-    opacity: 1;
-    transform: rotateX(-90deg) translateZ(75px);
- }
-  70% {
-    opacity: 1;
-    transform: rotateX(-90deg) translateZ(75px);
- }
-  90% {
-    opacity: 1;
-    transform: rotateX(-90deg) translateZ(120px);
- }
-  100% {
-    opacity: 1;
-    transform: rotateX(-90deg) translateZ(120px);
- }
+    0% {
+        opacity: 1;
+        transform: rotateX(-90deg) translateZ(120px);
+    }
+    20% {
+        opacity: 1;
+        transform: rotateX(-90deg) translateZ(75px);
+    }
+    70% {
+        opacity: 1;
+        transform: rotateX(-90deg) translateZ(75px);
+    }
+    90% {
+        opacity: 1;
+        transform: rotateX(-90deg) translateZ(120px);
+    }
+    100% {
+        opacity: 1;
+        transform: rotateX(-90deg) translateZ(120px);
+    }
 }
 .cube .sides .front {
-  animation: front-animation 3s ease infinite;
-  animation-delay: 100ms;
-  transform: rotateY(0deg) translateZ(120px);
-  animation-fill-mode: forwards;
-  transform-origin: 50% 50%;
+    animation: front-animation 3s ease infinite;
+    animation-delay: 100ms;
+    transform: rotateY(0deg) translateZ(120px);
+    animation-fill-mode: forwards;
+    transform-origin: 50% 50%;
 }
 @keyframes front-animation {
-  0% {
-    opacity: 1;
-    transform: rotateY(0deg) translateZ(120px);
- }
-  20% {
-    opacity: 1;
-    transform: rotateY(0deg) translateZ(75px);
- }
-  70% {
-    opacity: 1;
-    transform: rotateY(0deg) translateZ(75px);
- }
-  90% {
-    opacity: 1;
-    transform: rotateY(0deg) translateZ(120px);
- }
-  100% {
-    opacity: 1;
-    transform: rotateY(0deg) translateZ(120px);
- }
+    0% {
+        opacity: 1;
+        transform: rotateY(0deg) translateZ(120px);
+    }
+    20% {
+        opacity: 1;
+        transform: rotateY(0deg) translateZ(75px);
+    }
+    70% {
+        opacity: 1;
+        transform: rotateY(0deg) translateZ(75px);
+    }
+    90% {
+        opacity: 1;
+        transform: rotateY(0deg) translateZ(120px);
+    }
+    100% {
+        opacity: 1;
+        transform: rotateY(0deg) translateZ(120px);
+    }
 }
 .cube .sides .back {
-  animation: back-animation 3s ease infinite;
-  animation-delay: 100ms;
-  transform: rotateY(-180deg) translateZ(120px);
-  animation-fill-mode: forwards;
-  transform-origin: 50% 50%;
+    animation: back-animation 3s ease infinite;
+    animation-delay: 100ms;
+    transform: rotateY(-180deg) translateZ(120px);
+    animation-fill-mode: forwards;
+    transform-origin: 50% 50%;
 }
 @keyframes back-animation {
-  0% {
-    opacity: 1;
-    transform: rotateY(-180deg) translateZ(120px);
- }
-  20% {
-    opacity: 1;
-    transform: rotateY(-180deg) translateZ(75px);
- }
-  70% {
-    opacity: 1;
-    transform: rotateY(-180deg) translateZ(75px);
- }
-  90% {
-    opacity: 1;
-    transform: rotateY(-180deg) translateZ(120px);
- }
-  100% {
-    opacity: 1;
-    transform: rotateY(-180deg) translateZ(120px);
- }
+    0% {
+        opacity: 1;
+        transform: rotateY(-180deg) translateZ(120px);
+    }
+    20% {
+        opacity: 1;
+        transform: rotateY(-180deg) translateZ(75px);
+    }
+    70% {
+        opacity: 1;
+        transform: rotateY(-180deg) translateZ(75px);
+    }
+    90% {
+        opacity: 1;
+        transform: rotateY(-180deg) translateZ(120px);
+    }
+    100% {
+        opacity: 1;
+        transform: rotateY(-180deg) translateZ(120px);
+    }
 }
 .cube .sides .left {
-  animation: left-animation 3s ease infinite;
-  animation-delay: 100ms;
-  transform: rotateY(-90deg) translateZ(120px);
-  animation-fill-mode: forwards;
-  transform-origin: 50% 50%;
+    animation: left-animation 3s ease infinite;
+    animation-delay: 100ms;
+    transform: rotateY(-90deg) translateZ(120px);
+    animation-fill-mode: forwards;
+    transform-origin: 50% 50%;
 }
 @keyframes left-animation {
-  0% {
-    opacity: 1;
-    transform: rotateY(-90deg) translateZ(120px);
- }
-  20% {
-    opacity: 1;
-    transform: rotateY(-90deg) translateZ(75px);
- }
-  70% {
-    opacity: 1;
-    transform: rotateY(-90deg) translateZ(75px);
- }
-  90% {
-    opacity: 1;
-    transform: rotateY(-90deg) translateZ(120px);
- }
-  100% {
-    opacity: 1;
-    transform: rotateY(-90deg) translateZ(120px);
- }
+    0% {
+        opacity: 1;
+        transform: rotateY(-90deg) translateZ(120px);
+    }
+    20% {
+        opacity: 1;
+        transform: rotateY(-90deg) translateZ(75px);
+    }
+    70% {
+        opacity: 1;
+        transform: rotateY(-90deg) translateZ(75px);
+    }
+    90% {
+        opacity: 1;
+        transform: rotateY(-90deg) translateZ(120px);
+    }
+    100% {
+        opacity: 1;
+        transform: rotateY(-90deg) translateZ(120px);
+    }
 }
 .cube .sides .right {
-  animation: right-animation 3s ease infinite;
-  animation-delay: 100ms;
-  transform: rotateY(90deg) translateZ(120px);
-  animation-fill-mode: forwards;
-  transform-origin: 50% 50%;
+    animation: right-animation 3s ease infinite;
+    animation-delay: 100ms;
+    transform: rotateY(90deg) translateZ(120px);
+    animation-fill-mode: forwards;
+    transform-origin: 50% 50%;
 }
 @keyframes right-animation {
-  0% {
-    opacity: 1;
-    transform: rotateY(90deg) translateZ(120px);
- }
-  20% {
-    opacity: 1;
-    transform: rotateY(90deg) translateZ(75px);
- }
-  70% {
-    opacity: 1;
-    transform: rotateY(90deg) translateZ(75px);
- }
-  90% {
-    opacity: 1;
-    transform: rotateY(90deg) translateZ(120px);
- }
-  100% {
-    opacity: 1;
-    transform: rotateY(90deg) translateZ(120px);
- }
+    0% {
+        opacity: 1;
+        transform: rotateY(90deg) translateZ(120px);
+    }
+    20% {
+        opacity: 1;
+        transform: rotateY(90deg) translateZ(75px);
+    }
+    70% {
+        opacity: 1;
+        transform: rotateY(90deg) translateZ(75px);
+    }
+    90% {
+        opacity: 1;
+        transform: rotateY(90deg) translateZ(120px);
+    }
+    100% {
+        opacity: 1;
+        transform: rotateY(90deg) translateZ(120px);
+    }
 }
 
 .htmlScreen {
-  z-index: 3 !important;
+    z-index: 3 !important;
 }
 
 .tip {
-  position: fixed;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 1.3vw;
-  color: white;
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1.3vw;
+    color: white;
 }
 
 .tip-overlay {
-  position: fixed;
-  width: 100vw;
-  height: 100vh;
-  opacity: 0;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-color: rgba(0, 0, 0, 0.766);
-  transition-duration: 0.5s;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    opacity: 0;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.766);
+    transition-duration: 0.5s;
 }
 
 .tip-overlay:hover {
-  cursor: grab;
+    cursor: grab;
 }
 
 .tip-gif {
-  width: 10vw;
-  height: 10vw;
-  background: url('./loading_transparent.gif') no-repeat;
-  background-size: contain;
-  background-position: center;
+    width: 10vw;
+    height: 10vw;
+    background: url("./loading_transparent.gif") no-repeat;
+    background-size: contain;
+    background-position: center;
 }
 
 .tip-overlay p {
-  font-size: 1.5vw;
-  color: white;
-  text-align: center;
+    font-size: 1.5vw;
+    color: white;
+    text-align: center;
 }
 
-.btn{
-  display: inline-block;
-  position: relative;
-  background: none;
-  border: none;
-  color: #fff;
-  font-size: 10vw;
-  font-family: "Bangers", system-ui;
-  cursor: pointer;
-  background: rgba(0,0,0,0.09);
-  transition: 0.3s all;
+.btn {
+    display: inline-block;
+    position: relative;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 10vw;
+    font-family: "Bangers", system-ui;
+    cursor: pointer;
+    background: rgba(0, 0, 0, 0.09);
+    transition: 0.3s all;
 }
-span{
-  display: block;
-  padding: 25px 80px;
+span {
+    display: block;
+    padding: 25px 80px;
 }
-.btn::before, .btn::after{
-  content:"";
-  width: 0;
-  height: 5px;
-  position: absolute;
-  transition: all 0.2s linear;
-  background: #fff;
-  transition-delay: 0.2s;
-}
-
-span::before, span::after{
-  content:"";
-  width: 5px;
-  height:0;
-  position: absolute;
-  transition: all 0.2s linear;
-  background: #fff;
-  transition-delay: 0s;
-}
-.btn:hover::before, .btn:hover::after{
-  width: 100%;
-  transition-delay: 0s;
-}
-.btn:hover span::before, .btn:hover span::after{
-  height: 100%;
-  transition-delay: 0.2s;
+.btn::before,
+.btn::after {
+    content: "";
+    width: 0;
+    height: 5px;
+    position: absolute;
+    transition: all 0.2s linear;
+    background: #fff;
+    transition-delay: 0.2s;
 }
 
-.btn::before{
-  right: 0;
-  top: 0;
+span::before,
+span::after {
+    content: "";
+    width: 5px;
+    height: 0;
+    position: absolute;
+    transition: all 0.2s linear;
+    background: #fff;
+    transition-delay: 0s;
 }
-.btn::after{
-  left: 0;
-  bottom: 0;
+.btn:hover::before,
+.btn:hover::after {
+    width: 100%;
+    transition-delay: 0s;
 }
-.btn span::before{
-  left: 0;
-  top: 0;
+.btn:hover span::before,
+.btn:hover span::after {
+    height: 100%;
+    transition-delay: 0.2s;
 }
-.btn span::after{
-  right: 0;
-  bottom: 0;
+
+.btn::before {
+    right: 0;
+    top: 0;
+}
+.btn::after {
+    left: 0;
+    bottom: 0;
+}
+.btn span::before {
+    left: 0;
+    top: 0;
+}
+.btn span::after {
+    right: 0;
+    bottom: 0;
 }
 
 .wrapper {
-  width: 100vw;
-  height: 100vh;
-  background-color: black;
-  transition: 1s opacity;
-  opacity: 0;
-  position: fixed;
-  z-index: 2;
-  top: 0;
-  left: 0;
-  transform: scale(2);
-  pointer-events: none;
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+    transition: 1s opacity;
+    opacity: 0;
+    position: fixed;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    transform: scale(2);
+    pointer-events: none;
 }
 
-.outer-circ{
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
-  border: 2px solid black;
-  background: transparent;
-  position: fixed;
-  bottom: 25px;
-  left: 25px;
-  z-index: 5;
-  display: grid;
-  place-items: center;
-  animation: scaleUp 1s;
-  transition-duration: 0.3s;
+.outer-circ {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    border: 2px solid black;
+    background: transparent;
+    position: fixed;
+    bottom: 25px;
+    left: 25px;
+    z-index: 5;
+    display: grid;
+    place-items: center;
+    animation: scaleUp 1s;
+    transition-duration: 0.3s;
 }
 
 .outer-circ:hover {
-  cursor: pointer;
+    cursor: pointer;
+}
+
+/* Menu Button */
+.menu-icon {
+    transform: rotate(90deg);
+}
+
+.outer-circ-2 {
+    top: 25px;
+    z-index: 5;
+}
+
+.outer-circ-3 {
+    top: 25px;
+}
+
+.outer-circ-3 i {
+    color: white;
+}
+
+.menu-bar {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.9);
+    font-family: "Tahoma", sans-serif;
+    position: fixed;
+    z-index: 5;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transform: translateY(-100%);
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    opacity: 0;
+    transform: translateY(-40%);
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 6vw;
+    color: white;
+    text-align: center;
+    transition-duration: 0.3s;
+}
+
+.menu-item p {
+    padding-left: 3vw;
+}
+
+.mobile-socials {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5vw;
+    transform: translateY(-40%);
+}
+
+.mobile-socials a {
+    color: white;
+    font-size: 7vw;
+    margin: 0 4vw;
+    transition-duration: 0.3s;
 }
 
 @keyframes scaleUp {
-  0% {
-    transform: scale(0);
-  }
-  100% {
-    transform: scale(1);
-  }
-
+    0% {
+        transform: scale(0);
+    }
+    100% {
+        transform: scale(1);
+    }
 }
 
 .svg {
-  width: 23px;
-  height: 35px;
-  z-index: 5;
-  transition-duration: 0.3s;
+    width: 23px;
+    height: 35px;
+    z-index: 5;
+    transition-duration: 0.3s;
 }
 
 .wave-path {
-  stroke-width: 15px;
-  stroke: black;
+    stroke-width: 15px;
+    stroke: black;
 }
 
 .notPlaying {
-  width: 23px;
-  display: none;
+    width: 23px;
+    display: none;
 }
 
 .notPlaying path {
-  stroke-width: 1.5px;
+    stroke-width: 1.5px;
 }
 
 .label {
-  width: 95px;
-  font-size: 1vw;
-  font-family: "Urbanist", sans-serif;
-  text-align: center;
-  background-color: #00000077;
-  padding: 0.5vw;
-  color: white;
-  border-radius: 120px;
-  user-select: none;
-  transform: scale(0);
-  transition-duration: 500ms;
+    width: 95px;
+    font-size: 1vw;
+    font-family: "Urbanist", sans-serif;
+    text-align: center;
+    background-color: #00000077;
+    padding: 0.5vw;
+    color: white;
+    border-radius: 120px;
+    user-select: none;
+    transform: scale(0);
+    transition-duration: 500ms;
 }
 
 .label.active {
-  transform: scale(1);
+    transform: scale(1);
 }
 
 .label:hover {
-  cursor: pointer;
+    cursor: pointer;
 }
 
 .resumeLabel {
-  width: 150px;
-  font-size: 20px;
-  padding: 12px;
+    width: 150px;
+    font-size: 20px;
+    padding: 12px;
 }
 
 .time {
-  background: rgb(189, 203, 200);
-  padding: 0;
+    background: rgb(189, 203, 200);
+    padding: 0;
+    z-index: 2;
 }
 
 .current-fav {
-  background-color: white;
-  padding: 1vw;
-  position: absolute;
-  z-index: 6;
-  top: -5%;
-  right: -4%;
-  border-radius: 8px;
-  box-shadow: 0 0 8px 0px black;
+    background-color: white;
+    padding: 1vw;
+    position: absolute;
+    z-index: 6;
+    top: -5%;
+    right: -4%;
+    border-radius: 8px;
+    box-shadow: 0 0 8px 0px black;
 }
 
 .spotify {
-  width: 40vw;
-  height: 352px;
-  background-color: black;
-  border: none;
-  border-radius: 20px;
-  position: fixed;
-  z-index: 4;
-  top: 50%;
-  left: 48.5%;
-  transform: translate(-50%, -50%);
-  transition-duration: 0.3s;
-  opacity: 0;
-  display: none;
+    width: 40vw;
+    height: 352px;
+    background-color: black;
+    border: none;
+    border-radius: 20px;
+    position: fixed;
+    z-index: 3;
+    top: 50%;
+    left: 48.5%;
+    transform: translate(-50%, -50%);
+    transition-duration: 0.3s;
+    opacity: 0;
+    display: none;
 }
 
-.projects-container{
-  width: 100vw;
-  height: 100vh;
-  background: url('./xp_wallpaper.webp') no-repeat;
-  background-size: cover;
-  background-position: center;
+.projects-container {
+    width: 100vw;
+    height: 100vh;
+    background: url("./xp_wallpaper.webp") no-repeat;
+    background-size: cover;
+    background-position: center;
 }
 
 .all-projects {
-  padding-top: 1vw;
-  width: 45vw;
-  height: 97vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: start;
-  align-items: start;
-  font-family: 'Tahoma', 'sans-serif';
-  flex-wrap: wrap;
+    padding-top: 1vw;
+    width: 45vw;
+    height: 97vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    font-family: "Tahoma", "sans-serif";
+    flex-wrap: wrap;
 }
 
 .project-folder {
-  flex-basis: 16%;
-  cursor: pointer;
+    flex-basis: 16%;
+    cursor: pointer;
 }
 
 .project-folder .folder {
-  width: 5vw;
-  height: 5vw;
-  background: url('./folder.png') no-repeat;
-  background-position: center;
-  background-size: contain;
-  margin-left: 1vw;
+    width: 5vw;
+    height: 5vw;
+    background: url("./folder.png") no-repeat;
+    background-position: center;
+    background-size: contain;
+    margin-left: 1vw;
 }
 
 .project-folder .heading {
-  width: 7vw;
-  text-align: center;
-  font-size: 60%;
-  color: white;
-  filter: drop-shadow(0 0 2px black);
+    width: 7vw;
+    text-align: center;
+    font-size: 60%;
+    color: white;
+    filter: drop-shadow(0 0 2px black);
 }
 
 /* Taskbar */
 
 .background.sliced {
-	display: flex;
-	flex-direction: row;
-	position: absolute;
-	width: 100%;
-	height: 100%;
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    width: 100%;
+    height: 100%;
 }
 
 .background.sliced.vertical {
-	flex-direction: column;
+    flex-direction: column;
 }
 
 .background.sliced .top,
 .background.sliced .bottom {
-	flex-shrink: 0;
+    flex-shrink: 0;
 }
 
 .background.sliced .middle {
-	flex-grow: 1;
+    flex-grow: 1;
 }
 
 .background.sliced .column {
-	display: flex;
-	flex-direction: column;
+    display: flex;
+    flex-direction: column;
 }
 
 #taskbar {
-	display: flex;
-	position: absolute;
-	bottom: 0;
-	width: 100%;
-  cursor: auto;
+    display: flex;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    cursor: auto;
 }
 
 #start-button {
-	flex-shrink: 0;
+    flex-shrink: 0;
 }
 
 #start-button .container {
-	position: relative;
-	overflow: hidden;
+    position: relative;
+    overflow: hidden;
 }
 
 #start-button .overlay {
-	position: absolute;
-	left: 0;
-	top: 0;
-	width: 100%;
-	height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
 }
 
 #task-band {
-	flex-grow: 1;
+    flex-grow: 1;
 }
 
 #tray-notify {
-	flex-shrink: 0;
+    flex-shrink: 0;
 }
 
 #tray-notify .container {
-	position: relative;
-	overflow: hidden;
+    position: relative;
+    overflow: hidden;
 }
 
 #tray-notify .clock {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	position: relative;
-	height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    height: 100%;
 }
 
 #tray-notify .clock .overlay {
-	position: absolute;
-	left: 0;
-	top: 0;
-	width: 100%;
-	height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
 }
 
 /* Taskbar */
 #taskbar {
-	height: 30px;
+    height: 30px;
 }
 
 #taskbar > .background .row {
-	background-image: url('https://raw.githubusercontent.com/tdcosta100/WindowsXP/master/images/Themes/Blue/TaskbarBackground.png');
-	background-repeat: no-repeat;
-	image-rendering: pixelated;
+    background-image: url("https://raw.githubusercontent.com/tdcosta100/WindowsXP/master/images/Themes/Blue/TaskbarBackground.png");
+    background-repeat: no-repeat;
+    image-rendering: pixelated;
 }
 
 #taskbar > .background .top {
-	height: 15px;
-	background-size: 100% 186.666667%;
+    height: 15px;
+    background-size: 100% 186.666667%;
 }
 
 #taskbar > .background .middle {
-	background-size: 100% 1400%;
-	background-position-y: 57.692308%;
+    background-size: 100% 1400%;
+    background-position-y: 57.692308%;
 }
 
 #taskbar > .background .bottom {
-	height: 11px;
-	background-size: 100% 254.545455%;
-	background-position-y: 100%;
+    height: 11px;
+    background-size: 100% 254.545455%;
+    background-position-y: 100%;
 }
 
 /* Start Button */
 
 /* Start Button - Sizes */
 #start-button .background .left {
-	width: 6px;
+    width: 6px;
 }
 
 #start-button .background .right {
-	width: 52px;
+    width: 52px;
 }
 
 #start-button .background .top {
-	height: 13px;
+    height: 13px;
 }
 
 #start-button .background .bottom {
-	height: 14px;
+    height: 14px;
 }
 
 /* Start Button - Content */
 #start-button .content {
-	display: flex;
-	align-items: center;
-	position: relative;
-	margin: 2px 24px 4px 10px;
-	height: 26px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    margin: 2px 24px 4px 10px;
+    height: 26px;
 }
 
 #start-button .content .icon img {
-	display: block;
-	image-rendering: pixelated;
+    display: block;
+    image-rendering: pixelated;
 }
 
 #start-button .icon {
-  padding: 0px;
+    padding: 0px;
 }
 
 #start-button .content .text {
-	color: rgb(255, 255, 255);
-	font-family: 'Franklin Gothic Medium';
-	font-style: italic;
-	font-size: 14pt;
-	text-shadow: 1px 2px 2px rgb(69, 76, 16), 0 0 3px rgb(69, 76, 16);
-	margin-bottom: 1px;
-  padding: 0px;
-	padding-right: 3px;
+    color: rgb(255, 255, 255);
+    font-family: "Franklin Gothic Medium";
+    font-style: italic;
+    font-size: 14pt;
+    text-shadow: 1px 2px 2px rgb(69, 76, 16), 0 0 3px rgb(69, 76, 16);
+    margin-bottom: 1px;
+    padding: 0px;
+    padding-right: 3px;
 }
 
 /* Start Button - Background */
 #start-button .background .row {
-	background-image: url('https://raw.githubusercontent.com/tdcosta100/WindowsXP/master/images/Themes/Blue/StartButton.png');
-	background-repeat: no-repeat;
-	image-rendering: pixelated;
+    background-image: url("https://raw.githubusercontent.com/tdcosta100/WindowsXP/master/images/Themes/Blue/StartButton.png");
+    background-repeat: no-repeat;
+    image-rendering: pixelated;
 }
 
 /* All States */
 #start-button .background .left .top {
-	background-size: 1650% 761.538462%;
+    background-size: 1650% 761.538462%;
 }
 
 #start-button .background .left .middle {
-	background-size: 1650% 1650%;
+    background-size: 1650% 1650%;
 }
 
 #start-button .background .left .bottom {
-	background-size: 1650% 707.142857%;
+    background-size: 1650% 707.142857%;
 }
 
 #start-button .background .middle .top {
-	background-size: 241.463415% 761.538462%;
+    background-size: 241.463415% 761.538462%;
 }
 
 #start-button .background .middle .middle {
-	background-size: 241.463415% 1650%;
+    background-size: 241.463415% 1650%;
 }
 
 #start-button .background .middle .bottom {
-	background-size: 241.463415% 707.142857%;
+    background-size: 241.463415% 707.142857%;
 }
 
 #start-button .background .right .top {
-	background-size: 190.384615% 761.538462%;
+    background-size: 190.384615% 761.538462%;
 }
 
 #start-button .background .right .middle {
-	background-size: 190.384615% 1650%;
+    background-size: 190.384615% 1650%;
 }
 
 #start-button .background .right .bottom {
-	background-size: 190.384615% 707.142857%;
+    background-size: 190.384615% 707.142857%;
 }
 
 #start-button .background .left .row {
-	background-position-x: 0;
+    background-position-x: 0;
 }
 
 #start-button .background .middle .row {
-	background-position-x: 10.344828%;
+    background-position-x: 10.344828%;
 }
 
 #start-button .background .right .row {
-	background-position-x: 100%;
+    background-position-x: 100%;
 }
 
 /* Normal */
 #start-button .background .top {
-	background-position-y: 0;
+    background-position-y: 0;
 }
 
 #start-button .background .column .middle {
-	background-position-y: 13.978495%;
+    background-position-y: 13.978495%;
 }
 
 #start-button .background .bottom {
-	background-position-y: 22.352941%;
+    background-position-y: 22.352941%;
 }
 
 /* Pressed */
 #start-button.pressed .background .top {
-	background-position-y: 76.744186%;
+    background-position-y: 76.744186%;
 }
 
 #start-button.pressed .background .column .middle {
-	background-position-y: 84.946237%;
+    background-position-y: 84.946237%;
 }
 
 #start-button.pressed .background .bottom {
-	background-position-y: 100%;
+    background-position-y: 100%;
 }
 
 /* Tray Notify */
 
 #tray-notify .container {
-	height: 100%;
+    height: 100%;
 }
 
 /* Start Button - Sizes */
 #tray-notify .background .left {
-	width: 34px;
+    width: 34px;
 }
 
 #tray-notify .background .right {
-	width: 10px;
+    width: 10px;
 }
 
 #tray-notify .background .top {
-	height: 12px;
+    height: 12px;
 }
 
 #tray-notify .background .bottom {
-	height: 12px;
+    height: 12px;
 }
 
 /* Start Button - Background */
 #tray-notify .background .row {
-	background-image: url('https://raw.githubusercontent.com/tdcosta100/WindowsXP/master/images/Themes/Blue/TaskbarTray.png');
-	background-repeat: no-repeat;
-	image-rendering: pixelated;
+    background-image: url("https://raw.githubusercontent.com/tdcosta100/WindowsXP/master/images/Themes/Blue/TaskbarTray.png");
+    background-repeat: no-repeat;
+    image-rendering: pixelated;
 }
 
 #tray-notify .background .left .top {
-	background-size: 323.529412% 233.333333%;
+    background-size: 323.529412% 233.333333%;
 }
 
 #tray-notify .background .left .middle {
-	background-size: 323.529412% 700%;
+    background-size: 323.529412% 700%;
 }
 
 #tray-notify .background .left .bottom {
-	background-size: 323.529412% 233.333333%;
+    background-size: 323.529412% 233.333333%;
 }
 
 #tray-notify .background .middle .top {
-	background-size: 166.666667% 233.333333%;
+    background-size: 166.666667% 233.333333%;
 }
 
 #tray-notify .background .middle .middle {
-	background-size: 166.666667% 700%;
+    background-size: 166.666667% 700%;
 }
 
 #tray-notify .background .middle .bottom {
-	background-size: 166.666667% 233.333333%;
+    background-size: 166.666667% 233.333333%;
 }
 
 #tray-notify .background .right .top {
-	background-size: 1100% 233.333333%;
+    background-size: 1100% 233.333333%;
 }
 
 #tray-notify .background .right .middle {
-	background-size: 1100% 700%;
+    background-size: 1100% 700%;
 }
 
 #tray-notify .background .right .bottom {
-	background-size: 1100% 233.333333%;
+    background-size: 1100% 233.333333%;
 }
 
 #tray-notify .background .left .row {
-	background-position-x: 0;
+    background-position-x: 0;
 }
 
 #tray-notify .background .middle .row {
-	background-position-x: 77.272727%;
+    background-position-x: 77.272727%;
 }
 
 #tray-notify .background .right .row {
-	background-position-x: 100%;
+    background-position-x: 100%;
 }
 
 #tray-notify .background .top {
-	background-position-y: 0;
+    background-position-y: 0;
 }
 
 #tray-notify .background .column .middle {
-	background-position-y: 50%;
+    background-position-y: 50%;
 }
 
 #tray-notify .background .bottom {
-	background-position-y: 100%;
+    background-position-y: 100%;
 }
 
 #tray-notify .content {
-	display: flex;
-	flex-direction: row-reverse;
-	align-items: center;
-	position: relative;
-	margin: 0 7px 0 19px;
-	height: 30px;
-	font-family: 'Tahoma';
-	font-size: 8pt;
-	color: rgb(255, 255, 255);
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    position: relative;
+    margin: 0 7px 0 19px;
+    height: 30px;
+    font-family: "Tahoma";
+    font-size: 8pt;
+    color: rgb(255, 255, 255);
 }
 
 #tray-notify .clock {
-	width: 40px;
-	text-align: center;
+    width: 40px;
+    text-align: center;
 }
 
 /* Project Modal */
 
-.window{
-	position:absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-	width:35vw;
-	height:80vh;
-	background-color:#091E89;
-	overflow:hidden;
-	border-radius:7px 7px 0 0;
-  z-index: 3;
-  display: none;
+.window {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 35vw;
+    height: 80vh;
+    background-color: #091e89;
+    overflow: hidden;
+    border-radius: 7px 7px 0 0;
+    z-index: 3;
+    display: none;
 }
 
-.title-bar{
-	width:40vw;
-	height:35px;
-	background: linear-gradient(to bottom, #4094ff 0%,#0056e4 13%,#0056e4 71%,#16428b 100%);
+.title-bar {
+    width: 40vw;
+    height: 35px;
+    background: linear-gradient(to bottom, #4094ff 0%, #0056e4 13%, #0056e4 71%, #16428b 100%);
 }
-.title-bar .title-bar-title{
-	position:absolute;
-  font-family: 'Tahoma';
-	top:7.5px;
-	left:7.5px;
-	color:white;
-	text-shadow: 1px 1px #10397E;
-	font-size:15px;
+.title-bar .title-bar-title {
+    position: absolute;
+    font-family: "Tahoma";
+    top: 7.5px;
+    left: 7.5px;
+    color: white;
+    text-shadow: 1px 1px #10397e;
+    font-size: 15px;
 }
-.title-bar .title-bar-close{
-	position: absolute;
-	width:20px;
-	height:20px;
-	top:5px;
-	right:5px;
-	border-radius:2px;
-	border:1px solid white;
+.title-bar .title-bar-close {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 5px;
+    right: 5px;
+    border-radius: 2px;
+    border: 1px solid white;
 }
-.title-bar .title-bar-close{
-	background: linear-gradient(135deg, #F1A689 0%,#C0442A 50%,#C2311E 100%); 
-  cursor: pointer;
+.title-bar .title-bar-close {
+    background: linear-gradient(135deg, #f1a689 0%, #c0442a 50%, #c2311e 100%);
+    cursor: pointer;
 }
-.title-bar-close:before,.title-bar-close:after{
-    content:'';
-    position:absolute;
-    width:14px;
-    height:2px;
-    background-color:white;
-    border-radius:2px;
-    top:9px;
-    box-shadow:0 0 2px 0 #ccc;
+.title-bar-close:before,
+.title-bar-close:after {
+    content: "";
+    position: absolute;
+    width: 14px;
+    height: 2px;
+    background-color: white;
+    border-radius: 2px;
+    top: 9px;
+    box-shadow: 0 0 2px 0 #ccc;
 }
-.title-bar-close:before{
-    -webkit-transform:rotate(45deg);
-    -moz-transform:rotate(45deg);
-    transform:rotate(45deg);
-    left:3px;
+.title-bar-close:before {
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    transform: rotate(45deg);
+    left: 3px;
 }
-.title-bar-close:after{
-    -webkit-transform:rotate(-45deg);
-    -moz-transform:rotate(-45deg);
-    transform:rotate(-45deg);
-    right:3px;
+.title-bar-close:after {
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    right: 3px;
 }
 
-.window .content{
-	position:absolute;
-	box-sizing: border-box;
-	padding:10px;
-  height: 89%;
-  width: 99%;
-	left: 2px;
-	bottom: 3px;
-	background-color:white;
-  font-family: 'Tahoma';
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+.window .content {
+    position: absolute;
+    box-sizing: border-box;
+    padding: 10px;
+    height: 89%;
+    width: 99%;
+    left: 2px;
+    bottom: 3px;
+    background-color: white;
+    font-family: "Tahoma";
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
 .content .github-img {
-  width: 100%;
-  height: 50%;
-  background-repeat: no-repeat;
+    width: 100%;
+    height: 50%;
+    background-repeat: no-repeat;
 }
 
 .content .heading {
-  padding-top: 5px;
-  font-size: 3vw;
-  font-weight: 800;
-  padding-left: 2px;
+    padding-top: 5px;
+    font-size: 3vw;
+    font-weight: 800;
+    padding-left: 2px;
 }
 
 .content .description {
-  padding-top: 5px;
-  font-size: 1.5vw;
-  padding-left: 2px;
+    padding-top: 5px;
+    font-size: 1.5vw;
+    padding-left: 2px;
 }
 
 .content .link {
@@ -992,74 +1062,98 @@ span::before, span::after{
     border: 1px solid;
     cursor: pointer;
     letter-spacing: 0.5px;
-    font-family: 'Pixel MS Sans', Arial;
+    font-family: "Pixel MS Sans", Arial;
 }
 
 .link:hover {
-  box-shadow: inset 0 0 0 2px #e68b2c;
+    box-shadow: inset 0 0 0 2px #e68b2c;
 }
 
 .link:active {
-  box-shadow: inset 0 0 0 2px #0f6bc1;
+    box-shadow: inset 0 0 0 2px #0f6bc1;
 }
 
-.windows-loading{
-  width: 100vw;
-  height: 100vh;
-  background-color: black;
-  display: grid;
-  place-items: center;
-  position: fixed;
-  z-index: 5;
-  top: 0;
-  left: 0;
-  transition-duration: 0.5s;
+.windows-loading {
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+    display: grid;
+    place-items: center;
+    position: fixed;
+    z-index: 5;
+    top: 0;
+    left: 0;
+    transition-duration: 0.5s;
 }
 
 .windows-loading .logo {
-  width: 30vw;
-  height: 30vw;
-  background: url('./windows-logo.png') no-repeat;
-  background-position: center;
-  background-size: contain;
-  margin-bottom: -22vw;
-  margin-top: -2vw;
+    width: 30vw;
+    height: 30vw;
+    background: url("./windows-logo.png") no-repeat;
+    background-position: center;
+    background-size: contain;
+    margin-bottom: -22vw;
+    margin-top: -2vw;
 }
 
-.projects-loading-box{
-  width: 200px;
-  height: 15px;
-  border: 2px solid #b2b2b2;
-  border-radius: 5px;
-  margin: 0 auto;
-  padding: 2px 1px;
-  overflow: hidden;
-  font-size: 0;
+.projects-loading-box {
+    width: 200px;
+    height: 15px;
+    border: 2px solid #b2b2b2;
+    border-radius: 5px;
+    margin: 0 auto;
+    padding: 2px 1px;
+    overflow: hidden;
+    font-size: 0;
 }
-.box{
-  width: 9px;
-  height: 100%;
-  background: linear-gradient(to bottom, #2838c7 0%,#5979ef 17%,#869ef3 32%,#869ef3 45%,#5979ef 59%,#2838c7 100%);
-  display: inline-block;
-  margin-right: 2px;
-  animation: loader 2s infinite;
-  animation-timing-function: linear;
-}
-
-@keyframes loader{
-  0%{
-    transform: translate(-100px);
-  }
-  100%{
-    transform: translate(150px);
-  }
+.box {
+    width: 9px;
+    height: 100%;
+    background: linear-gradient(to bottom, #2838c7 0%, #5979ef 17%, #869ef3 32%, #869ef3 45%, #5979ef 59%, #2838c7 100%);
+    display: inline-block;
+    margin-right: 2px;
+    animation: loader 2s infinite;
+    animation-timing-function: linear;
 }
 
-.projectScreen iframe{
-  width: 839px;
-  height: 458px;
-  border: none;
-  opacity: 0;
-  display: none;
-  transition-duration: 0.5s;
+@keyframes loader {
+    0% {
+        transform: translate(-100px);
+    }
+    100% {
+        transform: translate(150px);
+    }
+}
+
+.projectScreen iframe {
+    width: 839px;
+    height: 458px;
+    border: none;
+    opacity: 0;
+    display: none;
+    transition-duration: 0.5s;
+}
+
+@media screen and (max-width: 768px) {
+    .spotify {
+        width: 90vw;
+        left: 50%;
+    }
+
+    .current-fav {
+        border-radius: 5px;
+        font-size: 5vw;
+        padding: 2vw;
+    }
+
+    .tip {
+        width: 80vw;
+        display: flex;
+        justify-content: center;
+        font-size: 3.5vw;
+    }
+
+    .label.resumeLabel {
+        transform: scale(0);
+    }
 }
