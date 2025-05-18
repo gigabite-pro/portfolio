@@ -1,4 +1,4 @@
-import { Suspense, useState } from "react";
+import { Suspense, useState, useEffect } from "react";
 import { Canvas } from "@react-three/fiber";
 import Scene from "./Scene";
 import { Loader } from "@react-three/drei";
@@ -13,6 +13,25 @@ export default function App() {
     const [colorMode, setColorMode] = useState("light");
     const [loadState, setLoadState] = useState(false);
     const [activeMenuItem, setActiveMenuItem] = useState("default");
+
+    useEffect(() => {
+        let resizeTimeout;
+
+        const handleResize = () => {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(() => {
+                window.location.reload();
+            }, 500); // Adjust the timeout as needed
+        };
+
+        window.addEventListener("resize", handleResize);
+
+        return () => {
+            clearTimeout(resizeTimeout);
+            window.removeEventListener("resize", handleResize);
+        };
+    }, []);
+
     return (
         <>
             <Tips typeOf={"app"} text={"Click outside the object to escape the camera mode"} />
