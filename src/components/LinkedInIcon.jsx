@@ -51,44 +51,24 @@ const LinkedInIcon = ({ nodes, floor, wallBack, wallLeft, cameraMode }) => {
                 onPointerEnter={() => setHovered(true)}
                 onPointerLeave={() => setHovered(false)}
                 onClick={() => {
+                    if (window.innerWidth < 768) {
+                        return;
+                    }
                     if (cameraMode === "default") {
-                        window.open(
-                            "https://www.linkedin.com/in/v-sharma03/",
-                            "_blank"
-                        );
+                        window.open("https://www.linkedin.com/in/v-sharma03/", "_blank");
                     }
                 }}
                 name="GLTF_SceneRootNode 2"
                 position={[281.35, 28.83, 84.49]}
                 rotation={[0, -Math.PI / 2, 0]}
-                scale={19.06}>
-                <Html
-                    ref={html}
-                    position={[-3, 4, 7]}
-                    distanceFactor={0.8}
-                    center
-                    occlude={[floor, wallBack, wallLeft]}>
+                scale={19.06}
+            >
+                <Html ref={html} position={[-3, 4, 7]} distanceFactor={0.8} center occlude={[floor, wallBack, wallLeft]}>
                     <div className="label">LinkedIn 💻</div>
                 </Html>
-                <group
-                    name="Cylinder007_0"
-                    position={[0, 3, 6]}
-                    rotation={[Math.PI / 2, 0, 0]}
-                    scale={0.84}>
-                    <mesh
-                        name="Object_42"
-                        geometry={nodes.Object_42.geometry}
-                        material={nodes.Object_42.material}
-                        castShadow
-                        receiveShadow
-                    />
-                    <mesh
-                        name="Object_52"
-                        geometry={nodes.Object_52.geometry}
-                        material={nodes.Object_52.material}
-                        castShadow
-                        receiveShadow
-                    />
+                <group name="Cylinder007_0" position={[0, 3, 6]} rotation={[Math.PI / 2, 0, 0]} scale={0.84}>
+                    <mesh name="Object_42" geometry={nodes.Object_42.geometry} material={nodes.Object_42.material} castShadow receiveShadow />
+                    <mesh name="Object_52" geometry={nodes.Object_52.geometry} material={nodes.Object_52.material} castShadow receiveShadow />
                 </group>
             </group>
         </>

@@ -51,51 +51,25 @@ const BehanceIcon = ({ nodes, floor, wallBack, wallLeft, cameraMode }) => {
                 onPointerEnter={() => setHovered(true)}
                 onPointerLeave={() => setHovered(false)}
                 onClick={() => {
+                    if (window.innerWidth < 768) {
+                        return;
+                    }
                     if (cameraMode === "default") {
-                        window.open(
-                            "https://www.behance.net/chin2sharma",
-                            "_blank"
-                        );
+                        window.open("https://www.behance.net/chin2sharma", "_blank");
                     }
                 }}
                 name="GLTF_SceneRootNode 4"
                 position={[470.25, -108.21, 173.17]}
                 rotation={[0, -Math.PI / 2, 0]}
-                scale={47.82}>
-                <Html
-                    ref={html}
-                    position={[1, 3, 6.5]}
-                    distanceFactor={0.8}
-                    occlude={[floor, wallBack, wallLeft]}
-                    center>
+                scale={47.82}
+            >
+                <Html ref={html} position={[1, 3, 6.5]} distanceFactor={0.8} occlude={[floor, wallBack, wallLeft]} center>
                     <div className="label">Behance 🎨</div>
                 </Html>
-                <group
-                    name="Cylinder012_0"
-                    position={[-0.19, 3.32, 6.31]}
-                    rotation={[Math.PI / 2, 0, 0]}
-                    scale={0.18}>
-                    <mesh
-                        name="Object_4"
-                        geometry={nodes.Object_4.geometry}
-                        material={nodes.Object_4.material}
-                        castShadow
-                        receiveShadow
-                    />
-                    <mesh
-                        name="Object_5"
-                        geometry={nodes.Object_5.geometry}
-                        material={nodes.Object_5.material}
-                        castShadow
-                        receiveShadow
-                    />
-                    <mesh
-                        name="Object_6"
-                        geometry={nodes.Object_6.geometry}
-                        material={nodes.Object_6.material}
-                        castShadow
-                        receiveShadow
-                    />
+                <group name="Cylinder012_0" position={[-0.19, 3.32, 6.31]} rotation={[Math.PI / 2, 0, 0]} scale={0.18}>
+                    <mesh name="Object_4" geometry={nodes.Object_4.geometry} material={nodes.Object_4.material} castShadow receiveShadow />
+                    <mesh name="Object_5" geometry={nodes.Object_5.geometry} material={nodes.Object_5.material} castShadow receiveShadow />
+                    <mesh name="Object_6" geometry={nodes.Object_6.geometry} material={nodes.Object_6.material} castShadow receiveShadow />
                 </group>
             </group>
         </>

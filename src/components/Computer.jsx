@@ -99,7 +99,7 @@ const Computer = ({ nodes, materials, floor, wallBack, wallLeft, cameraMode, set
                         setHovered(false);
                         projectsFrame.current.style.display = "block";
                         setTimeout(() => {
-                            projectsFrame.current.contentWindow.location.reload();
+                            projectsFrame.current.src = projectsFrame.current.src;
                             projectsFrame.current.style.opacity = 1;
                             setTimeout(() => {
                                 playStartup();
@@ -116,7 +116,7 @@ const Computer = ({ nodes, materials, floor, wallBack, wallLeft, cameraMode, set
                     <div className="label">Projects 🚀</div>
                 </Html>
                 <Html wrapperClass="projectScreen" transform zIndexRange={[16777270, 16777270]} scale={20} position={[-1, 130, 0]}>
-                    <iframe onClick={(e) => e.stopPropagation()} id="projectsFrame" ref={projectsFrame} src={`${HOST}/projects`} />
+                    <iframe onClick={(e) => e.stopPropagation()} id="projectsFrame" ref={projectsFrame} loading="lazy" src={`${HOST}/projects`} />
                 </Html>
                 <mesh
                     name="Cube 71"

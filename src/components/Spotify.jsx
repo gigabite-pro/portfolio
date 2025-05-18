@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 const Spotify = () => {
     const [songId, setSongId] = useState("");
+    const spotifyFrameRef = useRef();
 
     useEffect(() => {
         var details = {
@@ -37,15 +38,22 @@ const Spotify = () => {
                     .then((response) => response.json())
                     .then((data) => setSongId(data.items[0].id));
             });
-    });
+    }, []);
+
+    useEffect(() => {
+        setTimeout(() => {
+            spotifyFrameRef.current.src = spotifyFrameRef.current.src;
+        }, 1000);
+    }, [songId]);
 
     return (
         <>
             <div className="spotify">
                 <div className="current-fav">Current Favourite</div>
                 <iframe
+                    ref={spotifyFrameRef}
                     style={{ borderRadius: "12px" }}
-                    src={`https://player.spotify.com/embed/track/${songId}?utm_source=generator&theme=0`}
+                    src={`https://open.spotify.com/embed/track/${songId}?utm_source=generator&theme=0`}
                     width="100%"
                     height="352"
                     frameBorder="0"
