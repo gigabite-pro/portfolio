@@ -45,7 +45,7 @@ const Spotify = () => {
                 <div className="current-fav">Current Favourite</div>
                 <iframe
                     style={{ borderRadius: "12px" }}
-                    src={`https://open.spotify.com/embed/track/${songId}?utm_source=generator&theme=0`}
+                    src={`https://player.spotify.com/embed/track/${songId}?utm_source=generator&theme=0`}
                     width="100%"
                     height="352"
                     frameBorder="0"

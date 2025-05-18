@@ -245,20 +245,22 @@ export default function Scene({ colorMode, loadState, activeMenuItem, setActiveM
             setTipOverlay(true);
         }
 
-        if (!initialLoadingAnimation) {
-            // set initial (before initial animation) camera position and rotation
-            new TWEEN.Tween({
-                zoom: camera.current.zoom,
-            })
-                .to({
-                    zoom: 0.175,
+        if (window.innerWidth > 768) {
+            if (!initialLoadingAnimation) {
+                // set initial (before initial animation) camera position and rotation
+                new TWEEN.Tween({
+                    zoom: camera.current.zoom,
                 })
-                .easing(TWEEN.Easing.Quadratic.InOut)
-                .onUpdate((obj) => {
-                    camera.current.zoom = obj.zoom;
-                    camera.current.updateProjectionMatrix();
-                })
-                .start();
+                    .to({
+                        zoom: 0.175,
+                    })
+                    .easing(TWEEN.Easing.Quadratic.InOut)
+                    .onUpdate((obj) => {
+                        camera.current.zoom = obj.zoom;
+                        camera.current.updateProjectionMatrix();
+                    })
+                    .start();
+            }
         }
     }, [cameraMode, activeMenuItem]);
 
