@@ -29,7 +29,7 @@ const Spotify = () => {
         })
             .then((response) => response.json())
             .then((data) => {
-                fetch("https://api.spotify.com/v1/me/top/tracks?time_range=short_term&limit=1", {
+                fetch("https://api.spotify.com/v1/me/top/tracks?time_range=medium_term&limit=1", {
                     method: "GET",
                     headers: {
                         Authorization: "Bearer " + data.access_token,
