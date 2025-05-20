@@ -43,7 +43,7 @@ const Spotify = () => {
     useEffect(() => {
         setTimeout(() => {
             spotifyFrameRef.current.src = spotifyFrameRef.current.src;
-        }, 1000);
+        }, 2000);
     }, [songId]);
 
     return (
