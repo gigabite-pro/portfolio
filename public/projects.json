@@ -215,6 +215,12 @@
       "description": "booksy - an AI-powered storytelling platform that allows families to co-create interactive storybooks together, blending AI-generated narratives, illustrations, and personal video recordings. We leverage Groq-hosted Llama-70B for lightning-fast, real-time story generation, adapting to user choices instantly. Each story’s visuals are uniquely crafted using LumaLabs’ Photon image generation model, making every book a one-of-a-kind creation. Our mascot, booksy the mouse, is voiced using ElevenLabs’ custom voice model, bringing a playful and engaging narration to life.",
       "image": "https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/003/273/463/datas/original.png",
       "link": "https://github.com/gigabite-pro/treehacks-25"
+    },
+    {
+      "name": "Crocodillo Financillo",
+      "description": "Crocodillo Financillo is a gamified financial literacy app that turns money management into a playful, addictive experience. Instead of traditional modules, students \"invest\" in courses that are represented as stocks.",
+      "image": "https://imgur.com/a/bAucseF",
+      "link": "https://github.com/gigabite-pro/hackthenorth25"
     }
   ]
 }
