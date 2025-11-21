@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import useSound from "use-sound";
 
 export default function HomeCanvas() {
-    const computer = useGLTF("https://vazxmixjsiawhamofees.supabase.co/storage/v1/object/public/models/macbook/model.gltf");
+    const computer = useGLTF("https://threejs-journey.com/resources/models/macbook_model.gltf");
 
     const navigate = useNavigate();
     const { gl, scene, camera } = useThree();
