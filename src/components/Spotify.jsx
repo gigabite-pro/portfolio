@@ -2,54 +2,54 @@ import { useEffect, useState, useRef } from "react";
 
 const Spotify = () => {
     const [songId, setSongId] = useState("");
-    const spotifyFrameRef = useRef();
+    const spotifyFrameRef = useRef(null);
 
     useEffect(() => {
-        var details = {
-            grant_type: "refresh_token",
-            refresh_token: import.meta.env.VITE_SPOTIFY_REFRESH_TOKEN,
-            client_id: import.meta.env.VITE_SPOTIFY_CLIENT_ID,
-            client_secret: import.meta.env.VITE_SPOTIFY_CLIENT_SECRET,
-        };
+        let cancelled = false;
 
-        var formBody = [];
-        for (var property in details) {
-            var encodedKey = encodeURIComponent(property);
-            var encodedValue = encodeURIComponent(details[property]);
-            formBody.push(encodedKey + "=" + encodedValue);
+        async function loadTopTrack() {
+            try {
+                const response = await fetch("/api/spotify");
+                const data = await response.json();
+
+                if (!response.ok || !data?.id) {
+                    console.error("Spotify API error:", data);
+                    return;
+                }
+
+                if (!cancelled) {
+                    setSongId(data.id);
+                }
+            } catch (error) {
+                console.error("Failed to load Spotify top track:", error);
+            }
         }
-        formBody = formBody.join("&");
 
-        fetch("https://accounts.spotify.com/api/token", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
-            },
-            body: formBody,
-        })
-            .then((response) => response.json())
-            .then((data) => {
-                fetch("https://api.spotify.com/v1/me/top/tracks?time_range=short_term&limit=1", {
-                    method: "GET",
-                    headers: {
-                        Authorization: "Bearer " + data.access_token,
-                    },
-                })
-                    .then((response) => response.json())
-                    .then((data) => setSongId(data.items[0].id));
-            });
+        loadTopTrack();
+
+        return () => {
+            cancelled = true;
+        };
     }, []);
 
     useEffect(() => {
-        setTimeout(() => {
-            spotifyFrameRef.current.src = spotifyFrameRef.current.src;
+        if (!songId || !spotifyFrameRef.current) {
+            return undefined;
+        }
+
+        const timeoutId = setTimeout(() => {
+            if (spotifyFrameRef.current) {
+                spotifyFrameRef.current.src = spotifyFrameRef.current.src;
+            }
         }, 2000);
+
+        return () => clearTimeout(timeoutId);
     }, [songId]);
 
     return (
-        <>
-            <div className="spotify">
-                <div className="current-fav">Current Favourite</div>
+        <div className="spotify">
+            <div className="current-fav">Current Favourite</div>
+            {songId ? (
                 <iframe
                     ref={spotifyFrameRef}
                     style={{ borderRadius: "12px" }}
@@ -59,9 +59,10 @@ const Spotify = () => {
                     frameBorder="0"
                     allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
                     loading="lazy"
+                    title="Current favourite Spotify track"
                 ></iframe>
-            </div>
-        </>
+            ) : null}
+        </div>
     );
 };
 
