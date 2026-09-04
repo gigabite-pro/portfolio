@@ -60,12 +60,8 @@ const MusicPlayer = ({ nodes, materials, floor, wallBack, wallLeft, cameraMode, 
                     if (cameraMode === "spotify" && document.querySelector(".tip-overlay").style.display === "none") {
                         setCameraMode("default");
                         playSwishReverse();
-                        const spotifyEmbedWindow = document.querySelector('iframe[src*="spotify.com/embed"]').contentWindow;
-                        spotifyEmbedWindow.postMessage(
-                            // pause
-                            { command: "pause" },
-                            "*"
-                        );
+                        const spotifyEmbed = document.querySelector('iframe[src*="spotify.com/embed"]');
+                        spotifyEmbed?.contentWindow?.postMessage({ command: "pause" }, "*");
                         // remove spotify render
                         document.querySelector(".spotify").style.opacity = "0";
                         setTimeout(() => {
