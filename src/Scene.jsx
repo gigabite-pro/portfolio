@@ -1,7 +1,7 @@
 import useSpline from "@splinetool/r3f-spline";
 import { SpotLight, OrbitControls, OrthographicCamera } from "@react-three/drei";
-import { useFrame } from "@react-three/fiber";
-import { useEffect, useRef, useState } from "react";
+import { useFrame, useThree } from "@react-three/fiber";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { useSpring, animated } from "@react-spring/three";
 import TWEEN from "@tweenjs/tween.js";
 import Guitar from "./components/Guitar";
@@ -36,7 +36,7 @@ import LeftWallUI from "./components/LeftWallUI";
 import MusicPlayer from "./components/MusicPlayer";
 // import { useControls } from "leva";
 
-export default function Scene({ colorMode, loadState, activeMenuItem, setActiveMenuItem, ...props }) {
+export default function Scene({ colorMode, onSceneReady = () => {}, activeMenuItem, setActiveMenuItem, ...props }) {
     const mobileWidth = window.innerWidth <= 768;
     const { nodes, materials } = useSpline(import.meta.env.VITE_SPLINE_URL);
 
@@ -53,6 +53,11 @@ export default function Scene({ colorMode, loadState, activeMenuItem, setActiveM
     const windowLight = useRef();
     const ambientLight = useRef();
     const screenLight = useRef();
+    const lightRef = useRef();
+    const introComplete = useRef(false);
+    const introStarted = useRef(false);
+    const onSceneReadyRef = useRef(onSceneReady);
+    onSceneReadyRef.current = onSceneReady;
     // useHelper(leftWallLight, RectAreaLightHelper, "red");
 
     const cameraRotation = useSpring({
@@ -70,9 +75,9 @@ export default function Scene({ colorMode, loadState, activeMenuItem, setActiveM
 
     // Camera Animations
     const [cameraMode, setCameraMode] = useState("default");
-    const [initialLoadingAnimation, setInitialLoadingAnimation] = useState(false);
 
     useEffect(() => {
+        if (!introComplete.current) return;
         controls.current.enabled = false;
         if ((activeMenuItem === "default" && mobileWidth) || (cameraMode === "default" && !mobileWidth)) {
             new TWEEN.Tween(controls.current.target)
@@ -244,24 +249,6 @@ export default function Scene({ colorMode, loadState, activeMenuItem, setActiveM
             }, 1000);
             setTipOverlay(true);
         }
-
-        if (window.innerWidth > 768) {
-            if (!initialLoadingAnimation) {
-                // set initial (before initial animation) camera position and rotation
-                new TWEEN.Tween({
-                    zoom: camera.current.zoom,
-                })
-                    .to({
-                        zoom: 0.175,
-                    })
-                    .easing(TWEEN.Easing.Quadratic.InOut)
-                    .onUpdate((obj) => {
-                        camera.current.zoom = obj.zoom;
-                        camera.current.updateProjectionMatrix();
-                    })
-                    .start();
-            }
-        }
     }, [cameraMode, activeMenuItem]);
 
     useEffect(() => {
@@ -280,43 +267,118 @@ export default function Scene({ colorMode, loadState, activeMenuItem, setActiveM
         }
     }, [colorMode]);
 
-    // Light target
-    const lightRef = useRef();
-    useEffect(() => {
+    const { camera: threeCamera } = useThree();
+    const threeCameraRef = useRef(threeCamera);
+    threeCameraRef.current = threeCamera;
+    const getCamera = () => camera.current || threeCameraRef.current;
+
+    useLayoutEffect(() => {
         document.body.style.cursor = "auto";
-        if (!initialLoadingAnimation && loadState) {
+        if (controls.current) {
+            controls.current.enabled = false;
+        }
+    }, []);
+
+    useEffect(() => {
+        let cancelled = false;
+        let frames = 0;
+        let initialized = false;
+
+        const initCamera = (cam) => {
+            if (initialized) return;
+            initialized = true;
+            if (!camera.current) camera.current = cam;
+            cam.position.set(-800, 200, 830.4);
+            cam.rotation.set(-0.16, -0.78, -0.12);
+            cam.zoom = mobileWidth ? 0.065 : 0.1;
+            cam.updateProjectionMatrix();
+        };
+
+        const startIntroZoom = (cam) => {
+            if (introStarted.current) return;
+            introStarted.current = true;
+            if (!camera.current) camera.current = cam;
+
             new TWEEN.Tween({
-                zoom: camera.current.zoom,
+                zoom: cam.zoom,
             })
-                .to({
-                    zoom: mobileWidth ? 0.65 : 1.3,
-                })
+                .to(
+                    {
+                        zoom: mobileWidth ? 0.65 : 1.3,
+                    },
+                    2000
+                )
                 .easing(TWEEN.Easing.Quadratic.InOut)
                 .onUpdate((obj) => {
-                    camera.current.zoom = obj.zoom;
-                    camera.current.updateProjectionMatrix();
+                    const activeCam = getCamera();
+                    if (!activeCam) return;
+                    activeCam.zoom = obj.zoom;
+                    activeCam.updateProjectionMatrix();
                 })
-                .start()
                 .onComplete(() => {
-                    controls.current.enabled = true;
-                    controls.current.minZoom = mobileWidth ? 0.65 : 1.3;
-                });
-            new TWEEN.Tween(lightRef.current.target.position)
-                .to({
-                    x: -90,
-                    y: -180,
-                    z: 120,
-                })
-                .easing(TWEEN.Easing.Quadratic.InOut)
-                .onUpdate(() => {
-                    lightRef.current.target.updateMatrixWorld();
+                    if (controls.current) {
+                        controls.current.enabled = true;
+                        controls.current.minZoom = mobileWidth ? 0.65 : 1.3;
+                    }
+                    introComplete.current = true;
                 })
                 .start();
-            setInitialLoadingAnimation(true);
-            screenLight.current.target.position.set(159, 69, 133);
-            screenLight.current.target.updateMatrixWorld();
-        }
-    }, [loadState]);
+
+            if (lightRef.current) {
+                new TWEEN.Tween(lightRef.current.target.position)
+                    .to(
+                        {
+                            x: -90,
+                            y: -180,
+                            z: 120,
+                        },
+                        2000
+                    )
+                    .easing(TWEEN.Easing.Quadratic.InOut)
+                    .onUpdate(() => {
+                        lightRef.current.target.updateMatrixWorld();
+                    })
+                    .start();
+            }
+
+            if (screenLight.current) {
+                screenLight.current.target.position.set(159, 69, 133);
+                screenLight.current.target.updateMatrixWorld();
+            }
+        };
+
+        const tick = () => {
+            if (cancelled) return;
+            TWEEN.update();
+
+            const cam = getCamera();
+            if (!cam || cam.type !== "OrthographicCamera") {
+                requestAnimationFrame(tick);
+                return;
+            }
+
+            initCamera(cam);
+            frames += 1;
+
+            if (frames === 3) {
+                onSceneReadyRef.current();
+            }
+
+            if (frames === 40) {
+                startIntroZoom(cam);
+            }
+
+            if (frames > 180) return;
+
+            requestAnimationFrame(tick);
+        };
+
+        const raf = requestAnimationFrame(tick);
+        return () => {
+            cancelled = true;
+            cancelAnimationFrame(raf);
+        };
+    }, []);
 
     // const { cameraPosition, cameraRotation1, cameraZoom, cameraTarget } = useControls({
     //     cameraPosition: { value: [0, 0, 0], step: 0.1 },
@@ -326,10 +388,6 @@ export default function Scene({ colorMode, loadState, activeMenuItem, setActiveM
     // });
 
     useFrame(() => {
-        // console.log(camera.current.position);
-        // console.log(camera.current.rotation);
-        // console.log(camera.current.zoom);
-        // console.log(controls.current.target);
         TWEEN.update();
     });
 
@@ -352,11 +410,9 @@ export default function Scene({ colorMode, loadState, activeMenuItem, setActiveM
                         ref={camera}
                         name="Camera"
                         makeDefault
-                        zoom={mobileWidth ? 0.065 : 0.1}
                         far={2000}
                         near={0}
                         up={[0, 1, 0]}
-                        // position and rotation being set in tween animation
                     />
                     <MusicPlayer nodes={nodes} materials={materials} floor={floor} wallBack={wallBack} wallLeft={wallLeft} cameraMode={cameraMode} setCameraMode={setCameraMode} />
                     <LeftWallUI nodes={nodes} materials={materials} />
