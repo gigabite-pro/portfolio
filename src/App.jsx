@@ -16,7 +16,7 @@ export default function App() {
 
     useEffect(() => {
         if (!sceneReady) return;
-        const timeout = setTimeout(() => setShowLoader(false), 800);
+        const timeout = setTimeout(() => setShowLoader(false), 500);
         return () => clearTimeout(timeout);
     }, [sceneReady]);
 

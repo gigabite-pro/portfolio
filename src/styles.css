@@ -49,19 +49,12 @@ body,
     align-items: center;
     opacity: 1;
     pointer-events: all;
-    transition: opacity 0.7s ease;
+    transition: opacity 0.4s ease;
 }
 
 .loader.loader-hidden {
     opacity: 0;
     pointer-events: none;
-}
-
-.loading-text {
-    color: #fff;
-    margin-left: 180px;
-    font-size: 1.1rem;
-    letter-spacing: 0.08em;
 }
 
 .loading-container {

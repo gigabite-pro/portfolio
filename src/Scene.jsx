@@ -306,7 +306,7 @@ export default function Scene({ colorMode, onSceneReady = () => {}, activeMenuIt
                     {
                         zoom: mobileWidth ? 0.65 : 1.3,
                     },
-                    2000
+                    800
                 )
                 .easing(TWEEN.Easing.Quadratic.InOut)
                 .onUpdate((obj) => {
@@ -332,7 +332,7 @@ export default function Scene({ colorMode, onSceneReady = () => {}, activeMenuIt
                             y: -180,
                             z: 120,
                         },
-                        2000
+                        800
                     )
                     .easing(TWEEN.Easing.Quadratic.InOut)
                     .onUpdate(() => {
@@ -364,11 +364,11 @@ export default function Scene({ colorMode, onSceneReady = () => {}, activeMenuIt
                 onSceneReadyRef.current();
             }
 
-            if (frames === 40) {
+            if (frames === 8) {
                 startIntroZoom(cam);
             }
 
-            if (frames > 180) return;
+            if (frames > 80) return;
 
             requestAnimationFrame(tick);
         };
